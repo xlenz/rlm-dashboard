@@ -12,6 +12,8 @@ module.exports = function (grunt) {
         src: [
           'angular/angular.min.js',
           'angular/angular.min.js.map',
+          'angular-resource/angular-resource.min.js',
+          'angular-resource/angular-resource.min.js.map',
           'jquery/jquery.min.js',
           'bootstrap/dist/css/bootstrap.min.css',
           'bootstrap/dist/js/bootstrap.min.js'
