@@ -11,96 +11,236 @@
   <link rel="shortcut icon" href="favicon.ico">
   <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/accordion.css">
   <script src="http://localhost:35728/livereload.js"></script>
 </head>
 
 <body ng-controller="MainCtrl">
 
-  <section class="text-center">
-    <h3 class="text-center">Usefull resources</h3>
-    <table class="table">
-      <thead>
-        <tr>
-          <th class="text-center">Resource</th>
-          <th class="text-center">Location</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>RLM Builds (ST)</td>
-          <td>\\st-prodops1\tt_nightly\SOL5_X-PKG</td>
-        </tr>
-        <tr>
-          <td>RLM Builds (ORD)</td>
-          <td>\\ord-prodops2\tt_nightly\SOL5_X-PKG</td>
-        </tr>
-        <tr>
-          <td>RLM Builds (QA)</td>
-          <td>\\st-prodops1\dm_builds_local\dv\ALM_INSTALLER_LATEST\testAutoRLM\RLM-GDrive</td>
-        </tr>
-      </tbody>
-    </table>
+  <section class="rlm-links">
+    <div class="accordion horizontal">
+      <section id="rlm-builds">
+        <h2>
+          <a href="#rlm-builds">RLM Builds (striped)</a>
+        </h2>
+        <div class="rlm-accordion-zone">
+          <table class="table table-condensed table-striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Location</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>ST</td>
+                <td>\\st-prodops1\tt_nightly\SOL5_X-PKG</td>
+              </tr>
+              <tr>
+                <td>ORD</td>
+                <td>\\ord-prodops2\tt_nightly\SOL5_X-PKG</td>
+              </tr>
+              <tr>
+                <td>QA</td>
+                <td>\\st-prodops1\dm_builds_local\dv\ALM_INSTALLER_LATEST\testAutoRLM\RLM-GDrive</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section id="rlm-sbm-builds">
+        <h2>
+          <a href="#rlm-sbm-builds">SBM Builds (hover)</a>
+        </h2>
+        <div class="rlm-accordion-zone">
+          <table class="table table-condensed table-hover">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Location</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>ST</td>
+                <td>\\st-prodops1\tt_nightly\bla</td>
+              </tr>
+              <tr>
+                <td>ORD</td>
+                <td>\\ord-prodops2\tt_nightly\bla</td>
+              </tr>
+              <tr>
+                <td>UA</td>
+                <td>\\uad-fsprd2\blabla</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section id="rlm-wiki">
+        <h2>
+          <a href="#rlm-wiki">Wiki Links (specific colour)</a>
+        </h2>
+        <div class="rlm-accordion-zone">
+          <div class="row">
+            <div class="col-xs-4">
+              <table class="table table-condensed">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Location</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="warning">
+                    <td>QA</td>
+                    <td>link to qa</td>
+                  </tr>
+                  <tr class="danger">
+                    <td>PREQs</td>
+                    <td>link to preqs</td>
+                  </tr>
+                  <tr>
+                    <td>Defets</td>
+                    <td>link to defects</td>
+                  </tr>
+                  <tr class="info">
+                    <td>PO Questions</td>
+                    <td>link to qestions</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-xs-8">
+              <p>We can have something else</p>
+              <p>Not only tables</p>
+              <p>Just in case :)</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   </section>
 
   <hr>
 
-  <section>
-    <div>
-      <h4>stl-qa-oalmt1</h4>
-      <p>
-        <i>Upgrade from 5.0.1, Orace, Native SRA on JBOSS</i>
-      </p>
-      <p>Job status: FAILURE</p>
-      <table class="table table-striped text-center">
-        <thead>
-          <tr>
-            <th class="text-center">SBM Status</th>
-            <th class="text-center">SBM Build</th>
-            <th class="text-center">IIS</th>
-            <th class="text-center">Relation Ship</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>FAIL</td>
-            <td>10.1.3.1.102</td>
-            <td>OK</td>
-            <td>NOT STARTED</td>
-          </tr>
-        </tbody>
-        <thead>
-          <tr>
-            <th class="text-center">SRA Status</th>
-            <th class="text-center">SRA Build</th>
-            <th class="text-center">SRA Agent</th>
-            <th class="text-center">SRA Agent Build</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>OK</td>
-            <td>317</td>
-            <td>OK</td>
-            <td>59</td>
-          </tr>
-        </tbody>
-        <thead>
-          <tr>
-            <th class="text-center">RLM Build</th>
-            <th class="text-center">rlw.war</th>
-            <th class="text-center"></th>
-            <th class="text-center"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>5.1.0.369</td>
-            <td>OK</td>
-            <td></td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
+  <section class="rlm-envs">
+    <div class="rlm-env-t1">
+      <div class="row">
+        <div class="col-xs-4">
+          <h4>
+            <a href="http://google.com" target="_blank">
+              <img src="images/red.png">
+            </a>stl-qa-oalmt1
+          </h4>
+        </div>
+        <div class="col-xs-8">
+          <h5>
+            <i>Upgrade from 5.0.1, Orace, Native SRA (JBoss)</i>
+          </h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <table class="table table-bordered table-striped table-condensed">
+            <thead>
+              <tr>
+                <th>RLM</th>
+                <th>SBM</th>
+                <th>SRA</th>
+                <th>SRA Db</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>5.1.0.390</td>
+                <td>10.1.4.68</td>
+                <td>5.1.0.390</td>
+                <td>5.1.0</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-sm-6">
+          <table class="table table-bordered table-condensed">
+            <thead>
+              <tr>
+                <th>rlm.war</th>
+                <th>SBM</th>
+                <th>SRA</th>
+                <th>SRA Agent</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="rlm-success">Ok</td>
+                <td class="rlm-success">Ok</td>
+                <td class="rlm-error">Failure</td>
+                <td class="rlm-success">Ok</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="rlm-env-t2">
+      <div class="row">
+        <div class="col-xs-4">
+          <h4>
+            <a href="http://google.com" target="_blank">
+              <img src="images/blue_anime.gif">
+            </a>stl-qa-oalmt2
+          </h4>
+        </div>
+        <div class="col-xs-8">
+          <h5>
+            <i>Clean, Orace, SRA on stl-alms-tst6 (tomcat)</i>
+          </h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <table class="table table-bordered table-striped table-condensed">
+            <thead>
+              <tr>
+                <th>RLM</th>
+                <th>SBM</th>
+                <th>SRA</th>
+                <th>SRA Db</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>5.1.0.390</td>
+                <td>10.1.3.1.103</td>
+                <td>5.1.0.390</td>
+                <td>5.0.1</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-sm-6">
+          <table class="table table-bordered table-condensed">
+            <thead>
+              <tr>
+                <th>rlm.war</th>
+                <th>SBM</th>
+                <th>SRA</th>
+                <th>SRA Agent</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="rlm-success">Ok</td>
+                <td class="rlm-success">Ok</td>
+                <td class="rlm-success">Ok</td>
+                <td class="rlm-error">Failure</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </section>
 

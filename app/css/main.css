@@ -1,3 +1,15 @@
 body {
   margin: 0 20px;
 }
+table td.rlm-success {
+  background-color: #dff0d8!important;
+}
+table td.rlm-error {
+  background-color: #f2dede!important;
+}
+.rlm-envs table th {
+  text-align: center;
+}
+.rlm-ens table td {
+  text-align: center;
+}
