@@ -14,7 +14,7 @@ module.exports = function (grunt) {
           'angular/angular.min.js.map',
           'angular-resource/angular-resource.min.js',
           'angular-resource/angular-resource.min.js.map',
-          'jquery/jquery.min.js',
+          'jquery/dist/jquery.min.js',
           'bootstrap/dist/css/bootstrap.min.css',
           'bootstrap/dist/js/bootstrap.min.js'
         ],
@@ -32,7 +32,9 @@ module.exports = function (grunt) {
     watch: {
       app: {
         options: {
-          livereload: true
+          livereload: {
+            port: 35728
+          }
         },
         files: [
           pathToApp + '**/*'
@@ -48,7 +50,9 @@ module.exports = function (grunt) {
           'express:dev'
         ],
         options: {
-          livereload: true,
+          livereload: {
+            port: 35728
+          },
           nospawn: true
         }
       }

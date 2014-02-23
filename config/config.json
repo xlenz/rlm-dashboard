@@ -2,5 +2,30 @@
   "host": "",
   "port": 81,
 
-  "root_html": "index.html"
+  "root_html": "index.html",
+
+  "links": {
+    "rlm": {
+      "st": "st",
+      "ord": "ord",
+      "qa": "qa"
+    },
+    "sbm": {
+      "st": "st",
+      "ord": "ord",
+      "ua": "ua"
+    },
+    "wiki": {
+      "themes": "themes",
+      "qa": "qa",
+      "PREQs": "preqs",
+      "PO": "po questions"
+    }
+  },
+
+  "envs": {
+    "stl-qa-oalmt1": {
+      "descr": "Upgrade from 5.0.1, Oracle, Native SRA on JBoss"
+    }
+  }
 }
