@@ -8,10 +8,12 @@ if (!fs.existsSync('logs')) fs.mkdirSync('logs');
 var logger = new(winston.Logger)({
   transports: [
     new(winston.transports.Console)({
-      colorize: true
+      colorize: true//,
+      //level: 'debug'
     }),
     new winston.transports.File({
       filename: 'logs/debug.log',
+      level: 'debug',
       json: false,
       maxsize: 10,
       maxFiles: 2
