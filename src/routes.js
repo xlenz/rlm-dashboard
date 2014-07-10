@@ -1,14 +1,13 @@
 'use strict';
 
 var self = this;
-var html, api;
+var api;
 
-module.exports = function (cfg, dbMysql) {
-  //var api = require('./controllers/api')();
-  html = require('./controllers/html')(cfg);
-  return self;
+module.exports = function (cfg) {
+    api = require('./controllers/api')(cfg);
+    return self;
 };
 
 exports.routes = function (app) {
-  app.get("/", html.rootHtml);
+    app.get('/status/:environment', api.status);
 };

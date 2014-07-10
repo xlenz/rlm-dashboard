@@ -1,0 +1,37 @@
+{
+    // Details: https://github.com/victorporof/Sublime-JSHint#using-your-own-jshintrc-options
+    // Example: https://github.com/jshint/jshint/blob/master/examples/.jshintrc
+    // Documentation: http://www.jshint.com/docs/
+
+    //Google Web Starter Kit
+    "node": true,
+    "browser": true,
+    "esnext": true,
+    "bitwise": true,
+    "camelcase": true,
+    "curly": true,
+    "eqeqeq": true,
+    "immed": true,
+    "indent": 4,
+    "newcap": true,
+    "noarg": true,
+    "quotmark": "single",
+    "undef": true,
+    "unused": "vars",
+    "strict": true,
+    "trailing": true,
+    "smarttabs": true,
+
+    // added by mgrybyk
+    "jquery": true,
+    "globalstrict": true,
+    "boss": true,
+    "validthis": true,
+    "globals": {
+        "describe": true,
+        "it": true,
+        "expect": true,
+        "log": true,
+        "angular": true
+    }
+}

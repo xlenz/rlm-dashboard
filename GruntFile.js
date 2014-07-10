@@ -1,5 +1,15 @@
 'use strict';
 
+<<<<<<< HEAD
+module.exports = function (grunt) {
+    grunt.initConfig({
+        express: {
+            dev: {
+                options: {
+                    script: 'server.js'
+                }
+            }
+=======
 var pathToApp = 'app/';
 var pathToLibs = pathToApp + 'libs/';
 var livereloadSrc = 'src="http://localhost:35728/livereload.js"';
@@ -65,26 +75,41 @@ module.exports = function (grunt) {
           livereload: {
             port: 35728
           }
+>>>>>>> origin/master
         },
-        files: [
-          pathToApp + '**/*'
-        ]
-      },
-      express: {
-        files: [
-          'server.js',
-          'config/**/*.{js,json}',
-          'src/**/*.js'
-        ],
-        tasks: [
-          'express:dev'
-        ],
-        options: {
-          livereload: {
-            port: 35728
-          },
-          nospawn: true
+        watch: {
+            express: {
+                files: [
+                    'server.js',
+                    'config/**/*.{js,json}',
+                    'src/**/*.js'
+                ],
+                tasks: [
+                    'express:dev'
+                ],
+                options: {
+                    livereload: true,
+                    nospawn: true
+                }
+            }
         }
+<<<<<<< HEAD
+    });
+
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-express-server');
+
+    grunt.registerTask('serve', function (target) {
+        grunt.task.run([
+            'express:dev',
+            'watch'
+        ]);
+    });
+
+    grunt.registerTask('default', [
+        'serve'
+    ]);
+=======
       }
     }
   });
@@ -118,4 +143,5 @@ module.exports = function (grunt) {
   grunt.registerTask('default', [
     'build'
   ]);
+>>>>>>> origin/master
 };
