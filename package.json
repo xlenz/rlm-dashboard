@@ -23,15 +23,8 @@
     "winston": "^0.7.3"
   },
   "devDependencies": {
-<<<<<<< HEAD
     "grunt": "^0.4.5",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-express-server": "^0.4.17"
-=======
-    "grunt-express-server": "~0.4.11",
-    "grunt": "~0.4.2",
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt-include-replace": "~1.2.0"
->>>>>>> origin/master
   }
 }

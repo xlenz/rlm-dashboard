@@ -2,8 +2,4 @@ node_modules
 bower_components
 logs
 app/libs
-<<<<<<< HEAD
 .idea/workspace.xml
-=======
-app/index.html
->>>>>>> origin/master
