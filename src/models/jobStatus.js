@@ -2,8 +2,8 @@
 
 var mongoose = require('mongoose');
 
-var envStatusSchema = mongoose.Schema({
-    environment: String,
+var jobStatusSchema = mongoose.Schema({
+    job: String,
     isBuilding: Boolean,
     build: Number,
     date: Date,
@@ -13,14 +13,14 @@ var envStatusSchema = mongoose.Schema({
     lockedBy: String
 });
 
-envStatusSchema.statics.findEnv = function (env, build, cb) {
+jobStatusSchema.statics.findJob = function (job, build, cb) {
     this.findOne({
-        environment: env,
+        job: job,
         build: build
     }, cb);
 };
 
-var envStatus = mongoose.model('environmentStatus', envStatusSchema);
+var jobStatus = mongoose.model('environmentStatus', jobStatusSchema);
 
-module.exports = envStatus;
+module.exports = jobStatus;
 
