@@ -1,6 +1,6 @@
 'use strict';
 
-var envStatus = require('./models/environmentStatus');
+var jobModel = require('./models/jobStatus');
 var request = require('request');
 var self = this;
 var cfg;
@@ -9,20 +9,17 @@ module.exports = function (_cfg) {
     cfg = _cfg;
 
     setInterval(function () {
-        log.info('Getting jobs state...');
+        log.debug('Getting jobs state...');
         cfg.environments.forEach(function (el) {
-            envState(el.name);
+            jobStatus(el.jobName);
         });
     }, 60000);
 
     return self;
 };
 
-function envState(env, callback) {
-    var uri = cfg.jenkinsUrl + '/job/' + cfg.jobPreffix + env + cfg.jobSuffix + '/lastBuild/api/json';
-    if (callback) {
-        log.info(uri);
-    }
+function jobStatus(jobName, callback) {
+    var uri = cfg.jenkinsUrl + '/job/' + jobName + '/lastBuild/api/json';
     request({
         method: 'GET',
         uri: uri
@@ -35,13 +32,13 @@ function envState(env, callback) {
             return callback ? callback(data) : null;
         }
 
-        envStatus.findEnv(env, data.number, function (err, result) {
+        jobModel.findJob(jobName, data.number, function (err, result) {
             if (err) {
                 return log.error(err);
             }
             if (result !== null) {
                 if (result.isBuilding === true && data.building === false) {
-                    envStatus.update({_id: result._id}, {
+                    jobModel.update({_id: result._id}, {
                         isBuilding: data.building, result: data.result}, function (err) {
                         if (err) {
                             return log.error(err);
@@ -51,15 +48,15 @@ function envState(env, callback) {
                 return log.debug('Env`s build already exists.');
             }
 
-            var envObj = new envStatus({
-                environment: env,
+            var env = new jobModel({
+                job: jobName,
                 isBuilding: data.building,
                 build: data.number,
                 date: new Date(data.timestamp),
                 result: data.result
             });
 
-            envObj.save(function (err) {
+            env.save(function (err) {
                 if (err) {
                     return log.error(err);
                 }
@@ -70,4 +67,4 @@ function envState(env, callback) {
     });
 }
 
-exports.envState = envState;
+exports.jobStatus = jobStatus;

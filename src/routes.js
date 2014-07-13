@@ -9,5 +9,5 @@ module.exports = function (cfg, statusSync) {
 };
 
 exports.routes = function (app) {
-    app.get('/status/:environment', api.status);
+    app.get('/status/:job', api.status);
 };

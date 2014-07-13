@@ -11,8 +11,9 @@ module.exports = function (_cfg, _statusSync) {
 };
 
 exports.status = function (req, res, next) {
-    var env = req.params.environment;
-    statusSync.envState(env, function (data) {
+    var job = req.params.job;
+    log.info('Getting status for: ', job);
+    statusSync.jobStatus(job, function (data) {
         var img;
 
         if (data === null) {

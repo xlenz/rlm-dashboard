@@ -10,25 +10,28 @@ module.exports = function () {
 
         environments: [
             {
-                name: 'stl-qa-oalmt1'
+                name: 'stl-qa-oalmt1',
+                jobName: 'QA_RLM_AUTOCONFIG_stl-qa-oalmt1__MAIN'
             },
             {
-                name: 'stl-qa-oalmt2'
+                name: 'stl-qa-oalmt2',
+                jobName: 'QA_RLM_AUTOCONFIG_stl-qa-oalmt2__MAIN'
             },
             {
-                name: 'stl-qa-oalmt3'
+                name: 'stl-qa-oalmt3',
+                jobName: 'QA_RLM_AUTOCONFIG_stl-qa-oalmt3__MAIN'
             },
             {
-                name: 'stl-alms-tst4'
+                name: 'stl-alms-tst4',
+                jobName: 'QA_RLM_AUTOCONFIG_stl-alms-tst4__MAIN'
             },
             {
-                name: 'stl-alms-tst7'
+                name: 'stl-alms-tst7',
+                jobName: 'QA_RLM_AUTOCONFIG_stl-alms-tst7__MAIN'
             }
         ],
 
         jenkinsUrl: 'http://stl-qa-oalmsl:8080',
-        jobPreffix: 'QA_RLM_AUTOCONFIG_',
-        jobSuffix: '__MAIN',
         statusGreen: pathToImages + '/green.png',
         statusRed: pathToImages + '/red.png',
         statusError: pathToImages + '/error.png',
