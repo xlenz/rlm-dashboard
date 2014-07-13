@@ -2,17 +2,23 @@
 
 //logging
 global.log = require('./config/modules/winston');
-var express = require('express');
 
 //reading config file
 var cfg = require('./config/config')();
 
+//mongo
+require('./config/modules/mongoose');
+var statusSync = require('./src/statusSync')(cfg);
+
+//express
+var express = require('express');
 var app = express();
+
 //routes
-var routes = require('./src/routes')(cfg);
+var routes = require('./src/routes')(cfg, statusSync);
 
 //setup express usages
-require('./config/modules/express')(app, routes);
+require('./config/modules/express')(app, cfg, routes);
 
 //start server
 app.listen(cfg.port, cfg.host, function () {

@@ -3,8 +3,8 @@
 var self = this;
 var api;
 
-module.exports = function (cfg) {
-    api = require('./controllers/api')(cfg);
+module.exports = function (cfg, statusSync) {
+    api = require('./controllers/api')(cfg, statusSync);
     return self;
 };
 

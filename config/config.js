@@ -1,19 +1,38 @@
 'use strict';
 
-var pathToImages = '/static/977f678d/images/32x32';
+var pathToImages = './img';
 
 module.exports = function () {
     return {
         host: '',
         port: 81,
+        pathToApp: '\\app',
+
+        environments: [
+            {
+                name: 'stl-qa-oalmt1'
+            },
+            {
+                name: 'stl-qa-oalmt2'
+            },
+            {
+                name: 'stl-qa-oalmt3'
+            },
+            {
+                name: 'stl-alms-tst4'
+            },
+            {
+                name: 'stl-alms-tst7'
+            }
+        ],
 
         jenkinsUrl: 'http://stl-qa-oalmsl:8080',
         jobPreffix: 'QA_RLM_AUTOCONFIG_',
         jobSuffix: '__MAIN',
-        statusGreen: pathToImages + '/blue.png',
+        statusGreen: pathToImages + '/green.png',
         statusRed: pathToImages + '/red.png',
         statusError: pathToImages + '/error.png',
-        /*statusGrey: pathToImages + '/grey.png',*/
-        statusGreyAnime: pathToImages + '/grey_anime.gif'
+        statusGrey: pathToImages + '/grey.png',
+        statusAnime: pathToImages + '/blue_anime.gif'
     };
 };

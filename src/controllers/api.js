@@ -1,43 +1,32 @@
 'use strict';
 
-var request = require('request');
 var self = this;
-var cfg;
+var cfg, statusSync;
 
-module.exports = function (_cfg) {
+module.exports = function (_cfg, _statusSync) {
     cfg = _cfg;
+    statusSync = _statusSync;
 
     return self;
 };
 
 exports.status = function (req, res, next) {
     var env = req.params.environment;
-    var uri = cfg.jenkinsUrl + '/job/' + cfg.jobPreffix + env + cfg.jobSuffix + '/lastBuild/api/json';
-    log.info(env);
-    log.info(uri);
-    request({
-       method: 'GET',
-       uri: uri
-    }, function (e, r, body) {
-        var data = null;
-        try {
-            data = JSON.parse(body);
-            var result = data.result;
-            var building = data.building;
-        } catch (e) {
-            log.error('Cannot parse JSON response.')
-        }
+    statusSync.envState(env, function (data) {
         var img;
 
-        if (data === null){
+        if (data === null) {
             img = cfg.statusError;
-        } else if (building === true) {
-            img = cfg.statusGreyAnime;
-        } else if (result === 'SUCCESS') {
+        } else if (data.building === true) {
+            img = cfg.statusAnime;
+        } else if (data.result === 'SUCCESS') {
             img = cfg.statusGreen;
+        } else if (data.result === 'ABORTED') {
+            img = cfg.statusGrey;
         } else {
             img = cfg.statusRed;
         }
-        res.redirect(cfg.jenkinsUrl + img);
+
+        res.sendfile(img);
     });
 };

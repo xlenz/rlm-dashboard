@@ -3,14 +3,15 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 
-module.exports = function (app, routes) {
+module.exports = function (app, cfg, routes) {
+    var pathToPublic = __dirname + '/../..' + cfg.pathToApp;
     app.use(logWho);
     //app.use(express.cookieParser());
     app.use(bodyParser.urlencoded({
         extended: true
     }));
     app.use(bodyParser.json());
-
+    app.use(express.static(pathToPublic));
     routes.routes(app);
     app.use(pageNotFound);
     app.use(internalServerError);
