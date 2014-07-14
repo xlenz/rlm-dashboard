@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="boilerplate">
+<html ng-app="rlmDashboard">
 
 <head lang="en">
     <meta charset="utf-8">
@@ -35,7 +35,8 @@
 
     <link rel="stylesheet" href="libs/outdated-browser/outdatedbrowser/outdatedBrowser.min.css">
 
-    <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
+    <!--link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css"-->
+    <link rel="stylesheet" href="css/reset.css"/>
     <link rel="stylesheet" href="libs/angular-snap/angular-snap.min.css"/>
     <link rel="stylesheet" href="css/demo.css"/>
     <link rel="stylesheet" href="css/snap.css"/>
@@ -53,45 +54,42 @@
     <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
 </div>
 <div ng-controller="MainCtrl">
-    <div id="toolbar" class="snap-content">
+
+    <div id="toolbar">
         <img snap-toggle src="images/menu-hamburger.svg">
 
-        <h1>RLM Dashboard</h1>
+        <h2>{{activeTab()}}</h2>
     </div>
-    <snap-drawer>
-        <div class="snap-drawers">
-            <div class="snap-drawer snap-drawer-left">
-                <div>
-                    <h4>Items</h4>
-                    <ul>
-                        <li><a ng-href="#">item 1</a></li>
-                        <li><a ng-href="#">item 2</a></li>
-                    </ul>
-                    <div>
-                        <p>The Default demo shows basic Snap.js functionality</p>
 
-                        <p>One more paragraph</p>
-                    </div>
-                </div>
-            </div>
+    <snap-drawer>
+        <h1>RLM Dashboard</h1>
+        <tab-manager></tab-manager>
+        <div>
+            <p>RLM Dashboard</p>
         </div>
     </snap-drawer>
 
-    <snap-content snap-options="snapOpts">
-        <p>Something anything, someone</p>
+    <snap-content>
+        <div ng-view></div>
     </snap-content>
 
 </div>
 <script src="libs/jquery/dist/jquery.min.js"></script>
 <script src="libs/outdated-browser/outdatedbrowser/outdatedBrowser.min.js"></script>
 <script src="outdated-browser.js"></script>
-<script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
+<!--script src="libs/bootstrap/dist/js/bootstrap.min.js"></script-->
 <script src="libs/snapjs/snap.min.js"></script>
 <script src="libs/angular/angular.min.js"></script>
 <script src="libs/angular-route/angular-route.min.js"></script>
 <script src="libs/angular-snap/angular-snap.min.js"></script>
 
 <script src="app.js"></script>
+<script src="factories/ActiveTab.js"></script>
+<!--script src="services.js"></script-->
+<script src="controllers/TabCtrl.js"></script>
+<script src="controllers/IntegrationCtrl.js"></script>
+<script src="controllers/EnvCtrl.js"></script>
+<script src="directives.js"></script>
 
 </body>
 

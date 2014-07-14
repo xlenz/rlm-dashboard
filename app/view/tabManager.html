@@ -1,0 +1,5 @@
+<ul ng-controller="TabCtrl">
+    <li ng-repeat="tab in tabs" ng-class="{ active: isCurrent($index) }">
+        <a ng-href="{{tab.href}}">{{tab.name}}</a>
+    </li>
+</ul>

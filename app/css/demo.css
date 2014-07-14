@@ -1,81 +1,64 @@
 /* Demo toolbar styles */
 #toolbar {
+    z-index: 2;
     background: #256C94;
     position: absolute;
-    top: 0;
     right: 0;
     left: 0;
-    width: auto;
-    height: 36px;
+    height: 37px;
 }
 
-#toolbar h1 {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
+#toolbar h2 {
     text-align: center;
     color: #fff;
     line-height: 0;
-    font-size: 2em;
+    font-size: 33px;
+    margin: 20px 0 0 0;
 }
 
 #toolbar img {
     position: absolute;
-    left: -20px;
-    top: 8px;
+    left: -15px;
+    margin-top: 8px;
     height: 20px;
-    width: 36px;
-    transition: left 0.5s;
+    transition: left 0.3s;
 }
 
-/* Default demo styles */
+/* content */
 .snap-content {
     background: #eee;
 }
 
 .snap-drawers {
-    background: #fff;
+    background: transparent;
 }
 
-.snap-drawer {
+snap-drawer {
     background: #fff;
     color: #000;
 }
 
-.snap-drawer h3 {
-    font-size: 36px;
-    font-weight: normal;
-    margin: 15px;
-}
-
-.snap-drawer h4 {
+snap-drawer > h1 {
     padding: 15px;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    margin-bottom: 0;
+    font-size: 18px;
+    font-weight: bold;
 }
 
-.snap-drawer ul {
-    padding: 0;
-    margin: 0;
-    list-style-type: none;
-}
-
-.snap-drawer li > a {
+snap-drawer li > a {
     display: block;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     padding: 15px;
     font-weight: bold;
     text-decoration: none;
     color: #333;
-    text-indent: 20px;
+    text-indent: 10px;
 }
 
-.snap-drawer li:first-child {
+snap-drawer li:first-child {
     border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.snap-drawer p {
+snap-drawer p {
     opacity: 0.5;
     padding: 15px;
     font-size: 12px;

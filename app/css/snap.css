@@ -7,7 +7,7 @@ html, body {
 }
 
 .snap-content {
-    position: absolute;
+
     top: 37px;
     right: 0;
     bottom: 0;
@@ -16,46 +16,13 @@ html, body {
     height: auto;
     z-index: 2;
     overflow: auto;
-    -webkit-overflow-scrolling: touch;
-    -webkit-transform: translate3d(0, 0, 0);
-    -moz-transform: translate3d(0, 0, 0);
-    -ms-transform: translate3d(0, 0, 0);
-    -o-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
 }
 
 .snapjs-left #toolbar img {
-    left: -28px;
+    left: -20px;
 }
 
-.snap-drawers {
-    position: absolute;
-    top: 13px;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: auto;
-    height: auto;
-}
-
-.snap-drawer {
-    position: absolute;
-    top: 0;
-    right: auto;
-    bottom: 0;
-    left: auto;
-    width: 265px;
-    height: auto;
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
-    -webkit-transition: width 0.3s ease;
-    -moz-transition: width 0.3s ease;
-    -ms-transition: width 0.3s ease;
-    -o-transition: width 0.3s ease;
-    transition: width 0.3s ease;
-}
-
-.snap-drawer-left {
-    left: 0;
-    z-index: 1;
+snap-drawer.snap-drawer-left {
+    top: 37px;
 }
