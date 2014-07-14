@@ -54,6 +54,15 @@ snap-drawer li > a {
     text-indent: 10px;
 }
 
+snap-drawer li.active > a {
+    background: #1e90ff;
+    color: #fff;
+}
+
+snap-drawer li:not(.active):hover > a {
+    background: #87cefa;
+}
+
 snap-drawer li:first-child {
     border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
