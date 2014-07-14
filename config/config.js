@@ -25,13 +25,14 @@ module.exports = function () {
                     installType: 'Upgrade',
                     upgrade: '5.1.0.680 GA'
                 },
-                sbm: '10.1.4.1',
-                sbmUpgrade: '10.1.4 GA',
+                sbm: {
+                    version: '10.1.4.1',
+                    upgrade: '10.1.4 GA'
+                },
                 sra: {
-                    install: 'Local',
-                    installedBy: 'SOO installer',
                     server: 'Local',
-                    serverDetails: 'serena_ra/password'
+                    serverDetails: 'serena_ra/password',
+                    installedBy: 'SOO installer'
                 },
                 database: {
                     hostname: 'stl-qa-oalmt1db',
@@ -51,13 +52,14 @@ module.exports = function () {
                     installType: 'Clean',
                     upgrade: null
                 },
-                sbm: '10.1.4.1',
-                sbmUpgrade: null,
+                sbm: {
+                    version: '10.1.4.1',
+                    upgrade: null
+                },
                 sra: {
-                    install: 'Remote',
-                    installedBy: 'CI of SRA',
                     server: 'stl-alms-tst6',
-                    serverDetails: 'Tomcat'
+                    serverDetails: 'Tomcat',
+                    installedBy: 'CI of SRA'
                 },
                 database: {
                     hostname: 'stl-qa-oalmt1fs',
@@ -77,13 +79,14 @@ module.exports = function () {
                     installType: 'Upgrade',
                     upgrade: '5.1.0.680 GA'
                 },
-                sbm: '10.1.4.1',
-                sbmUpgrade: '10.1.4 GA',
+                sbm: {
+                    version: '10.1.4.1',
+                    upgrade: '10.1.4 GA'
+                },
                 sra: {
-                    install: 'Remote',
-                    installedBy: 'CI of SRA',
                     server: 'stl-alms-tst5',
-                    serverDetails: 'Tomcat'
+                    serverDetails: 'Tomcat',
+                    installedBy: 'CI of SRA'
                 },
                 database: {
                     hostname: 'localhost',
@@ -102,13 +105,14 @@ module.exports = function () {
                     installType: 'Clean',
                     upgrade: null
                 },
-                sbm: '10.1.4.1',
-                sbmUpgrade: null,
+                sbm: {
+                    version: '10.1.4.1',
+                    upgrade: null
+                },
                 sra: {
-                    install: 'Local',
-                    installedBy: 'SOO installer',
                     server: 'Local',
-                    serverDetails: 'serena_ra/password'
+                    serverDetails: 'serena_ra/password',
+                    installedBy: 'SOO installer'
                 },
                 database: {
                     hostname: 'localhost',
@@ -127,13 +131,14 @@ module.exports = function () {
                     installType: 'Clean',
                     upgrade: null
                 },
-                sbm: '10.1.4.1',
-                sbmUpgrade: null,
+                sbm: {
+                    version: '10.1.4.1',
+                    upgrade: null
+                },
                 sra: {
-                    install: 'Local',
-                    installedBy: 'SOO installer',
                     server: 'Local',
-                    serverDetails: 'serena_ra/password'
+                    serverDetails: 'serena_ra/password',
+                    installedBy: 'SOO installer'
                 },
                 database: {
                     hostname: 'localhost',

@@ -3,8 +3,8 @@
 (function () {
     var app = angular.module('rlmDashboard');
 
-    app.controller('EnvCtrl', function ($scope, $http, ApiClient, ActiveTab) {
-        ActiveTab.set(1);
+    app.controller('DashboardCtrl', function ($scope, $http, ApiClient, ActiveTab) {
+        ActiveTab.set(0);
 
         $scope.envs = [];
 

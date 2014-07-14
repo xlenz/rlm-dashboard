@@ -5,6 +5,10 @@
 
     app.config(function ($routeProvider, snapRemoteProvider) {
         $routeProvider
+                .when('/dashboard', {
+                    templateUrl: 'view/dashboard.html',
+                    controller: 'DashboardCtrl'
+                })
                 .when('/envs', {
                     templateUrl: 'view/envs.html',
                     controller: 'EnvCtrl'
@@ -14,7 +18,7 @@
                     controller: 'IntegrationCtrl'
                 })
                 .otherwise({
-                    redirectTo: '/envs'
+                    redirectTo: '/dashboard'
                 });
 
         snapRemoteProvider.globalOptions.disable = 'right';
