@@ -151,6 +151,21 @@ module.exports = function () {
             }
         ],
 
+        tabs: [
+            {
+                name: 'Dashboard',
+                href: '#dashboard'
+            },
+            {
+                name: 'Test Environments',
+                href: '#envs'
+            },
+            {
+                name: '3rd Party Integrations',
+                href: '#integrations'
+            }
+        ],
+
         jenkinsUrl: 'http://stl-qa-oalmsl:8080',
         statusGreen: pathToImages + '/green.png',
         statusRed: pathToImages + '/red.png',
