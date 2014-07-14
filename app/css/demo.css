@@ -1,0 +1,82 @@
+/* Demo toolbar styles */
+#toolbar {
+    background: #256C94;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: auto;
+    height: 36px;
+}
+
+#toolbar h1 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    text-align: center;
+    color: #fff;
+    line-height: 0;
+    font-size: 2em;
+}
+
+#toolbar img {
+    position: absolute;
+    left: -20px;
+    top: 8px;
+    height: 20px;
+    width: 36px;
+    transition: left 0.5s;
+}
+
+/* Default demo styles */
+.snap-content {
+    background: #eee;
+}
+
+.snap-drawers {
+    background: #fff;
+}
+
+.snap-drawer {
+    background: #fff;
+    color: #000;
+}
+
+.snap-drawer h3 {
+    font-size: 36px;
+    font-weight: normal;
+    margin: 15px;
+}
+
+.snap-drawer h4 {
+    padding: 15px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 0;
+}
+
+.snap-drawer ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.snap-drawer li > a {
+    display: block;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+    text-indent: 20px;
+}
+
+.snap-drawer li:first-child {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.snap-drawer p {
+    opacity: 0.5;
+    padding: 15px;
+    font-size: 12px;
+}

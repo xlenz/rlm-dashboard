@@ -1,0 +1,25 @@
+{
+  "name": "rlm-dashboard",
+  "version": "0.0.0",
+  "homepage": "https://github.com/xlenz/rlm-dashboard",
+  "authors": [
+    "MG <xlenz7@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "bootstrap": "~3.2.0",
+    "angular": "~1.2.18",
+    "angular-snap": "~1.5.1",
+    "angular-route": "~1.2.18",
+    "outdated-browser": "*"
+  }
+}

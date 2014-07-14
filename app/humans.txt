@@ -1,0 +1,11 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+Mykola Grybyk
+
+# THANKS
+To everyone who helped and inspired :)
+
+# TECHNOLOGY COLOPHON
+    HTML5, CSS3, Javascript

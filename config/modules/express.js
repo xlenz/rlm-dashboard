@@ -2,9 +2,11 @@
 
 var express = require('express');
 var bodyParser = require('body-parser');
+var cfg;
 
-module.exports = function (app, cfg, routes) {
-    var pathToPublic = __dirname + '/../..' + cfg.pathToApp;
+module.exports = function (app, _cfg, routes) {
+    cfg = _cfg;
+    var pathToPublic = cfg.pathToApp;
     app.use(logWho);
     //app.use(express.cookieParser());
     app.use(bodyParser.urlencoded({
@@ -26,7 +28,10 @@ function logWho(req, res, next) {
 function pageNotFound(req, res, next) {
     res.status(404);
     log.warn('Not found URL: ' + req.url);
-
+    var page404 = cfg.pageNotFound;
+    if (req.method === 'GET') {
+        return res.sendfile(page404);
+    }
     return res.send({
         error: 'Resource not found',
         code: 404

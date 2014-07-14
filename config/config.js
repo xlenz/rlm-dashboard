@@ -1,12 +1,16 @@
 'use strict';
 
 var pathToImages = './img';
+var pathToApp = 'app';
 
 module.exports = function () {
     return {
         host: '',
         port: 80,
-        pathToApp: '\\app',
+
+        pathToApp: pathToApp,
+        appHtml: pathToApp + '/app.html',
+        pageNotFound: pathToApp + '/404.html',
 
         rdpCred: {
             user: 'Administrator',

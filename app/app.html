@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html ng-app="boilerplate">
+
+<head lang="en">
+    <meta charset="utf-8">
+    <meta name="description" content="boilerplate spa mobile app">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RLM Dashboard</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- iOS icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144"
+          href="images/touch/apple-touch-icon-144x144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114"
+          href="images/touch/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/touch/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/touch/apple-touch-icon-57x57-precomposed.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    <!-- Generic Icon -->
+    <link rel="shortcut icon" href="images/touch/touch-icon-57x57.png">
+
+    <!-- Chrome Add to Homescreen -->
+    <link rel="shortcut icon" sizes="196x196" href="images/touch/touch-icon-196x196.png">
+
+    <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="">
+
+    <link rel="stylesheet" href="libs/outdated-browser/outdatedbrowser/outdatedBrowser.min.css">
+
+    <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="libs/angular-snap/angular-snap.min.css"/>
+    <link rel="stylesheet" href="css/demo.css"/>
+    <link rel="stylesheet" href="css/snap.css"/>
+
+    <script src="http://localhost:35729/livereload.js"></script>
+</head>
+
+<body class="container">
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+        my browser now </a></p>
+
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<div ng-controller="MainCtrl">
+    <div id="toolbar" class="snap-content">
+        <img snap-toggle src="images/menu-hamburger.svg">
+
+        <h1>RLM Dashboard</h1>
+    </div>
+    <snap-drawer>
+        <div class="snap-drawers">
+            <div class="snap-drawer snap-drawer-left">
+                <div>
+                    <h4>Items</h4>
+                    <ul>
+                        <li><a ng-href="#">item 1</a></li>
+                        <li><a ng-href="#">item 2</a></li>
+                    </ul>
+                    <div>
+                        <p>The Default demo shows basic Snap.js functionality</p>
+
+                        <p>One more paragraph</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </snap-drawer>
+
+    <snap-content snap-options="snapOpts">
+        <p>Something anything, someone</p>
+    </snap-content>
+
+</div>
+<script src="libs/jquery/dist/jquery.min.js"></script>
+<script src="libs/outdated-browser/outdatedbrowser/outdatedBrowser.min.js"></script>
+<script src="outdated-browser.js"></script>
+<script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="libs/snapjs/snap.min.js"></script>
+<script src="libs/angular/angular.min.js"></script>
+<script src="libs/angular-route/angular-route.min.js"></script>
+<script src="libs/angular-snap/angular-snap.min.js"></script>
+
+<script src="app.js"></script>
+
+</body>
+
+</html>
