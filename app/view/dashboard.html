@@ -1,50 +1,17 @@
-<table class="envs">
-
-    <thead>
-    <tr>
-        <th>Machine</th>
-        <th>RLM Install</th>
-        <th>SBM</th>
-        <th>SRA</th>
-        <th>Database</th>
-        <th>IIS</th>
-        <th>URLs</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr ng-repeat="env in envs">
-        <td>
-            <div class="huge">{{env.name}}</div>
-            <div class="smaller">{{env.os}}</div>
-        </td>
-        <td>
-            <div class="bigger">{{env.rlm.installType}}</div>
-            <div class="smaller">{{env.rlm.upgrade}}</div>
-        </td>
-        <td>
-            <div class="bigger">{{env.sbm.version}}</div>
-            <div class="smaller">{{env.sbm.upgrade ? 'Upgrade from ' + env.sbm.upgrade : null}}</div>
-        </td>
-        <td>
-            <div class="big">{{env.sra.server}}</div>
-            <div class="smaller">{{env.sra.serverDetails}}</div>
-            <div class="smaller">Daily build by {{env.sra.installedBy}}</div>
-        </td>
-        <td>
-            <div class="big">{{env.database.hostname}}</div>
-            <div>{{env.database.type}}</div>
-            <div ng-repeat="cred in env.database.credentials" class="smaller">{{cred}}</div>
-        </td>
-        <td><span class="smaller">6.0</span></td>
-        <td>
-            <div><a ng-href="http://stl-qa-oalmt1/workcenter">SBM</a></div>
-            <div><a ng-href="http://stl-qa-oalmt1:8085/mashupmgr">mashupmgr</a></div>
-            <div><a ng-href="http://stl-qa-oalmt1/serena_ra/">SRA</a></div>
-        </td>
-        <!--td>
-            <a ng-href="http://stl-qa-oalmsl:8080/job/QA_RLM_AUTOCONFIG_stl-qa-oalmt1__MAIN">
-                <img src="http://stl-qa-oalmsl/status/QA_RLM_AUTOCONFIG_stl-qa-oalmt1__MAIN"/>
-            </a></td-->
-    </tr>
-    </tbody>
-</table>
+<div ng-repeat="env in envs" class="env-plate good bad running locked">
+    <div class="info">
+        <div class="name">{{env.name}}</div>
+        <div class="upgrade">{{env.rlm.installType}}</div>
+        <div class="upgrade">{{env.database.type}}</div>
+        <div class="sbm">SBM {{env.sbm.version}}</div>
+        <div class="sra">SRA on {{env.sra.server}}</div>
+        <div class="state"><a target="_blank" ng-href="http://stl-qa-oalmsl:8080/job/{{env.jobName}}">
+            <img src="/status/{{env.jobName}}"/>
+        </a></div>
+    </div>
+    <div class="controlls">
+        <div class="fix"><a ng-href="#"><span class="glyphicon glyphicon-ok"></span></a></div>
+        <div class="fail"><a ng-href="#"><span class="glyphicon glyphicon-remove"></span></a></div>
+        <div class="lock"><a ng-href="#"><span class="glyphicon glyphicon-lock"></span></a></div>
+    </div>
+</div>

@@ -30,7 +30,7 @@ module.exports = function () {
                     upgrade: '10.1.4 GA'
                 },
                 sra: {
-                    server: 'Local',
+                    server: 'localhost',
                     serverDetails: 'serena_ra/password',
                     installedBy: 'SOO installer'
                 },
@@ -90,7 +90,7 @@ module.exports = function () {
                 },
                 database: {
                     hostname: 'localhost',
-                    type: 'Microsoft SQL Server 2008 R2 SP2',
+                    type: 'MSSQL 2008 R2 SP2',
                     credentials: [
                         'sa/manager'
                     ]
@@ -110,13 +110,13 @@ module.exports = function () {
                     upgrade: null
                 },
                 sra: {
-                    server: 'Local',
+                    server: 'localhost',
                     serverDetails: 'serena_ra/password',
                     installedBy: 'SOO installer'
                 },
                 database: {
                     hostname: 'localhost',
-                    type: 'Microsoft SQL Server 2012 SP1',
+                    type: 'MSSQL 2012 SP1',
                     credentials: [
                         'sa/manager'
                     ]
@@ -136,13 +136,13 @@ module.exports = function () {
                     upgrade: null
                 },
                 sra: {
-                    server: 'Local',
+                    server: 'localhost',
                     serverDetails: 'serena_ra/password',
                     installedBy: 'SOO installer'
                 },
                 database: {
                     hostname: 'localhost',
-                    type: 'Microsoft SQL Server 2008 R2 SP2',
+                    type: 'MSSQL 2008 R2 SP2',
                     credentials: [
                         'sa/manager'
                     ]

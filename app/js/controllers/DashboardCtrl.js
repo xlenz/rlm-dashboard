@@ -11,6 +11,7 @@
         ApiClient.environments().then(
                 function (data) {
                     $scope.envs = data;
+                    console.log(data);
                 },
                 function (error) {
                     console.error('Failed to get envs', error);
