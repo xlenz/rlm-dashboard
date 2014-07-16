@@ -1,5 +1,19 @@
 'use strict';
 
+$(document).click(function (event) {
+    var popoverSelector = '.env-plate .info .name span';
+    if ($(event.target).is('button') === false) {
+        $(popoverSelector).popover('hide').next('.popover').remove();
+    } else {
+        var buttonParent = $(event.target).parent();
+        if (buttonParent.hasClass('custom-popover') === false) {
+            return;
+        }
+        $(popoverSelector).not(buttonParent).popover('hide').next('.popover').remove();
+    }
+
+});
+
 (function () {
     var app = angular.module('rlmDashboard');
 

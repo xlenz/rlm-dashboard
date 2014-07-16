@@ -1,5 +1,5 @@
 body {
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 ul {
@@ -12,6 +12,6 @@ h1, h2, h3, h4, h5, ul, p {
     font-weight: normal;
 }
 
-a>img {
+a > img {
     border: 0;
 }

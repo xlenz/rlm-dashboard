@@ -62,6 +62,11 @@
     border-bottom: 1px solid #ccc;
 }
 
+.env-plate .info .name button {
+    background: none;
+    border: none;
+}
+
 .env-plate .info > div {
     margin: 5px 0;
 }
