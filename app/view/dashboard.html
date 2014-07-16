@@ -1,4 +1,4 @@
-<div ng-repeat="env in envs" class="env-plate good bad running locked">
+<div ng-repeat="env in envs" class="env-plate {{env.state}}">
     <div class="info">
         <div class="name">{{env.name}}</div>
         <div class="upgrade">{{env.rlm.installType}}</div>
@@ -10,8 +10,8 @@
         </a></div>
     </div>
     <div class="controlls">
-        <div class="fix"><a ng-href="#"><span class="glyphicon glyphicon-ok"></span></a></div>
-        <div class="fail"><a ng-href="#"><span class="glyphicon glyphicon-remove"></span></a></div>
-        <div class="lock"><a ng-href="#"><span class="glyphicon glyphicon-lock"></span></a></div>
+        <div class="fix"><a ng-href="#" title="Mark as fixed"><span class="glyphicon glyphicon-ok"></span></a></div>
+        <div class="fail"><a ng-href="#" title="Mark as failed"><span class="glyphicon glyphicon-remove"></span></a></div>
+        <div class="lock"><a ng-href="#" title="Lock"><span class="glyphicon glyphicon-lock"></span></a></div>
     </div>
 </div>

@@ -20,6 +20,12 @@ jobStatusSchema.statics.findJob = function (job, build, cb) {
     }, cb);
 };
 
+jobStatusSchema.statics.lastJobResult = function (job, cb) {
+    this.find({
+        job: job
+    }).limit(1).sort('-date').exec(cb);
+};
+
 var jobStatus = mongoose.model('environmentStatus', jobStatusSchema);
 
 module.exports = jobStatus;

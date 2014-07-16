@@ -1,32 +1,40 @@
 'use strict';
 
 (function () {
-   var app = angular.module('rlmDashboard');
+    var app = angular.module('rlmDashboard');
 
-   app.service('ApiClient', function ($http, $q) {
+    app.service('ApiClient', function ($http, $q) {
 
-         var qHttp = function (httpParams) {
-            var deferred = $q.defer();
+                var qHttp = function (httpParams) {
+                    var deferred = $q.defer();
 
-            $http(httpParams).success(function (data) {
-               deferred.resolve(data);
-            }).error(function (data) {
-               deferred.reject(data);
-            });
+                    $http(httpParams).success(function (data) {
+                        deferred.resolve(data);
+                    }).error(function (data) {
+                        deferred.reject(data);
+                    });
 
-            return deferred.promise;
-         };
+                    return deferred.promise;
+                };
 
-         this.environments = function () {
-            var httpParams = {
-               method: 'GET',
-               url: '/environments'
-            };
+                this.environments = function () {
+                    var httpParams = {
+                        method: 'GET',
+                        url: '/environments'
+                    };
 
-            return qHttp(httpParams);
-         };
+                    return qHttp(httpParams);
+                };
 
-      }
-   );
+                this.envState = function (job) {
+                    var httpParams = {
+                        method: 'GET',
+                        url: '/state/' + job
+                    };
+
+                    return qHttp(httpParams);
+                };
+            }
+    );
 
 })();

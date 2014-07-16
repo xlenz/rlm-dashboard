@@ -67,4 +67,14 @@ function jobStatus(jobName, callback) {
     });
 }
 
+function envState(jobName, callback) {
+    jobModel.lastJobResult(jobName, function (err, result) {
+        if (err) {
+            return log.error(err);
+        }
+        callback(result);
+    });
+}
+
 exports.jobStatus = jobStatus;
+exports.envState = envState;
