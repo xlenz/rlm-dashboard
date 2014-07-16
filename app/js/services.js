@@ -34,6 +34,15 @@
 
                     return qHttp(httpParams);
                 };
+
+                this.statusImg = function (state) {
+                    var httpParams = {
+                        method: 'GET',
+                        url: '/statusImg/' + state
+                    };
+
+                    return qHttp(httpParams);
+                };
             }
     );
 
