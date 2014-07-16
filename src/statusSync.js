@@ -10,8 +10,8 @@ module.exports = function (_cfg) {
 
     setInterval(function () {
         log.debug('Getting jobs state...');
-        cfg.environments.forEach(function (el) {
-            jobStatus(el.jobName);
+        Object.keys(cfg.environments).forEach(function (key) {
+            jobStatus(key);
         });
     }, 60000);
 
@@ -67,7 +67,7 @@ function jobStatus(jobName, callback) {
     });
 }
 
-function envState(jobName, callback) {
+function envStateGet(jobName, callback) {
     jobModel.lastJobResult(jobName, function (err, result) {
         if (err) {
             return log.error(err);
@@ -76,5 +76,26 @@ function envState(jobName, callback) {
     });
 }
 
+function envStateSet(data, callback) {
+    var id = data.id;
+    delete(data.id);
+
+    jobModel.findOne({_id: id}, function (err, result) {
+        console.log(result.isBuilding === false, result.locked !== true, data.locked !== undefined);
+        if (result.isBuilding === false && (result.locked !== true || data.locked !== undefined)) {
+            jobModel.update({_id: id}, data, function (err) {
+                if (err) {
+                    return log.error(err);
+                }
+                callback();
+            });
+        }
+        else {
+            callback();
+        }
+    });
+}
+
 exports.jobStatus = jobStatus;
-exports.envState = envState;
+exports.envStateGet = envStateGet;
+exports.envStateSet = envStateSet;

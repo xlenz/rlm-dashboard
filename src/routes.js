@@ -12,7 +12,8 @@ module.exports = function (cfg, statusSync) {
 
 exports.routes = function (app) {
     app.get('/status/:job', jobStatus.status);
-    app.get('/state/:job', jobStatus.state);
+    app.get('/state/:job', jobStatus.stateGet);
+    app.post('/state/:job', jobStatus.stateSet);
     app.get('/environments', config.envs);
     app.get('/tabs', config.tabs);
     app.get('/', html.appHtml);

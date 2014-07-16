@@ -32,24 +32,37 @@ exports.status = function (req, res, next) {
     });
 };
 
-exports.state = function (req, res, next) {
-    statusSync.envState(req.params.job, function (result) {
-        var state;
-
+function stateGet(req, res, next) {
+    statusSync.envStateGet(req.params.job, function (result) {
         if (result === null || result.length !== 1) {
-            state = null;
-        } else if (result[0].isBuilding === true) {
-            state = 'building';
-        } else if (result[0].locked === true) {
-            state = 'locked';
-        } else if (result[0].result === 'SUCCESS' || result[0].resolved === true) {
-            state = 'ok';
-        } else if (result[0].result === 'ABORTED' && result[0].resolved === undefined) {
-            state ='abort';
+            return res.send(null);
+        }
+        var data = result[0];
+        var state = {
+            id: result[0]._id,
+            job: req.params.job
+        };
+
+        if (data.isBuilding === true) {
+            state.state = 'building';
+        } else if (data.locked === true) {
+            state.state = 'locked';
+        } else if (data.resolved === true || (data.result === 'SUCCESS' && data.resolved !== false)) {
+            state.state = 'ok';
+        } else if (data.result === 'ABORTED' && (data.resolved === undefined || data.resolved === null)) {
+            state.state = 'abort';
         } else {
-            state = 'fail';
+            state.state = 'fail';
         }
 
         return res.send(state);
+    });
+}
+exports.stateGet = stateGet;
+
+exports.stateSet = function (req, res, next) {
+    statusSync.envStateSet(req.body, function () {
+        //return res.redirect('/state/' + req.param.job);
+        stateGet(req, res, next);
     });
 };

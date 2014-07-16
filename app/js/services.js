@@ -27,9 +27,19 @@
                     return qHttp(httpParams);
                 };
 
-                this.envState = function (job) {
+                this.envStateGet = function (job) {
                     var httpParams = {
                         method: 'GET',
+                        url: '/state/' + job
+                    };
+
+                    return qHttp(httpParams);
+                };
+
+                this.envStateSet = function (job, data) {
+                    var httpParams = {
+                        method: 'POST',
+                        data: data,
                         url: '/state/' + job
                     };
 

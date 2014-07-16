@@ -6,15 +6,17 @@
     app.controller('DashboardCtrl', function ($scope, $http, $q, ApiClient, ActiveTab) {
         ActiveTab.set(0);
 
-        $scope.envs = [];
+        $scope.envs = {};
 
         ApiClient.environments().then(
                 function (data) {
                     $scope.envs = data;
                     var arr = [];
-                    for (var i = 0; i < $scope.envs.length; i++) {
-                        arr.push(ApiClient.envState($scope.envs[i].jobName));
-                    }
+
+                    Object.keys($scope.envs).forEach(function (key) {
+                        arr.push(ApiClient.envStateGet(key));
+                    });
+
                     envStates(arr);
                 }
         );
@@ -22,13 +24,33 @@
         function envStates(arr) {
             $q.all(arr).then(
                     function (data) {
-                        for (var i = 0; i < $scope.envs.length; i++) {
-                            $scope.envs[i].state = data[i];
+                        for (var i = 0; i < data.length; i++) {
+                            $scope.envs[data[i].job].state = data[i].state;
+                            $scope.envs[data[i].job].id = data[i].id;
                         }
-                        angular.forEach(data, function(item) {
-                            console.log(item.data);
-                        });
                     });
+        }
+
+        $scope.resolve = function (jobName, id, state) {
+            envStateSet(jobName, {
+                id: id,
+                resolved: state
+            });
+        };
+
+        $scope.lock = function (jobName, id) {
+            var locked = $scope.envs[jobName].state === 'locked' ? false : true;
+
+            envStateSet(jobName, {
+                id: id,
+                locked: locked
+            });
+        };
+
+        function envStateSet(jobName, body) {
+            ApiClient.envStateSet(jobName, body).then(function (data) {
+                $scope.envs[jobName].state = data.state;
+            });
         }
 
     });

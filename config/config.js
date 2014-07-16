@@ -16,10 +16,9 @@ module.exports = function () {
             user: 'Administrator',
             pwd: 'password'
         },
-        environments: [
-            {
+        environments: {
+            'QA_RLM_AUTOCONFIG_stl-qa-oalmt1__MAIN': {
                 name: 'stl-qa-oalmt1',
-                jobName: 'QA_RLM_AUTOCONFIG_stl-qa-oalmt1__MAIN',
                 os: 'Server 2003 R2 Enterprise SP2 x86',
                 rlm: {
                     installType: 'Upgrade',
@@ -44,9 +43,8 @@ module.exports = function () {
                 },
                 iis: '6.0'
             },
-            {
+            'QA_RLM_AUTOCONFIG_stl-qa-oalmt2__MAIN': {
                 name: 'stl-qa-oalmt2',
-                jobName: 'QA_RLM_AUTOCONFIG_stl-qa-oalmt2__MAIN',
                 os: 'Server 2008 R2 Enterprise SP1 x64',
                 rlm: {
                     installType: 'Clean',
@@ -71,9 +69,8 @@ module.exports = function () {
                 },
                 iis: '7.5'
             },
-            {
+            'QA_RLM_AUTOCONFIG_stl-qa-oalmt3__MAIN': {
                 name: 'stl-qa-oalmt3',
-                jobName: 'QA_RLM_AUTOCONFIG_stl-qa-oalmt3__MAIN',
                 os: 'Server 2003 R2 Enterprise SP2 x86',
                 rlm: {
                     installType: 'Upgrade',
@@ -97,9 +94,8 @@ module.exports = function () {
                 },
                 iis: '6.0'
             },
-            {
+            'QA_RLM_AUTOCONFIG_stl-alms-tst4__MAIN': {
                 name: 'stl-alms-tst4',
-                jobName: 'QA_RLM_AUTOCONFIG_stl-alms-tst4__MAIN',
                 os: 'Server 2008 R2 Standard SP1 x64',
                 rlm: {
                     installType: 'Clean',
@@ -123,9 +119,8 @@ module.exports = function () {
                 },
                 iis: '7.5'
             },
-            {
+            'QA_RLM_AUTOCONFIG_stl-alms-tst7__MAIN': {
                 name: 'stl-alms-tst7',
-                jobName: 'QA_RLM_AUTOCONFIG_stl-alms-tst7__MAIN',
                 os: 'Server 2012 R2 Standard x64',
                 rlm: {
                     installType: 'Clean',
@@ -149,7 +144,7 @@ module.exports = function () {
                 },
                 iis: '8.5'
             }
-        ],
+        },
 
         tabs: [
             {
@@ -173,4 +168,6 @@ module.exports = function () {
         statusGrey: pathToImages + '/grey.png',
         statusAnime: pathToImages + '/blue_anime.gif'
     };
+    ;
+    ;
 };
