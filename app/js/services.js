@@ -11,6 +11,7 @@
                     $http(httpParams).success(function (data) {
                         deferred.resolve(data);
                     }).error(function (data) {
+                        console.error(data);
                         deferred.reject(data);
                     });
 
