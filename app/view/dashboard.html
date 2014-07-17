@@ -7,29 +7,32 @@
                 <div><a target="_blank" ng-href="http://{{env.name}}:8085/mashupmgr">mashupmgr</a></div>
             </div>
             <span custom-popover popover-placement="bottom" popover-label="{{env.name}}" class="custom-popover"></span>
-            <span></span>
 
         </div>
         <div class="upgrade">{{env.rlm.installType}}</div>
-        <div class="upgrade">{{env.database.type}}</div>
+        <div class="rlmBuild">RLM 5.2 {{env.rlm.build ? '.0.' + env.rlm.build : null}}</div>
         <div class="sbm">SBM {{env.sbm.version}}</div>
+        <div class="upgrade">{{env.database.type}}</div>
         <div class="sra">SRA on {{env.sra.server}}</div>
         <div class="state"><a target="_blank" ng-href="http://stl-qa-oalmsl:8080/job/{{jobName}}">
             <img ng-src="/status/{{jobName}}"/>
         </a></div>
     </div>
     <div class="controlls">
-        <div>
-            <img ng-show="env.state === 'locked'" snap-toggle src="images/Human-emblem-readonly.svg">
+        <div class="locked">
+            <img ng-class="{ visible : env.state === 'locked' }" src="images/Human-emblem-readonly.svg">
         </div>
         <div class="controll fix"><a href="" ng-click="resolve(jobName, env.id, true)" title="Mark as fixed">
-            <span class="glyphicon glyphicon-ok"></span></a>
+            <span class="glyphicon glyphicon-ok"></span>
+        </a>
         </div>
         <div class="controll fail"><a href="" ng-click="resolve(jobName, env.id, false)" title="Mark as failed">
-            <span class="glyphicon glyphicon-remove"></span></a>
+            <span class="glyphicon glyphicon-remove"></span>
+        </a>
         </div>
         <div class="controll lock"><a href="" ng-click="lock(jobName, env.id)" title="Lock">
-            <span class="glyphicon glyphicon-lock"></span></a>
+            <span class="glyphicon glyphicon-lock"></span>
+        </a>
         </div>
     </div>
 </div>

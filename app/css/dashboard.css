@@ -51,7 +51,7 @@
 .env-plate > div {
     float: left;
     text-align: center;
-    height: 190px;
+    height: 210px;
 }
 
 .env-plate .info {
@@ -88,18 +88,23 @@
 
 .env-plate .controlls img {
     width: 32px;
-    top: -18px;
-    right: 12px;
+    height: 32px;
     visibility: hidden;
+    position: relative;
+    top: 1px;
+    right: 13px;
+}
+
+.env-plate .controlls img.visible {
+    visibility: visible;
 }
 
 .env-plate .controlls {
-    padding-top: -15px;
     width: 20px;
 }
 
 .env-plate .controlls > div.controll {
-    padding: 15px 0;
+    padding: 13px 0;
 }
 
 .env-plate .controlls a {
@@ -115,5 +120,9 @@
 }
 
 .env-plate .controlls .lock a:hover {
-    color: #ffff00;
+    color: darkorange;
+}
+
+.env-plate.locked .controlls .lock a:hover {
+    color: blue;
 }
