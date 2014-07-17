@@ -8,6 +8,10 @@
     overflow: hidden;
 }
 
+.env-plate:hover {
+    box-shadow: 0 0 10px rgba(81, 203, 238, 1);
+}
+
 .env-plate.ok {
     background-color: #90EE90;
     border-color: limegreen;
@@ -82,12 +86,19 @@
     font-weight: bold;
 }
 
+.env-plate .controlls img {
+    width: 32px;
+    top: -18px;
+    right: 12px;
+    visibility: hidden;
+}
+
 .env-plate .controlls {
-    padding-top: 17px;
+    padding-top: -15px;
     width: 20px;
 }
 
-.env-plate .controlls > div {
+.env-plate .controlls > div.controll {
     padding: 15px 0;
 }
 

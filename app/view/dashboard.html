@@ -1,11 +1,13 @@
 <div ng-repeat="(jobName, env) in envs" class="env-plate {{env.state}}">
     <div class="info">
         <div class="name">
+
             <div class="content" style="display: none">
                 <div><a target="_blank" ng-href="http://{{env.name}}/workcenter">SBM</a></div>
                 <div><a target="_blank" ng-href="http://{{env.name}}:8085/mashupmgr">mashupmgr</a></div>
             </div>
             <span custom-popover popover-placement="bottom" popover-label="{{env.name}}" class="custom-popover"></span>
+            <span></span>
 
         </div>
         <div class="upgrade">{{env.rlm.installType}}</div>
@@ -17,13 +19,16 @@
         </a></div>
     </div>
     <div class="controlls">
-        <div class="fix"><a href="" ng-click="resolve(jobName, env.id, true)" title="Mark as fixed">
+        <div>
+            <img ng-show="env.state === 'locked'" snap-toggle src="images/Human-emblem-readonly.svg">
+        </div>
+        <div class="controll fix"><a href="" ng-click="resolve(jobName, env.id, true)" title="Mark as fixed">
             <span class="glyphicon glyphicon-ok"></span></a>
         </div>
-        <div class="fail"><a href="" ng-click="resolve(jobName, env.id, false)" title="Mark as failed">
+        <div class="controll fail"><a href="" ng-click="resolve(jobName, env.id, false)" title="Mark as failed">
             <span class="glyphicon glyphicon-remove"></span></a>
         </div>
-        <div class="lock"><a href="" ng-click="lock(jobName, env.id)" title="Lock">
+        <div class="controll lock"><a href="" ng-click="lock(jobName, env.id)" title="Lock">
             <span class="glyphicon glyphicon-lock"></span></a>
         </div>
     </div>
