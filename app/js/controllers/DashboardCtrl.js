@@ -21,34 +21,13 @@ $(document).click(function (event) {
         ActiveTab.set(0);
 
         $scope.envs = {};
-
-        ApiClient.environments().then(
-                function (data) {
-                    $scope.envs = data;
-                    var arr = [];
-
-                    Object.keys($scope.envs).forEach(function (key) {
-                        arr.push(ApiClient.envStateGet(key));
-                    });
-
-                    envStates(arr);
-                }
-        );
-
-        function envStates(arr) {
-            $q.all(arr).then(
-                    function (data) {
-                        for (var i = 0; i < data.length; i++) {
-                            $scope.envs[data[i].job].state = data[i].state;
-                            $scope.envs[data[i].job].id = data[i].id;
-                        }
-                    });
-        }
+        $scope.timestamp = new Date().getTime();
 
         $scope.resolve = function (jobName, id, state) {
             envStateSet(jobName, {
                 id: id,
-                resolved: state
+                resolved: state,
+                locked: false
             });
         };
 
@@ -61,11 +40,24 @@ $(document).click(function (event) {
             });
         };
 
+        getEnvs();
+
+        function getEnvs() {
+            ApiClient.environments().then(
+                    function (data) {
+                        $scope.envs = data;
+                        $scope.timestamp = new Date().getTime();
+                    }
+            );
+        }
+
         function envStateSet(jobName, body) {
             ApiClient.envStateSet(jobName, body).then(function (data) {
                 $scope.envs[jobName].state = data.state;
             });
         }
+
+        setInterval(getEnvs, 15000);
 
     });
 })

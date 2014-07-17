@@ -15,12 +15,12 @@
         <div class="upgrade">{{env.database.type}}</div>
         <div class="sra">SRA on {{env.sra.server}}</div>
         <div class="state"><a target="_blank" ng-href="http://stl-qa-oalmsl:8080/job/{{jobName}}">
-            <img ng-src="/status/{{jobName}}"/>
+            <img ng-src="/status/{{jobName}}?{{timestamp}}"/>
         </a></div>
     </div>
     <div class="controlls">
         <div class="locked">
-            <img ng-class="{ visible : env.state === 'locked' }" src="images/Human-emblem-readonly.svg">
+            <img ng-class="{ visible : env.state === 'locked' || env.state === 'bulding' }" src="images/Human-emblem-readonly.svg">
         </div>
         <div class="controll fix"><a href="" ng-click="resolve(jobName, env.id, true)" title="Mark as fixed">
             <span class="glyphicon glyphicon-ok"></span>

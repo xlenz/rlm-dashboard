@@ -8,17 +8,21 @@ var cfg;
 module.exports = function (_cfg) {
     cfg = _cfg;
 
+    Object.keys(cfg.environments).forEach(function (key) {
+        jobStatus(key);
+    });
+
     setInterval(function () {
         log.debug('Getting jobs state...');
         Object.keys(cfg.environments).forEach(function (key) {
             jobStatus(key);
         });
-    }, 60000);
+    }, 15000);
 
     return self;
 };
 
-function jobStatus(jobName, callback) {
+function jobStatus(jobName) {
     var uri = cfg.jenkinsUrl + '/job/' + jobName + '/lastBuild/api/json';
     request({
         method: 'GET',
@@ -28,14 +32,17 @@ function jobStatus(jobName, callback) {
         try {
             data = JSON.parse(body);
         } catch (e) {
-            log.error('Cannot parse JSON response.');
-            return callback ? callback(data) : null;
+            return log.error('Cannot parse JSON response.');
         }
 
         jobModel.findJob(jobName, data.number, function (err, result) {
             if (err) {
                 return log.error(err);
             }
+
+            setState(jobName, checkState(jobName, result));
+            cfg.environments[jobName].id = result._id;
+
             if (result !== null) {
                 if (result.isBuilding === true && data.building === false) {
                     jobModel.update({_id: result._id}, {
@@ -63,7 +70,6 @@ function jobStatus(jobName, callback) {
             });
         });
 
-        return callback ? callback(data) : null;
     });
 }
 
@@ -72,8 +78,36 @@ function envStateGet(jobName, callback) {
         if (err) {
             return log.error(err);
         }
-        callback(result);
+        if (result === null || result.length !== 1) {
+            return callback(null);
+        }
+
+        if (callback) {
+            callback(checkState(jobName, result[0]));
+        }
     });
+}
+
+function checkState(jobName, data) {
+
+    var state = {
+        id: data._id,
+        job: jobName
+    };
+
+    if (data.isBuilding === true) {
+        state.state = 'building';
+    } else if (data.locked === true) {
+        state.state = 'locked';
+    } else if (data.resolved === true || (data.result === 'SUCCESS' && data.resolved !== false)) {
+        state.state = 'ok';
+    } else if (data.result === 'ABORTED' && (data.resolved === undefined || data.resolved === null)) {
+        state.state = 'abort';
+    } else {
+        state.state = 'fail';
+    }
+
+    return state;
 }
 
 function envStateSet(data, callback) {
@@ -81,12 +115,15 @@ function envStateSet(data, callback) {
     delete(data.id);
 
     jobModel.findOne({_id: id}, function (err, result) {
-        console.log(result.isBuilding === false, result.locked !== true, data.locked !== undefined);
+
         if (result.isBuilding === false && (result.locked !== true || data.locked !== undefined)) {
             jobModel.update({_id: id}, data, function (err) {
                 if (err) {
                     return log.error(err);
                 }
+                envStateGet(result.job, function (state) {
+                    setState(result.job, state);
+                });
                 callback();
             });
         }
@@ -94,6 +131,12 @@ function envStateSet(data, callback) {
             callback();
         }
     });
+}
+
+function setState(jobName, state) {
+    if (state !== null) {
+        cfg.environments[jobName].state = state.state;
+    }
 }
 
 exports.jobStatus = jobStatus;
