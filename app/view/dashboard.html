@@ -10,8 +10,8 @@
 
         </div>
         <div class="upgrade">{{env.rlm.installType}}</div>
-        <div class="rlmBuild">RLM 5.2 {{env.rlm.build ? '.0.' + env.rlm.build : null}}</div>
-        <div class="sbm">SBM {{env.sbm.version}}</div>
+        <div class="rlmBuild">RLM 5.2 {{env.rlm.build ? 'b' + env.rlm.build : null}}</div>
+        <div class="sbm">SBM {{env.sbm.version}} {{env.sbm.build ? 'b' + env.sbm.build : null}}</div>
         <div class="upgrade">{{env.database.type}}</div>
         <div class="sra">SRA on {{env.sra.server}}</div>
         <div class="state"><a target="_blank" ng-href="http://stl-qa-oalmsl:8080/job/{{jobName}}">
@@ -39,7 +39,3 @@
 <!--button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
     Launch demo modal
 </button-->
-
-
-
-

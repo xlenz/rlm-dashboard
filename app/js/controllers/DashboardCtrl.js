@@ -1,19 +1,5 @@
 'use strict';
 
-$(document).click(function (event) {
-    var popoverSelector = '.env-plate .info .name span';
-    if ($(event.target).is('button') === false) {
-        $(popoverSelector).popover('hide').next('.popover').remove();
-    } else {
-        var buttonParent = $(event.target).parent();
-        if (buttonParent.hasClass('custom-popover') === false) {
-            return;
-        }
-        $(popoverSelector).not(buttonParent).popover('hide').next('.popover').remove();
-    }
-
-});
-
 (function () {
     var app = angular.module('rlmDashboard');
 
@@ -45,8 +31,19 @@ $(document).click(function (event) {
         function getEnvs() {
             ApiClient.environments().then(
                     function (data) {
-                        $scope.envs = data;
                         $scope.timestamp = new Date().getTime();
+
+                        Object.keys($scope.envs).forEach(function (key) {
+                            var result = data[key].result ? data[key].result : 'Building';
+                            if ($scope.envs[key].id !== data[key].id || $scope.envs[key].result !== data[key].result) {
+                                var notification = new Notification($scope.envs[key].name, {body: result});
+                                setTimeout(function () {
+                                    notification.close();
+                                }, 15000);
+                            }
+                        });
+
+                        $scope.envs = data;
                     }
             );
         }

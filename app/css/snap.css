@@ -27,7 +27,6 @@ snap-drawer.snap-drawer-left {
     top: 37px;
 }
 
-
 #toolbar {
     z-index: 2;
     background: #256C94;
@@ -95,8 +94,22 @@ snap-drawer li:first-child {
     border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-snap-drawer p {
-    opacity: 0.5;
+snap-drawer p, snap-drawer button.allow-notify {
     padding: 15px;
     font-size: 12px;
+}
+
+snap-drawer p {
+    opacity: 0.5;
+}
+
+snap-drawer button.allow-notify {
+    background: none;
+    border: none;
+    box-shadow: none;
+    outline: none;
+}
+
+tab-manager a:hover {
+    text-decoration: none;
 }

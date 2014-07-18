@@ -40,16 +40,23 @@ function jobStatus(jobName) {
                 return log.error(err);
             }
 
-            setState(jobName, checkState(jobName, result));
-            cfg.environments[jobName].id = result._id;
-
             if (result !== null) {
+                var build = parseRlmBuild(data.fullDisplayName);
+                if (build !== null) {
+                    cfg.environments[jobName].rlm.build = build.rlmBuild;
+                    cfg.environments[jobName].sbm.build = build.sbmBuild;
+                }
+                cfg.environments[jobName].id = result._id;
+                cfg.environments[jobName].result = data.result;
+                setState(jobName, checkState(jobName, result));
+
                 if (result.isBuilding === true && data.building === false) {
                     jobModel.update({_id: result._id}, {
-                        isBuilding: data.building, result: data.result}, function (err) {
+                        isBuilding: data.building, result: data.result}, function (err, updated) {
                         if (err) {
                             return log.error(err);
                         }
+                        setState(jobName, checkState(jobName, updated));
                     });
                 }
                 return log.debug('Env`s build already exists.');
@@ -63,14 +70,33 @@ function jobStatus(jobName) {
                 result: data.result
             });
 
-            env.save(function (err) {
+            env.save(function (err, saved) {
                 if (err) {
                     return log.error(err);
                 }
+
+                setState(jobName, checkState(jobName, saved));
+                cfg.environments[jobName].id = saved._id;
+                cfg.environments[jobName].result = saved.result;
             });
         });
 
     });
+}
+
+function parseRlmBuild(fullDisplayName) {
+    var buildName = fullDisplayName.split(' ')[1];
+    if (buildName.indexOf(';') !== -1) {
+        var builds = buildName.split(';');
+        return {
+            rlmBuild: builds[0].substr(3),
+            sbmBuild: builds[1].substr(3)
+        };
+    } else {
+        return null;
+    }
+
+    //return rlmBuild;
 }
 
 function envStateGet(jobName, callback) {
@@ -89,7 +115,6 @@ function envStateGet(jobName, callback) {
 }
 
 function checkState(jobName, data) {
-
     var state = {
         id: data._id,
         job: jobName
