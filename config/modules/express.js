@@ -2,19 +2,36 @@
 
 var express = require('express');
 var bodyParser = require('body-parser');
+var session = require('express-session');
+var cookieParser = require('cookie-parser');
+var passport = require('passport');
+var MongoStore = require('connect-mongo')(session);
 var cfg;
 
 module.exports = function (app, _cfg, routes) {
     cfg = _cfg;
+    var userSession = {
+        secret: 'rlmdashboard made by mgrybyk',
+        cookie: {
+            maxAge: 604800000 //one week, one hour - 3600000
+        },
+        store: new MongoStore({
+            host: 'localhost',
+            db: 'rlmDashboardSessions'
+        })
+    };
     var pathToPublic = cfg.pathToApp;
     app.use(logWho);
-    //app.use(express.cookieParser());
     app.use(bodyParser.urlencoded({
         extended: true
     }));
     app.use(bodyParser.json());
     app.use(express.static(pathToPublic));
+    app.use(cookieParser());
     routes.routes(app);
+    app.use(session(userSession));
+    app.use(passport.initialize());
+    app.use(passport.session());
     app.use(pageNotFound);
     app.use(internalServerError);
 };

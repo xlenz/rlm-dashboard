@@ -80,11 +80,24 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <button type="button" class="close" data-dismiss="modal"><span
+                            aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                     <h4 class="modal-title" id="myModalLabel">Modal title</h4>
                 </div>
                 <div class="modal-body">
-                    ...
+                    <form action="/login" method="post">
+                        <div>
+                            <label>Username:</label>
+                            <input type="text" name="username"/>
+                        </div>
+                        <div>
+                            <label>Password:</label>
+                            <input type="password" name="password"/>
+                        </div>
+                        <div>
+                            <input type="submit" value="Log In"/>
+                        </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -51,7 +51,7 @@ module.exports = function () {
                     upgrade: null
                 },
                 sbm: {
-                    version: '10.1.4.1',
+                    version: '10.1.5',
                     upgrade: null
                 },
                 sra: {
@@ -61,7 +61,7 @@ module.exports = function () {
                 },
                 database: {
                     hostname: 'stl-qa-oalmt1fs',
-                    type: 'Oracle 11.2.0.1',
+                    type: 'Oracle 11.2.0.3',
                     credentials: [
                         'system/manager@oalm',
                         'sbm2/manager@oalm'
@@ -168,6 +168,4 @@ module.exports = function () {
         statusGrey: pathToImages + '/grey.png',
         statusAnime: pathToImages + '/blue_anime.gif'
     };
-    ;
-    ;
 };
