@@ -47,7 +47,7 @@ function jobStatus(jobName) {
                     cfg.environments[jobName].rlm.build = build.rlmBuild;
                     cfg.environments[jobName].sbm.build = build.sbmBuild;
                 }
-                cfg.environments[jobName].id = result._id;
+
                 cfg.environments[jobName].result = data.result;
                 setState(jobName, checkState(jobName, result));
 
@@ -77,7 +77,6 @@ function jobStatus(jobName) {
                 }
 
                 setState(jobName, checkState(jobName, saved));
-                cfg.environments[jobName].id = saved._id;
                 cfg.environments[jobName].result = saved.result;
             });
         });
@@ -162,6 +161,7 @@ function envStateSet(data, callback) {
 
 function setState(jobName, state) {
     if (state !== null) {
+        cfg.environments[jobName].id = state.id;
         cfg.environments[jobName].state = state.state;
     }
 }
