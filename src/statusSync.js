@@ -32,7 +32,8 @@ function jobStatus(jobName) {
         try {
             data = JSON.parse(body);
         } catch (e) {
-            return log.error('Cannot parse JSON response.');
+            envStateGet(jobName);
+            return log.error('Cannot parse JSON response from Jenkins.');
         }
 
         jobModel.findJob(jobName, data.number, function (err, result) {
@@ -95,8 +96,6 @@ function parseRlmBuild(fullDisplayName) {
     } else {
         return null;
     }
-
-    //return rlmBuild;
 }
 
 function envStateGet(jobName, callback) {
@@ -105,11 +104,14 @@ function envStateGet(jobName, callback) {
             return log.error(err);
         }
         if (result === null || result.length !== 1) {
-            return callback(null);
+            return callback ? callback(null) : null;
         }
 
+        var state = checkState(jobName, result[0]);
+        setState(jobName, state);
+
         if (callback) {
-            callback(checkState(jobName, result[0]));
+            callback(state);
         }
     });
 }

@@ -60,7 +60,7 @@ module.exports = function () {
                     installedBy: 'CI of SRA'
                 },
                 database: {
-                    hostname: 'stl-qa-oalmt1fs',
+                    hostname: 'stl-qa-oalmtfs',
                     type: 'Oracle 11.2.0.3',
                     credentials: [
                         'system/manager@oalm',
