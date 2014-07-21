@@ -21,19 +21,23 @@
     </div>
     <div class="controlls">
         <div class="locked">
-            <img ng-class="{ visible : env.state === 'locked' || env.state === 'building' }" src="images/Human-emblem-readonly.svg">
+            <img ng-class="{ visible : env.state === 'locked' || env.state === 'building' }"
+                 src="images/Human-emblem-readonly.svg">
         </div>
-        <div class="controll fix"><a href="" ng-click="resolve(jobName, env.id, true)" title="Mark as fixed">
-            <span class="glyphicon glyphicon-ok"></span>
-        </a>
+        <div ng-class="{ 'visibility-hidden' : env.state === 'building' }" class="controll fix">
+            <a href="" ng-click="resolve(jobName, env.id, true)" title="Mark as fixed">
+                <span class="glyphicon glyphicon-ok"></span>
+            </a>
         </div>
-        <div class="controll fail"><a href="" ng-click="resolve(jobName, env.id, false)" title="Mark as failed">
-            <span class="glyphicon glyphicon-remove"></span>
-        </a>
+        <div ng-class="{ 'visibility-hidden' : env.state === 'building' }" class="controll fail">
+            <a href="" ng-click="resolve(jobName, env.id, false)" title="Mark as failed">
+                <span class="glyphicon glyphicon-remove"></span>
+            </a>
         </div>
-        <div class="controll lock"><a href="" ng-click="lock(jobName, env.id)" title="Lock">
-            <span class="glyphicon glyphicon-lock"></span>
-        </a>
+        <div ng-class="{ 'visibility-hidden' : env.state === 'building' }" class="controll lock">
+            <a href="" ng-click="lock(jobName, env.id)" title="Lock">
+                <span class="glyphicon glyphicon-lock"></span>
+            </a>
         </div>
     </div>
 </div>

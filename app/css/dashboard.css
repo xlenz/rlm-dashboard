@@ -139,3 +139,7 @@
 .env-plate.locked .controlls .lock a:hover {
     color: blue;
 }
+
+.visibility-hidden {
+    visibility: hidden;
+}
