@@ -12,6 +12,10 @@
     box-shadow: 0 0 10px rgba(81, 203, 238, 1);
 }
 
+.env-plate {
+    transition: background-color 0.5s ease, border-color 0.5s ease;
+}
+
 .env-plate.ok {
     background-color: #90EE90;
     border-color: limegreen;
@@ -64,6 +68,7 @@
     padding: 5px 0;
     margin: 1px 15px 10px;
     border-bottom: 1px solid #ccc;
+    transition: border-color 0.5s ease;
 }
 
 .env-plate .info .name button {
@@ -84,6 +89,7 @@
     margin: 0 15px 1px;
     padding: 2px 0 0;
     font-weight: bold;
+    transition: border-color 0.5s ease;
 }
 
 .env-plate img {
@@ -96,10 +102,14 @@
     position: relative;
     top: 1px;
     right: 13px;
+    opacity: 0;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
 }
 
 .env-plate .controlls img.visible {
     visibility: visible;
+    opacity: 1;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
 }
 
 .env-plate .controlls {
