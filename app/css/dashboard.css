@@ -86,9 +86,12 @@
     font-weight: bold;
 }
 
-.env-plate .controlls img {
+.env-plate img {
     width: 32px;
     height: 32px;
+}
+
+.env-plate .controlls img {
     visibility: hidden;
     position: relative;
     top: 1px;
