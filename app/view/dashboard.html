@@ -13,7 +13,7 @@
         <div class="upgrade">{{env.rlm.installType}}</div>
         <div class="rlmBuild">RLM 5.2 {{env.rlm.build ? 'b' + env.rlm.build : null}}</div>
         <div class="sbm">SBM {{env.sbm.version}} {{env.sbm.build ? 'b' + env.sbm.build : null}}</div>
-        <div class="upgrade">{{env.database.type}}</div>
+        <div class="db">{{env.database.type}}</div>
         <div class="sra">SRA on {{env.sra.server}}</div>
         <div class="state"><a target="_blank" ng-href="http://stl-qa-oalmsl:8080/job/{{jobName}}">
             <img ng-src="/status/{{jobName}}?{{timestamp}}"/>
