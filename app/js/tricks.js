@@ -16,6 +16,9 @@ $(document).ready(function () {
     });
 
     $('button.allow-notify').on('click', function () {
+        if (typeof Notification === 'undefined') {
+            return $(this).unbind('click').text('Notifications are not supported.').addClass('notify-error');
+        }
         if (Notification.permission !== 'denied') {
             Notification.requestPermission(function (permission) {
 
@@ -26,10 +29,10 @@ $(document).ready(function () {
 
             });
         } else {
-            $(this).unbind('click').remove();
+            $(this).unbind('click').text('Notifications are denied.').addClass('notify-error');
         }
         if (Notification.permission === 'granted') {
-            $(this).unbind('click').remove();
+            $(this).unbind('click').text('Notifications works fine!').addClass('notify-success');
         }
     });
 });

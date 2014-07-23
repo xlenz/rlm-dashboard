@@ -158,6 +158,20 @@ module.exports = function () {
             {
                 name: '3rd Party Integrations',
                 href: '#integrations'
+            },
+            {
+                name: 'Automation',
+                href: '#automation'
+            },
+            {
+                name: 'Dimensions Client',
+                subsection: true,
+                href: '#dmcm'
+            },
+            {
+                name: 'Excel Addin',
+                subsection: true,
+                href: '#exceladdin'
             }
         ],
 

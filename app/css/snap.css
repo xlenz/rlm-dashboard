@@ -7,7 +7,6 @@ html, body {
 }
 
 .snap-content {
-
     top: 37px;
     right: 0;
     bottom: 0;
@@ -20,7 +19,7 @@ html, body {
 }
 
 .snapjs-left #toolbar img {
-    left: -20px;
+/* transition removed. MG */
 }
 
 snap-drawer.snap-drawer-left {
@@ -46,10 +45,8 @@ snap-drawer.snap-drawer-left {
 
 #toolbar img {
     position: absolute;
-    left: -15px;
-    margin-top: 8px;
+    margin: 8px 0 0 5px;
     height: 20px;
-    transition: left 0.3s;
 }
 
 /* content */
@@ -71,9 +68,12 @@ snap-drawer > h1 {
     font-weight: bold;
 }
 
+snap-drawer li {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
 snap-drawer li > a {
     display: block;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     padding: 15px;
     font-weight: bold;
     text-decoration: none;
@@ -81,12 +81,15 @@ snap-drawer li > a {
     text-indent: 10px;
 }
 
-snap-drawer li.active > a {
+snap-drawer li.active {
     background: #1e90ff;
+}
+
+snap-drawer li.active a {
     color: #fff;
 }
 
-snap-drawer li:not(.active):hover > a {
+snap-drawer li:not(.active):hover {
     background: #87cefa;
 }
 
@@ -95,7 +98,7 @@ snap-drawer li:first-child {
 }
 
 snap-drawer p, snap-drawer button.allow-notify {
-    padding: 15px;
+    padding: 15px 15px 5px;
     font-size: 12px;
 }
 
@@ -108,8 +111,31 @@ snap-drawer button.allow-notify {
     border: none;
     box-shadow: none;
     outline: none;
+    color: #428bca;
+}
+
+snap-drawer button.allow-notify:hover {
+    text-decoration: underline;
+}
+
+snap-drawer button.allow-notify.notify-error:hover, snap-drawer button.allow-notify.notify-success:hover {
+    text-decoration: none;
+}
+
+snap-drawer button.allow-notify.notify-error {
+    color: darkred;
+}
+
+snap-drawer button.allow-notify.notify-success {
+    color: green;
 }
 
 tab-manager a:hover {
     text-decoration: none;
+}
+
+tab-manager li.subsection a {
+    font-size: 13px;
+    margin-left: 10px;
+    padding: 10px;
 }
