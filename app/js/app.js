@@ -17,6 +17,18 @@
                     templateUrl: '../view/integrations.html',
                     controller: 'IntegrationCtrl'
                 })
+                .when('/automation', {
+                    templateUrl: '../view/automation.html',
+                    controller: 'AutomationCtrl'
+                })
+                .when('/dmcm', {
+                    templateUrl: '../view/dmcm.html',
+                    controller: 'DmCmCtrl'
+                })
+                .when('/exceladdin', {
+                    templateUrl: '../view/exceladdin.html',
+                    controller: 'ExceladdinCtrl'
+                })
                 .otherwise({
                     redirectTo: '/dashboard'
                 });
