@@ -12,4 +12,4 @@ internal purposes dashboard. Seems that is cannot be used anywhere else outside 
 6. bower install
 7. grunt
 
-Instead of step #7 you can run "grunt build" and "node server" if you'd like to.
+Instead of step #8 you can run "grunt build" and "node server" if you'd like to.
