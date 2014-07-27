@@ -15,15 +15,14 @@
         <div class="sbm">SBM {{env.sbm.version}} {{env.sbm.build ? 'b' + env.sbm.build : null}}</div>
         <div class="db">{{env.database.type}}</div>
         <div class="sra">SRA on {{env.sra.server}}</div>
+        <div class="details">
+            <div>{{env.state}}</div>
+        </div>
+    </div>
+    <div class="controlls">
         <div class="state"><a target="_blank" ng-href="http://stl-qa-oalmsl:8080/job/{{jobName}}">
             <img ng-src="/status/{{jobName}}?{{timestamp}}"/>
         </a></div>
-    </div>
-    <div class="controlls">
-        <div class="locked">
-            <img ng-class="{ visible : env.state === 'locked' || env.state === 'building' }"
-                 src="images/Human-emblem-readonly.svg">
-        </div>
         <div ng-class="{ 'visibility-hidden' : env.state === 'building' }" class="controll fix">
             <a href="" ng-click="resolve(jobName, env.id, true)" title="Mark as fixed">
                 <span class="glyphicon glyphicon-ok"></span>
@@ -38,6 +37,10 @@
             <a href="" ng-click="lock(jobName, env.id)" title="Lock">
                 <span class="glyphicon glyphicon-lock"></span>
             </a>
+        </div>
+        <div class="locked">
+            <img ng-class="{ visible : env.state === 'locked' || env.state === 'building' }"
+                 src="images/Human-emblem-readonly.svg">
         </div>
     </div>
 </div>

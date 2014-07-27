@@ -65,27 +65,22 @@
 
 .env-plate .info .name {
     font-weight: bold;
-    padding: 3px 0;
+    padding: 2px 0;
     margin: 0;
 }
 
 .env-plate .info .name button {
     background: none;
     border: none;
-    font-size: 24px;
+    font-size: 25px;
     padding: 0;
-    transition: margin-left 0.2s ease;
-}
-
-.env-plate.locked .info .name button {
-    margin-left: -10px;
-    transition: margin-left 0.2s ease;
+    margin-left: -7px;
 }
 
 .env-plate .info .upgrade {
     border-top: 1px solid #ccc;
-    margin: -1px 15px;
-    padding-top: 5px;
+    margin: -1px 14px -1px 10px;
+    padding-top: 3px;
     transition: border-color 0.5s ease;
 }
 
@@ -93,16 +88,21 @@
     margin: 5px 0;
 }
 
-.env-plate .info .state {
-    bottom: 0;
-    right: 0;
-    left: 0;
-    position: absolute;
+.env-plate .info .details {
+    height: 40px;
+    bottom: 0px;
     border-top: 1px solid #ccc;
-    margin: 0 15px 1px;
-    padding: 2px 0 0;
+    margin: 0 14px 0 10px;
+    padding: 1px 0 0;
     font-weight: bold;
     transition: border-color 0.5s ease;
+}
+
+.env-plate .info div.details div {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    bottom: -20px;
 }
 
 .env-plate img {
@@ -110,27 +110,36 @@
     height: 32px;
 }
 
-.env-plate .controlls img {
-    visibility: hidden;
+.env-plate .controlls .state {
     position: relative;
-    top: 1px;
-    right: 13px;
+    right: 9px;
+    top: 3px;
+}
+
+.env-plate .controlls .locked {
+    position: relative;
+    bottom: -2px;
+    right: 11px;
+}
+
+.env-plate .controlls .locked img {
+    visibility: hidden;
     opacity: 0;
     transition: opacity 0.8s ease, visibility 0.8s ease;
 }
 
-.env-plate .controlls img.visible {
+.env-plate .controlls .locked img.visible {
     visibility: visible;
     opacity: 1;
     transition: opacity 0.8s ease, visibility 0.8s ease;
 }
 
 .env-plate .controlls {
-    width: 20px;
+    width: 22px;
 }
 
 .env-plate .controlls > div.controll {
-    padding: 15px 0;
+    padding: 13px 9px 13px 0;
 }
 
 .env-plate .controlls a {
