@@ -16,9 +16,9 @@
   ],
   "dependencies": {
     "jquery": "~2.1.1",
-    "angular": "~1.2.18",
-    "angular-snap": "~1.5.1",
-    "angular-route": "~1.2.18",
-    "outdated-browser": "*"
+    "angular": "~1.2.21",
+    "angular-snap": "~1.5.4",
+    "angular-route": "~1.2.21",
+    "outdated-browser": "^1.0.2"
   }
 }
