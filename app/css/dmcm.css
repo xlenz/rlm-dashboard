@@ -18,6 +18,9 @@ section.dmcm {
 }
 
 .dmcm dl dt {
-    margin-left: 20px;
     font-style: italic;
+}
+
+.dmcm dl dt, .dmcm p {
+    margin-left: 20px;
 }
