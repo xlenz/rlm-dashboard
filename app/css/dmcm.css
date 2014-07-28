@@ -1,0 +1,23 @@
+section.dmcm {
+    margin: 10px;
+}
+
+.dmcm h3 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.dmcm h4 {
+    margin-top: 14px;
+    font-size: 17px;
+    border-top: solid 1px #ccc;
+}
+
+.dmcm ol, .dmcm dl {
+    margin: 4px 0 10px;
+}
+
+.dmcm dl dt {
+    margin-left: 20px;
+    font-style: italic;
+}

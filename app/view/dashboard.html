@@ -1,6 +1,6 @@
 <div ng-repeat="(jobName, env) in envs" class="env-plate {{env.state}}">
     <div class="info">
-        <div class="name">
+        <div class="name" title="Click to view links">
 
             <div class="content" style="display: none">
                 <div><a target="_blank" ng-href="http://{{env.name}}/workcenter">SBM</a></div>
@@ -16,13 +16,15 @@
         <div class="db">{{env.database.type}}</div>
         <div class="sra">SRA on {{env.sra.server}}</div>
         <div class="details">
-            <div>{{env.state}}</div>
+            <div>{{env.result || env.state}}</div>
         </div>
     </div>
     <div class="controlls">
-        <div class="state"><a target="_blank" ng-href="http://stl-qa-oalmsl:8080/job/{{jobName}}">
-            <img ng-src="/status/{{jobName}}?{{timestamp}}"/>
-        </a></div>
+        <div class="state">
+            <a target="_blank" title="View job" ng-href="http://stl-qa-oalmsl:8080/job/{{jobName}}">
+                <img ng-src="/status/{{jobName}}?{{timestamp}}"/>
+            </a>
+        </div>
         <div ng-class="{ 'visibility-hidden' : env.state === 'building' }" class="controll fix">
             <a href="" ng-click="resolve(jobName, env.id, true)" title="Mark as fixed">
                 <span class="glyphicon glyphicon-ok"></span>
@@ -39,7 +41,7 @@
             </a>
         </div>
         <div class="locked">
-            <img ng-class="{ visible : env.state === 'locked' || env.state === 'building' }"
+            <img title="Environment is locked." ng-class="{ visible : env.state === 'locked' || env.state === 'building' }"
                  src="images/Human-emblem-readonly.svg">
         </div>
     </div>
