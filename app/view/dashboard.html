@@ -11,8 +11,8 @@
 
         </div>
         <div class="upgrade">{{env.rlm.installType}}</div>
-        <div class="rlmBuild">RLM 5.2 {{env.rlm.build ? 'b' + env.rlm.build : null}}</div>
-        <div class="sbm">SBM {{env.sbm.version}} {{env.sbm.build ? 'b' + env.sbm.build : null}}</div>
+        <div class="rlmBuild">RLM 5.2 {{env.rlm.build}}</div>
+        <div class="sbm">SBM {{env.sbm.version}} {{env.sbm.build}}</div>
         <div class="db">{{env.database.type}}</div>
         <div class="sra">SRA on {{env.sra.server}}</div>
         <div class="details">
@@ -25,23 +25,23 @@
                 <img ng-src="/status/{{jobName}}?{{timestamp}}"/>
             </a>
         </div>
-        <div ng-class="{ 'visibility-hidden' : env.state === 'building' }" class="controll fix">
-            <a href="" ng-click="resolve(jobName, env.id, true)" title="Mark as fixed">
+        <div ng-class="{ 'visibility-hidden' : isBuilding(env) }" class="controll fix">
+            <a href="" ng-click="resolve(env, true)" title="Mark as fixed">
                 <span class="glyphicon glyphicon-ok"></span>
             </a>
         </div>
-        <div ng-class="{ 'visibility-hidden' : env.state === 'building' }" class="controll fail">
-            <a href="" ng-click="resolve(jobName, env.id, false)" title="Mark as failed">
+        <div ng-class="{ 'visibility-hidden' : isBuilding(env) }" class="controll fail">
+            <a href="" ng-click="resolve(env, false)" title="Mark as failed">
                 <span class="glyphicon glyphicon-remove"></span>
             </a>
         </div>
-        <div ng-class="{ 'visibility-hidden' : env.state === 'building' }" class="controll lock">
-            <a href="" ng-click="lock(jobName, env.id)" title="Lock">
+        <div ng-class="{ 'visibility-hidden' :isBuilding(env) }" class="controll lock">
+            <a href="" ng-click="lock(env)" title="Lock">
                 <span class="glyphicon glyphicon-lock"></span>
             </a>
         </div>
         <div class="locked">
-            <img title="Environment is locked." ng-class="{ visible : env.state === 'locked' || env.state === 'building' }"
+            <img title="Environment is locked." ng-class="{ visible : isLocked(env) || isBuilding(env) }"
                  src="images/Human-emblem-readonly.svg">
         </div>
     </div>

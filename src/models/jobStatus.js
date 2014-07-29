@@ -4,26 +4,35 @@ var mongoose = require('mongoose');
 
 var jobStatusSchema = mongoose.Schema({
     job: String,
-    isBuilding: Boolean,
-    build: Number,
-    date: Date,
-    result: String,
+    build: {
+        number: Number,
+        date: Date,
+        building: Boolean,
+        result: String
+    },
     resolved: Boolean,
     locked: Boolean,
-    lockedBy: String
+    changedBy: String,
+    state: String,
+    rlm: {
+        build: String
+    },
+    sbm: {
+        build: String
+    }
 });
 
-jobStatusSchema.statics.findJob = function (job, build, cb) {
+jobStatusSchema.statics.findJob = function (job, buildNumber, cb) {
     this.findOne({
         job: job,
-        build: build
+        'build.number': buildNumber
     }, cb);
 };
 
 jobStatusSchema.statics.lastJobResult = function (job, cb) {
-    this.find({
+    return this.find({
         job: job
-    }).limit(1).sort('-date').exec(cb);
+    }).limit(1).sort({'build.date': -1}).exec(cb);
 };
 
 var jobStatus = mongoose.model('environmentStatus', jobStatusSchema);

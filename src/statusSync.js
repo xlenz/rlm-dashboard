@@ -32,8 +32,7 @@ function jobStatus(jobName) {
         try {
             data = JSON.parse(body);
         } catch (e) {
-            envStateGet(jobName);
-            return log.error('Cannot parse JSON response from Jenkins.');
+            return log.debug('Cannot parse JSON response from Jenkins.');
         }
 
         jobModel.findJob(jobName, data.number, function (err, result) {
@@ -41,34 +40,36 @@ function jobStatus(jobName) {
                 return log.error(err);
             }
 
+            var build = {
+                building: data.building,
+                number: data.number,
+                date: new Date(data.timestamp),
+                result: data.result
+            };
+
             if (result !== null) {
-                var build = parseRlmBuild(data.fullDisplayName);
-                if (build !== null) {
-                    cfg.environments[jobName].rlm.build = build.rlmBuild;
-                    cfg.environments[jobName].sbm.build = build.sbmBuild;
-                }
+                saveRlmBuild(result._id, data.fullDisplayName);
 
-                cfg.environments[jobName].result = data.result;
-                setState(jobName, checkState(jobName, result));
-
-                if (result.isBuilding === true && data.building === false) {
-                    jobModel.update({_id: result._id}, {
-                        isBuilding: data.building, result: data.result}, function (err, updated) {
+                if (result.build.building === true && data.building === false) {
+                    jobModel.findByIdAndUpdate({_id: result._id}, {
+                        build: {
+                            building: data.building,
+                            result: data.result
+                        }
+                    }, function (err, updated) {
                         if (err) {
                             return log.error(err);
                         }
-                        setState(jobName, checkState(jobName, updated));
+                        setState(updated);
                     });
                 }
-                return log.debug('Env`s build already exists.');
+
+                return;
             }
 
             var env = new jobModel({
                 job: jobName,
-                isBuilding: data.building,
-                build: data.number,
-                date: new Date(data.timestamp),
-                result: data.result
+                build: build
             });
 
             env.save(function (err, saved) {
@@ -76,8 +77,8 @@ function jobStatus(jobName) {
                     return log.error(err);
                 }
 
-                setState(jobName, checkState(jobName, saved));
-                cfg.environments[jobName].result = saved.result;
+                setState(saved);
+                saveRlmBuild(saved._id, data.fullDisplayName);
             });
         });
 
@@ -89,68 +90,66 @@ function parseRlmBuild(fullDisplayName) {
     if (buildName.indexOf(';') !== -1) {
         var builds = buildName.split(';');
         return {
-            rlmBuild: builds[0].substr(3),
-            sbmBuild: builds[1].substr(3)
+            rlmBuild: 'b' + builds[0].substr(3),
+            sbmBuild: 'b' + builds[1].substr(3)
         };
     } else {
         return null;
     }
 }
 
-function envStateGet(jobName, callback) {
-    jobModel.lastJobResult(jobName, function (err, result) {
+function saveRlmBuild(id, fullDisplayName) {
+    var rlmSbmBuild = parseRlmBuild(fullDisplayName);
+
+    if (rlmSbmBuild !== null) {
+        jobModel.update({_id: id}, {
+            rlm: {build: rlmSbmBuild.rlmBuild},
+            sbm: {build: rlmSbmBuild.sbmBuild}
+        }, function (err) {
+            if (err) {
+                return log.error(err);
+            }
+        });
+    }
+}
+
+function setState(data, callback) {
+    var state;
+
+    if (data.build.building === true) {
+        state = 'Building';
+    } else if (data.locked === true) {
+        state = 'Locked';
+    } else if (data.resolved === true || (data.build.result === 'SUCCESS' && data.resolved !== false)) {
+        state = 'Ok';
+    } else if (data.build.result === 'ABORTED' && (data.resolved === undefined || data.resolved === null)) {
+        state = 'Aborted';
+    } else {
+        state = 'Failed';
+    }
+
+    jobModel.findByIdAndUpdate({_id: data._id}, {
+        state: state
+    }, function (err, updated) {
         if (err) {
             return log.error(err);
         }
-        if (result === null || result.length !== 1) {
-            return callback ? callback(null) : null;
-        }
-
-        var state = checkState(jobName, result[0]);
-        setState(jobName, state);
-
         if (callback) {
-            callback(state);
+            callback(updated);
         }
     });
 }
 
-function checkState(jobName, data) {
-    var state = {
-        id: data._id,
-        job: jobName
-    };
-
-    if (data.isBuilding === true) {
-        state.state = 'building';
-    } else if (data.locked === true) {
-        state.state = 'locked';
-    } else if (data.resolved === true || (data.result === 'SUCCESS' && data.resolved !== false)) {
-        state.state = 'ok';
-    } else if (data.result === 'ABORTED' && (data.resolved === undefined || data.resolved === null)) {
-        state.state = 'abort';
-    } else {
-        state.state = 'fail';
-    }
-
-    return state;
-}
-
-function envStateSet(data, callback) {
-    var id = data.id;
-    delete(data.id);
-
-    jobModel.findOne({_id: id}, function (err, result) {
-
-        if (result.isBuilding === false && (result.locked !== true || data.locked !== undefined)) {
-            jobModel.update({_id: id}, data, function (err) {
+function envStateSet(id, data, callback) {
+    jobModel.findById(id, function (err, result) {
+        if (result.build.building === false && (result.locked !== true || data.locked !== undefined)) {
+            jobModel.findByIdAndUpdate({_id: id}, data, function (err, updated) {
                 if (err) {
                     return log.error(err);
                 }
-                envStateGet(result.job, function (state) {
-                    setState(result.job, state);
+                setState(updated, function (final) {
+                    callback(final);
                 });
-                callback();
             });
         }
         else {
@@ -159,13 +158,5 @@ function envStateSet(data, callback) {
     });
 }
 
-function setState(jobName, state) {
-    if (state !== null) {
-        cfg.environments[jobName].id = state.id;
-        cfg.environments[jobName].state = state.state;
-    }
-}
-
 exports.jobStatus = jobStatus;
-exports.envStateGet = envStateGet;
 exports.envStateSet = envStateSet;

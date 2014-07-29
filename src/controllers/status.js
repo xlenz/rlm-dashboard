@@ -2,6 +2,7 @@
 
 var self = this;
 var jobModel = require('./../models/jobStatus');
+var q = require('q');
 var cfg, statusSync;
 
 module.exports = function (_cfg, _statusSync) {
@@ -9,6 +10,33 @@ module.exports = function (_cfg, _statusSync) {
     statusSync = _statusSync;
 
     return self;
+};
+
+exports.envs = function (req, res, next) {
+    var arr = [];
+    Object.keys(cfg.environments).forEach(function (jobName) {
+        delete cfg.environments[jobName].build;
+        arr.push(jobModel.lastJobResult(jobName));
+    });
+
+    q.all(arr).then(function (data) {
+        for (var i = 0; i < data.length; i++) {
+            var item = data[i][0];
+            var jobName = item.job;
+
+            cfg.environments[jobName].id = item._id;
+            cfg.environments[jobName].build = item.build;
+            cfg.environments[jobName].rlm.build = item.rlm.build;
+            cfg.environments[jobName].sbm.build = item.sbm.build;
+            cfg.environments[jobName].locked = item.locked;
+            cfg.environments[jobName].resolved = item.resolved;
+            cfg.environments[jobName].changedBy = item.changedBy;
+            cfg.environments[jobName].state = item.state;
+        }
+
+        res.send(cfg.environments);
+    });
+
 };
 
 exports.status = function (req, res, next) {
@@ -26,11 +54,11 @@ exports.status = function (req, res, next) {
 
         if (data === null) {
             img = cfg.statusError;
-        } else if (data.isBuilding === true) {
+        } else if (data.build.building === true) {
             img = cfg.statusAnime;
-        } else if (data.result === 'SUCCESS') {
+        } else if (data.build.result === 'SUCCESS') {
             img = cfg.statusGreen;
-        } else if (data.result === 'ABORTED') {
+        } else if (data.build.result === 'ABORTED') {
             img = cfg.statusGrey;
         } else {
             img = cfg.statusRed;
@@ -41,17 +69,14 @@ exports.status = function (req, res, next) {
 
 };
 
-function stateGet(req, res, next) {
-    statusSync.envStateGet(req.params.job, function (result) {
-
-        return res.send(result);
-    });
-}
-exports.stateGet = stateGet;
-
 exports.stateSet = function (req, res, next) {
-    statusSync.envStateSet(req.body, function () {
-
-        stateGet(req, res, next);
+    statusSync.envStateSet(req.params.id, req.body, function (result) {
+        return res.send({
+            job: result.job,
+            locked: result.locked,
+            resolved: result.resolved,
+            changedBy: result.changedBy,
+            state: result.state
+        });
     });
 };

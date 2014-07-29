@@ -16,39 +16,39 @@
     transition: background-color 0.5s ease, border-color 0.5s ease;
 }
 
-.env-plate.ok {
+.env-plate.Ok {
     background-color: #90EE90;
     border-color: limegreen;
 }
 
-.env-plate.ok .info div {
+.env-plate.Ok .info div {
     border-color: limegreen;
 }
 
-.env-plate.locked {
+.env-plate.Locked {
     background-color: #faf5af;
     border-color: darkkhaki;
 }
 
-.env-plate.locked .info div {
+.env-plate.Locked .info div {
     border-color: darkkhaki;
 }
 
-.env-plate.building {
+.env-plate.Building {
     background-color: #87cefa;
     border-color: #1e90ff;
 }
 
-.env-plate.building .info div {
+.env-plate.Building .info div {
     border-color: #1e90ff;
 }
 
-.env-plate.fail {
+.env-plate.Failed {
     background-color: indianred;
     border-color: darkred;
 }
 
-.env-plate.fail .info div {
+.env-plate.Failed .info div {
     border-color: darkred;
 }
 
@@ -158,7 +158,7 @@
     color: darkorange;
 }
 
-.env-plate.locked .controlls .lock a:hover {
+.env-plate.Locked .controlls .lock a:hover {
     color: blue;
 }
 

@@ -27,11 +27,11 @@
                     return qHttp(httpParams);
                 };
 
-                this.envStateSet = function (job, data) {
+                this.envStateSet = function (id, data) {
                     var httpParams = {
                         method: 'POST',
                         data: data,
-                        url: '/state/' + job
+                        url: '/state/' + id
                     };
 
                     return qHttp(httpParams);
