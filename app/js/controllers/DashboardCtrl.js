@@ -33,6 +33,25 @@
             return env.locked;
         };
 
+        $scope.details = function (env) {
+            var anonymous = 'Anonymous';
+            if (env.build.building === true) {
+                return 'Building';
+            }
+            if (env.resolved === undefined && env.locked !== true) {
+                return 'Last job result: ' + env.build.result;
+            }
+            if (env.locked === true) {
+                return 'Locked by ' + anonymous;
+            }
+            if (env.resolved === true) {
+                return 'Fixed by ' + anonymous;
+            }
+            if (env.resolved === false) {
+                return 'Failed by ' + anonymous;
+            }
+        };
+
         function getEnvs() {
             ApiClient.environments().then(
                     function (data) {
