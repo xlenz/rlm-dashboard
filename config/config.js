@@ -180,6 +180,21 @@ module.exports = function () {
         statusRed: pathToImages + '/red.png',
         statusError: pathToImages + '/error.png',
         statusGrey: pathToImages + '/grey.png',
-        statusAnime: pathToImages + '/blue_anime.gif'
+        statusAnime: pathToImages + '/blue_anime.gif',
+
+        //users that are allowed to signup
+        users: {
+            //RLM
+            mroshchupkin: 'Misha Roshchupkin',
+            ispitkovskyi: 'Igor Spitkovskyi',
+            omykhaliov: 'Oleksiy Mykhaliov',
+            vnesterenko: 'Vika Nesterenko',
+            mgrybyk: 'Mykola Grybyk',
+            nlugova: 'Nata Lugova',
+            //SRA
+            kabbyasov: 'Kostya Abbyasov',
+            drozenberg: 'Dimka Rozenberg',
+            mcherkasskiy: 'Max Cherkasskiy'
+        }
     };
 };
