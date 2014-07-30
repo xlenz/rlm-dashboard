@@ -120,7 +120,7 @@ function setState(data, callback) {
         state = 'Locked';
     } else if (data.resolved === true || (data.build.result === 'SUCCESS' && data.resolved !== false)) {
         state = 'Ok';
-    } else if (data.build.result === 'ABORTED' && (data.resolved === undefined || data.resolved === null)) {
+    } else if (data.build.result === 'ABORTED' && data.resolved === undefined) {
         state = 'Aborted';
     } else {
         state = 'Failed';
