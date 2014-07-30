@@ -52,10 +52,8 @@ function jobStatus(jobName) {
 
                 if (result.build.building === true && data.building === false) {
                     jobModel.findByIdAndUpdate({_id: result._id}, {
-                        build: {
-                            building: data.building,
-                            result: data.result
-                        }
+                        'build.building': data.building,
+                        'build.result': data.result
                     }, function (err, updated) {
                         if (err) {
                             return log.error(err);
