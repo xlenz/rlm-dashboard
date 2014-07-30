@@ -6,14 +6,11 @@
     background-color: #eee;
     margin: 10px 0 0 10px;
     overflow: hidden;
+    transition: background-color 0.5s ease, border-color 0.5s ease;
 }
 
 .env-plate:hover {
     box-shadow: 0 0 10px rgba(81, 203, 238, 1);
-}
-
-.env-plate {
-    transition: background-color 0.5s ease, border-color 0.5s ease;
 }
 
 .env-plate.Ok {
@@ -164,4 +161,19 @@
 
 .visibility-hidden {
     visibility: hidden;
+}
+
+/*** FORM ***/
+#authModal h4 {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#authModal h5 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+#authModal .error {
+    color: darkred;
 }

@@ -13,9 +13,10 @@ html, body {
     left: 0;
     width: auto;
     height: auto;
-    z-index: 2;
+    z-index: inherit;
     overflow: auto;
-    transform: translate3d(0, 0, 0);
+    transform: none;
+    background: #fff;
 }
 
 .snapjs-left #toolbar img {
@@ -50,12 +51,10 @@ snap-drawer.snap-drawer-left {
 }
 
 /* content */
-.snap-content {
-    background: #fff;
-}
 
 .snap-drawers {
     background: transparent;
+    z-index: 0;
 }
 
 .snap-drawer {
