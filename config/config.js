@@ -53,7 +53,7 @@ module.exports = function () {
                     upgrade: null
                 },
                 sbm: {
-                    version: '10.1.5',
+                    version: '10.1.4.1',
                     upgrade: null
                 },
                 sra: {
