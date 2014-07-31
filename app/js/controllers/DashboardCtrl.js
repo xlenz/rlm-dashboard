@@ -56,7 +56,7 @@
             ApiClient.environments().then(
                     function (data) {
                         $scope.timestamp = new Date().getTime();
-                        console.log(data);
+                        //console.log(data);
 
                         Object.keys($scope.envs).forEach(function (key) {
                             var env = data[key];
