@@ -1,6 +1,6 @@
 'use strict';
 
-var jobModel = require('./models/jobStatus');
+var jobModel = require('./models/JobStatus');
 var request = require('request');
 var self = this;
 var cfg;

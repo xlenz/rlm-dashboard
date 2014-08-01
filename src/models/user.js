@@ -1,14 +1,36 @@
 'use strict';
 
 var mongoose = require('mongoose');
+var Provider = require('./Providers');
 
 var userSchema = mongoose.Schema({
-    provider: String,
-    id: String,
-    displayName: String
-
+    username: String,
+    password: String,
+    displayName: String,
+    provider: mongoose.Schema.Types.ObjectId
 });
 
-var userSchema = mongoose.model('users', userSchema);
+userSchema.statics.findByLogin = function (username, cb) {
+    this.findOne({username: username}, function (err, result) {
+        if (err) {
+            return log.error(err);
+        }
+        cb(result);
+    });
+};
 
-module.exports = userSchema;
+userSchema.statics.saveUser = function (obj, providerName, cb) {
+    var User = this;
+    Provider.getProviderId(providerName, function (providerId) {
+        obj.provider = providerId;
+        User.findByLogin(obj.username, function (result) {
+            if (result !== null) {
+                return cb(true, 'User already exists.');
+            }
+            var user = new User(obj);
+            user.save(cb);
+        });
+    });
+};
+
+module.exports = mongoose.model('Users', userSchema);

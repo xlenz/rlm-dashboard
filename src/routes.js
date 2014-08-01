@@ -2,7 +2,6 @@
 
 var self = this;
 var jobStatus, config, html, auth;
-var passport = require('passport');
 
 module.exports = function (cfg, statusSync) {
     jobStatus = require('./controllers/status')(cfg, statusSync);
@@ -18,6 +17,7 @@ exports.routes = function (app) {
     app.get('/environments', jobStatus.envs);
     app.get('/tabs', config.tabs);
     app.get('/', html.appHtml);
-    app.post('/login', passport.authenticate('local'), auth.login);
-    app.get('/api/users/me', passport.authenticate('basic', { session: false }), auth.me);
+    app.post('/login', auth.login);
+    app.post('/signup', auth.signup);
+    app.post('/logout', auth.logout);
 };

@@ -1,7 +1,7 @@
 'use strict';
 
 var self = this;
-var jobModel = require('./../models/jobStatus');
+var jobModel = require('./../models/JobStatus');
 var q = require('q');
 var cfg, statusSync;
 

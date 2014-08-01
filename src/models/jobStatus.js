@@ -10,9 +10,6 @@ var jobStatusSchema = mongoose.Schema({
         building: Boolean,
         result: String
     },
-    resolved: Boolean,
-    locked: Boolean,
-    changedBy: String,
     state: String,
     rlm: {
         build: String
