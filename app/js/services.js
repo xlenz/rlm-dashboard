@@ -36,6 +36,36 @@
 
                     return qHttp(httpParams);
                 };
+
+                this.login = function (data) {
+                    var httpParams = {
+                        method: 'POST',
+                        data: data,
+                        url: '/login'
+                    };
+
+                    return qHttp(httpParams);
+                };
+
+                this.signup = function (data) {
+                    var httpParams = {
+                        method: 'POST',
+                        data: data,
+                        url: '/signup'
+                    };
+
+                    return qHttp(httpParams);
+                };
+
+                this.logout = function (data) {
+                    var httpParams = {
+                        method: 'POST',
+                        url: '/logout'
+                    };
+
+                    return qHttp(httpParams);
+                };
+
             }
     );
 

@@ -46,9 +46,9 @@
         </div>
     </div>
 </div>
-<!--button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#authModal">
+<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#authModal">
     Debug modal
-</button-->
+</button>
 <div class="modal fade" id="authModal" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -62,21 +62,23 @@
                     Please <a href="#">sign in</a> ... or <a href="#">sign up</a>
                 </h5>
 
-                <form>
+                <form name="authForm" ng-submit="submit()" novalidate>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Login" name="login">
+                        <input type="text" class="form-control" placeholder="Login" ng-model="user.username" ng-minlength="3" ng-maxlength="20">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" placeholder="Password" name="password">
+                        <input type="password" class="form-control" placeholder="Password" ng-model="user.password" ng-minlength="3" ng-maxlength="20">
                     </div>
-                    <div class="error">
-                        <spap>Unknown error occured!</spap>
+                    <div class="error" ng-show="authFailed">
+                        <span>{{authFailed || 'Unknown error occured!'}}</span>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Login</button>
+                <button type="button" class="btn btn-primary" ng-click="logout()">Logout</button>
+                <button type="button" class="btn btn-primary" ng-click="submit('login')">Login</button>
+                <button type="button" class="btn btn-primary" ng-click="submit('signup')">Signup</button>
             </div>
         </div>
     </div>

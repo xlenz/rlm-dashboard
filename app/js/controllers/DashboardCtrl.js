@@ -52,6 +52,60 @@
             }
         };
 
+        $scope.user = {};
+        $scope.authFailed = null;
+        $scope.authType = 'login';
+
+        $scope.submit = function (authType) {
+            if (!$scope.authForm.$valid) {
+                return;
+            }
+            authType = authType ? authType : $scope.authType;
+            if (authType === 'login') {
+                $scope.login();
+            }
+            else if (authType === 'signup') {
+                $scope.signup();
+            }
+            else {
+                console.error('Unkonwn auth type.');
+            }
+        };
+        $scope.login = function () {
+            ApiClient.login($scope.user).then(
+                    function (data) {
+                        console.log(data);
+                    },
+                    function (error) {
+                        $scope.authFailed = error;
+                        console.log(error);
+                    }
+            );
+        };
+
+        $scope.signup = function () {
+            ApiClient.signup($scope.user).then(
+                    function (data) {
+                        console.log(data);
+                    },
+                    function (error) {
+                        $scope.authFailed = error;
+                        console.log(error);
+                    }
+            );
+        };
+
+        $scope.logout = function () {
+            ApiClient.logout().then(
+                    function (data) {
+                        console.log(data);
+                    },
+                    function (error) {
+                        console.log(error);
+                    }
+            );
+        };
+
         function getEnvs() {
             ApiClient.environments().then(
                     function (data) {
