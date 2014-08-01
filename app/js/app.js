@@ -38,10 +38,29 @@
         snapRemoteProvider.globalOptions.maxPosition = 265;
     });
 
-    app.controller('MainCtrl', function ($scope, ActiveTab) {
+    app.controller('MainCtrl', function ($scope, ActiveTab, ApiClient, Auth) {
         $scope.activeTab = function () {
             return ActiveTab.name();
         };
+
+        $scope.isAuth = function () {
+            return Auth.isAuth();
+        };
+
+        $scope.getUserDisplayName = function () {
+            var user = Auth.getUser();
+            console.log( user ? (user.displayName || user.username) : null);
+            return user ? (user.displayName || user.username) : null;
+        };
+
+        $scope.logout = function () {
+            ApiClient.logout().then(
+                    function (data) {
+                        Auth.setUser(null);
+                    }
+            );
+        };
+
     });
 
 })();

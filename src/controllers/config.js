@@ -8,10 +8,6 @@ module.exports = function (_cfg) {
     return self;
 };
 
-exports.envs = function (req, res, next) {
-    return res.send(cfg.environments);
-};
-
 exports.tabs = function (req, res, next) {
     return res.send(cfg.tabs);
 };

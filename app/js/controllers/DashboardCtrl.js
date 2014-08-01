@@ -3,13 +3,17 @@
 (function () {
     var app = angular.module('rlmDashboard');
 
-    app.controller('DashboardCtrl', function ($scope, $http, $q, ApiClient, ActiveTab) {
+    app.controller('DashboardCtrl', function ($scope, $http, $q, ApiClient, ActiveTab, Auth) {
         ActiveTab.set(0);
 
         $scope.envs = {};
         $scope.timestamp = new Date().getTime();
 
         $scope.resolve = function (env, state) {
+            if (!Auth.isAuth()) {
+                $('#authModal').modal('show');
+                return null;
+            }
             if (env.resolved === state) {
                 return;
             }
@@ -20,6 +24,10 @@
         };
 
         $scope.lock = function (env) {
+            if (!Auth.isAuth()) {
+                $('#authModal').modal('show');
+                return null;
+            }
             envStateSet(env.id, {
                 locked: !env.locked
             });
@@ -42,19 +50,23 @@
                 return 'Last job result: ' + env.build.result;
             }
             if (env.locked === true) {
-                return 'Locked by ' + anonymous;
+                return 'Locked by ' + env.changedBy || anonymous;
             }
             if (env.resolved === true) {
-                return 'Fixed by ' + anonymous;
+                return 'Fixed by ' + env.changedBy || anonymous;
             }
             if (env.resolved === false) {
-                return 'Failed by ' + anonymous;
+                return 'Failed by ' + env.changedBy || anonymous;
             }
         };
 
         $scope.user = {};
         $scope.authFailed = null;
         $scope.authType = 'login';
+
+        $scope.setAuthType = function (type) {
+            $scope.authType = type;
+        };
 
         $scope.submit = function (authType) {
             if (!$scope.authForm.$valid) {
@@ -75,10 +87,15 @@
             ApiClient.login($scope.user).then(
                     function (data) {
                         console.log(data);
+                        if (data.success === false) {
+                            return $scope.authFailed = data.message;
+                        }
+                        Auth.setUser(data.user);
+                        $scope.authFailed = null;
+                        $('#authModal').modal('hide');
                     },
                     function (error) {
-                        $scope.authFailed = error;
-                        console.log(error);
+                        $scope.authFailed = error.message || error;
                     }
             );
         };
@@ -87,21 +104,14 @@
             ApiClient.signup($scope.user).then(
                     function (data) {
                         console.log(data);
+                        if (data.success === false) {
+                            return $scope.authFailed = data.message;
+                        }
+                        Auth.setUser(data.user);
+                        $scope.authFailed = null;
                     },
                     function (error) {
-                        $scope.authFailed = error;
-                        console.log(error);
-                    }
-            );
-        };
-
-        $scope.logout = function () {
-            ApiClient.logout().then(
-                    function (data) {
-                        console.log(data);
-                    },
-                    function (error) {
-                        console.log(error);
+                        $scope.authFailed = error.message || error;
                     }
             );
         };
@@ -142,7 +152,7 @@
             });
         }
 
-        setInterval(getEnvs, 15000);
+        //setInterval(getEnvs, 15000);
 
     });
 })

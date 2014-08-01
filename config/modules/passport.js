@@ -11,10 +11,10 @@ module.exports = function (User) {
                         return done(err);
                     }
                     if (!user) {
-                        return done(null, false, { message: 'Incorrect username.' });
+                        return done(null, false, 'Incorrect username.');
                     }
                     if (password !== user.password) {
-                        return done(null, false, { message: 'Incorrect password.' });
+                        return done(null, false, 'Incorrect password.');
                     }
                     return done(null, user);
                 });

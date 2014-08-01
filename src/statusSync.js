@@ -1,6 +1,8 @@
 'use strict';
 
 var jobModel = require('./models/JobStatus');
+var Transition = require('./models/Transitions');
+var User = require('./models/User');
 var request = require('request');
 var self = this;
 var cfg;
@@ -133,7 +135,13 @@ function setState(data, callback) {
             return log.error(err);
         }
         if (callback) {
-            callback(updated);
+            console.log(data.changedBy);
+            User.findById(data.changedBy, function (errUser, user) {
+                updated.changedBy = user.displayName || user.username;
+                updated.locked = data.locked;
+                updated.resolved = data.resolved;
+                callback(updated);
+            });
         }
     });
 }
@@ -141,14 +149,24 @@ function setState(data, callback) {
 function envStateSet(id, data, callback) {
     jobModel.findById(id, function (err, result) {
         if (result.build.building === false && (result.locked !== true || data.locked !== undefined)) {
-            jobModel.findByIdAndUpdate({_id: id}, data, function (err, updated) {
+            var transition = new Transition(data);
+            transition.save(function (err, saved) {
                 if (err) {
                     return log.error(err);
                 }
-                setState(updated, function (final) {
-                    callback(final);
+
+                jobModel.findByIdAndUpdate({_id: id}, {lastTransition: saved._id}, function (err, updated) {
+                    if (err) {
+                        return log.error(err);
+                    }
+                    saved.build = updated.build;
+                    saved._id = updated._id;
+                    setState(saved, function (final) {
+                        callback(final);
+                    });
                 });
             });
+
         }
         else {
             callback();

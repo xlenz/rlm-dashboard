@@ -28,10 +28,10 @@ exports.envs = function (req, res, next) {
             cfg.environments[jobName].build = item.build;
             cfg.environments[jobName].rlm.build = item.rlm.build;
             cfg.environments[jobName].sbm.build = item.sbm.build;
+            cfg.environments[jobName].state = item.state;
             cfg.environments[jobName].locked = item.locked;
             cfg.environments[jobName].resolved = item.resolved;
             cfg.environments[jobName].changedBy = item.changedBy;
-            cfg.environments[jobName].state = item.state;
         }
 
         res.send(cfg.environments);
@@ -42,12 +42,12 @@ exports.envs = function (req, res, next) {
 exports.status = function (req, res, next) {
     var job = req.params.job.split('?')[0]; //resolve image caching
 
-    jobModel.lastJobResult(job, function (err, result) {
-        if (err) {
+    q(jobModel.lastJobResult(job)).then(function (result) {
+        /*if (err) {
             log.error(err);
-        }
+        }*/
         var img = cfg.statusError;
-        if (err || result === null || result.length !== 1) {
+        if (/*err ||*/ result === null || result.length !== 1) {
             return res.sendfile(img);
         }
         var data = result[0];
@@ -70,6 +70,12 @@ exports.status = function (req, res, next) {
 };
 
 exports.stateSet = function (req, res, next) {
+    var responseData = {success: false};
+    if (!req.isAuthenticated()) {
+        responseData.message = 'Please login first.';
+        return res.send(responseData);
+    }
+    req.body.changedBy = req.user._id;
     statusSync.envStateSet(req.params.id, req.body, function (result) {
         return res.send({
             job: result.job,

@@ -44,9 +44,9 @@
     <link rel="stylesheet" href="css/env.css"/>
 
     <script>
-      document.write('<script src="http://' +
-        (location.host || 'localhost').split(':')[0] +
-        ':35729/livereload.js?snipver=1"></' + 'script>')
+        document.write('<script src="http://' +
+                (location.host || 'localhost').split(':')[0] +
+                ':35729/livereload.js?snipver=1"></' + 'script>')
     </script>
 </head>
 
@@ -66,6 +66,14 @@
         <img snap-toggle src="images/menu-hamburger.svg">
 
         <h2>{{activeTab()}}</h2>
+
+        <span class="userName" ng-show="isAuth()">
+            Welcome, <strong>{{getUserDisplayName()}}</strong>
+            <a href="" ng-click="logout()" title="Logout">
+                <span class="glyphicon glyphicon-off"></span>
+            </a>
+        </span>
+
     </div>
 
     <snap-drawer>
@@ -92,9 +100,9 @@
 <script src="libs/angular-snap/angular-snap.min.js"></script>
 
 <script src="js/app.js"></script>
+<script src="js/services.js"></script>
 <script src="js/factories/ActiveTab.js"></script>
 <script src="js/factories/Auth.js"></script>
-<script src="js/services.js"></script>
 <script src="js/controllers/TabCtrl.js"></script>
 <script src="js/controllers/DashboardCtrl.js"></script>
 <script src="js/controllers/IntegrationCtrl.js"></script>

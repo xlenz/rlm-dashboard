@@ -66,6 +66,15 @@
                     return qHttp(httpParams);
                 };
 
+                this.me = function () {
+                    var httpParams = {
+                        method: 'GET',
+                        url: '/me'
+                    };
+
+                    return qHttp(httpParams);
+                };
+
             }
     );
 

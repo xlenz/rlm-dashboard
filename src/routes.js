@@ -20,4 +20,5 @@ exports.routes = function (app) {
     app.post('/login', auth.login);
     app.post('/signup', auth.signup);
     app.post('/logout', auth.logout);
+    app.get('/me', auth.me);
 };

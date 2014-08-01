@@ -20,7 +20,7 @@ html, body {
 }
 
 .snapjs-left #toolbar img {
-/* transition removed. MG */
+    /* transition removed. MG */
 }
 
 snap-drawer.snap-drawer-left {
@@ -137,4 +137,16 @@ tab-manager li.subsection a {
     font-size: 13px;
     margin-left: 10px;
     padding: 10px;
+}
+
+span.userName {
+    position: absolute;
+    right: 10px;
+    top: 9px;
+    color: #fff;
+}
+
+span.userName a span {
+    color: lightcoral;
+    margin-left: 3px;
 }
