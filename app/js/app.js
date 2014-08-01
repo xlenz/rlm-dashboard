@@ -49,7 +49,6 @@
 
         $scope.getUserDisplayName = function () {
             var user = Auth.getUser();
-            console.log( user ? (user.displayName || user.username) : null);
             return user ? (user.displayName || user.username) : null;
         };
 

@@ -27,6 +27,15 @@
                     return qHttp(httpParams);
                 };
 
+                this.envDetail = function (job) {
+                    var httpParams = {
+                        method: 'GET',
+                        url: '/env/' + job
+                    };
+
+                    return qHttp(httpParams);
+                };
+
                 this.envStateSet = function (id, data) {
                     var httpParams = {
                         method: 'POST',

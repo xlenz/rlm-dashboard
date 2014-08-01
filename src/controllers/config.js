@@ -11,3 +11,7 @@ module.exports = function (_cfg) {
 exports.tabs = function (req, res, next) {
     return res.send(cfg.tabs);
 };
+
+exports.envs = function (req, res, next) {
+    return res.send(cfg.environments);
+};

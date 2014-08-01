@@ -14,11 +14,9 @@ var jobStatusSchema = mongoose.Schema({
     },
     state: String,
     lastTransition: mongoose.Schema.Types.ObjectId,
-    rlm: {
-        build: String
-    },
-    sbm: {
-        build: String
+    builds: {
+        rlm: String,
+        sbm: String
     }
 });
 
@@ -34,21 +32,27 @@ jobStatusSchema.statics.lastJobResult = function (job, cb) {
         job: job
     }).limit(1).sort({'build.date': -1}).exec(function (err, result) {
         if (err || result.length !== 1) {
-            return cb;
+            return cb(err, null);
         }
-        var envStatus = result[0];
-        if (envStatus.lastTransition === undefined) {
-            return cb;
-        }
-        Transition.findById(envStatus.lastTransition, function (errTransition, transition) {
-            result[0].locked = transition.locked;
-            result[0].resolved = transition.resolved;
-            result[0]._doc_.resolved = transition.resolved;
-            User.findById(transition.changedBy, function (errUser, user){
-                result[0].changedBy = user.displayName || user.username;
-                return cb(err, result);
+
+        if (result[0].lastTransition === undefined) {
+            return cb(err, result[0]);
+        } else {
+            Transition.findById(result[0].lastTransition, function (errTransition, transition) {
+                if (transition === null) {
+                    return cb(errTransition, result[0]);
+                }
+                result[0]._doc.locked = transition.locked;
+                result[0]._doc.resolved = transition.resolved;
+                User.findById(transition.changedBy, function (errUser, user) {
+                    if (user === null) {
+                        return cb(errUser, result[0]);
+                    }
+                    result[0]._doc.changedBy = user.displayName || user.username;
+                    return cb(errUser, result[0]);
+                });
             });
-        });
+        }
     });
 };
 

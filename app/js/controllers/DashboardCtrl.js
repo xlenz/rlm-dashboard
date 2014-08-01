@@ -7,6 +7,7 @@
         ActiveTab.set(0);
 
         $scope.envs = {};
+        $scope.envsDetails = {};
         $scope.timestamp = new Date().getTime();
 
         $scope.resolve = function (env, state) {
@@ -17,7 +18,7 @@
             if (env.resolved === state) {
                 return;
             }
-            envStateSet(env.id, {
+            envStateSet(env._id, {
                 resolved: state,
                 locked: false
             });
@@ -28,13 +29,13 @@
                 $('#authModal').modal('show');
                 return null;
             }
-            envStateSet(env.id, {
+            envStateSet(env._id, {
                 locked: !env.locked
             });
         };
 
         $scope.isBuilding = function (env) {
-            return env.build.building;
+            return env.build ? env.build.building : false;
         };
 
         $scope.isLocked = function (env) {
@@ -43,11 +44,11 @@
 
         $scope.details = function (env) {
             var anonymous = 'Anonymous';
-            if (env.build.building === true) {
+            if (env.build && env.build.building === true) {
                 return 'Building';
             }
             if (env.resolved === undefined && env.locked !== true) {
-                return 'Last job result: ' + env.build.result;
+                return 'Last job result: ' + (env.build ? env.build.result : null);
             }
             if (env.locked === true) {
                 return 'Locked by ' + env.changedBy || anonymous;
@@ -57,6 +58,9 @@
             }
             if (env.resolved === false) {
                 return 'Failed by ' + env.changedBy || anonymous;
+            }
+            if (env.locked === false) {
+                return 'Unlocked by ' + env.changedBy || anonymous;
             }
         };
 
@@ -117,27 +121,42 @@
         };
 
         function getEnvs() {
-            ApiClient.environments().then(
-                    function (data) {
-                        $scope.timestamp = new Date().getTime();
-                        //console.log(data);
+            ApiClient.environments().then(function (data) {
+                $scope.timestamp = new Date().getTime();
+                $scope.envs = data;
 
-                        Object.keys($scope.envs).forEach(function (key) {
-                            var env = data[key];
+                envsDetail();
+            });
+        }
 
-                            //Notification
-                            var result = env.build.result ? env.build.result : 'Building';
-                            if ($scope.envs[key].id !== env.id || $scope.envs[key].build.result !== env.build.result) {
-                                var notification = new Notification($scope.envs[key].name, {body: result});
-                                setTimeout(function () {
-                                    notification.close();
-                                }, 15000);
-                            }
-                        });
+        function envsDetail() {
+            $scope.timestamp = new Date().getTime();
 
-                        $scope.envs = data;
+            var arr = [];
+            Object.keys($scope.envs).forEach(function (key) {
+                arr.push(ApiClient.envDetail(key));
+            });
+
+            $q.all(arr).then(function (data) {
+                console.log(data);
+                angular.forEach(data, function (env) {
+                    //Notification
+                    if ($scope.envs[env.job].build !== undefined) {
+                        var result = env.build.result ? env.build.result : 'Building';
+                        if ($scope.envs[env.job]._id !== env._id || $scope.envs[env.job].build.result !== env.build.result) {
+                            var notification = new Notification($scope.envs[env.job].name, {body: result});
+                            setTimeout(function () {
+                                notification.close();
+                            }, 15000);
+                        }
                     }
-            );
+
+                    Object.keys(env).forEach(function (key) {
+                        $scope.envs[env.job][key] = env[key];
+                    });
+                });
+
+            });
         }
 
         getEnvs();
@@ -152,7 +171,7 @@
             });
         }
 
-        //setInterval(getEnvs, 15000);
+        setInterval(envsDetail, 15000);
 
     });
 })

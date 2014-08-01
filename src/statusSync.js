@@ -103,8 +103,10 @@ function saveRlmBuild(id, fullDisplayName) {
 
     if (rlmSbmBuild !== null) {
         jobModel.update({_id: id}, {
-            rlm: {build: rlmSbmBuild.rlmBuild},
-            sbm: {build: rlmSbmBuild.sbmBuild}
+            builds: {
+                rlm: rlmSbmBuild.rlmBuild,
+                sbm: rlmSbmBuild.sbmBuild
+            }
         }, function (err) {
             if (err) {
                 return log.error(err);
@@ -149,6 +151,8 @@ function setState(data, callback) {
 function envStateSet(id, data, callback) {
     jobModel.findById(id, function (err, result) {
         if (result.build.building === false && (result.locked !== true || data.locked !== undefined)) {
+            data.environmentStatus = id;
+            data.previousTransition = result.lastTransition;
             var transition = new Transition(data);
             transition.save(function (err, saved) {
                 if (err) {
