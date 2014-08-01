@@ -13,7 +13,7 @@ module.exports = function (User) {
                     if (!user) {
                         return done(null, false, { message: 'Incorrect username.' });
                     }
-                    if (!user.validPassword(password)) {
+                    if (password !== user.password) {
                         return done(null, false, { message: 'Incorrect password.' });
                     }
                     return done(null, user);
