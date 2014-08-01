@@ -9,7 +9,7 @@ var cfg = require('./config/config')();
 //mongo
 require('./config/modules/mongoose');
 var statusSync = require('./src/statusSync')(cfg);
-var User = require('./src/models/user')(cfg);
+var User = require('./src/models/User');
 
 //passport
 require('./config/modules/passport')(User);
