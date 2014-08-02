@@ -47,7 +47,7 @@
             if (env.build && env.build.building === true) {
                 return 'Building';
             }
-            if (env.resolved === undefined && env.locked !== true) {
+            if (env.resolved === undefined && env.locked === undefined) {
                 return 'Last job result: ' + (env.build ? env.build.result : null);
             }
             if (env.locked === true) {
@@ -113,6 +113,7 @@
                         }
                         Auth.setUser(data.user);
                         $scope.authFailed = null;
+                        $('#authModal').modal('hide');
                     },
                     function (error) {
                         $scope.authFailed = error.message || error;
@@ -151,6 +152,8 @@
                         }
                     }
 
+                    cleanupStateFields(env.job);
+
                     Object.keys(env).forEach(function (key) {
                         $scope.envs[env.job][key] = env[key];
                     });
@@ -165,10 +168,17 @@
             ApiClient.envStateSet(id, body).then(function (data) {
                 var jobName = data.job;
                 delete data.job;
+                cleanupStateFields(jobName);
                 Object.keys(data).forEach(function (key) {
                     $scope.envs[jobName][key] = data[key];
                 });
             });
+        }
+
+        function cleanupStateFields(jobName) {
+            delete $scope.envs[jobName].resolved;
+            delete $scope.envs[jobName].locked;
+            delete $scope.envs[jobName].changedBy;
         }
 
         setInterval(envsDetail, 15000);

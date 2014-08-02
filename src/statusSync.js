@@ -150,31 +150,56 @@ function setState(data, callback) {
 
 function envStateSet(id, data, callback) {
     jobModel.findById(id, function (err, result) {
-        if (result.build.building === false && (result.locked !== true || data.locked !== undefined)) {
-            data.environmentStatus = id;
-            data.previousTransition = result.lastTransition;
-            var transition = new Transition(data);
-            transition.save(function (err, saved) {
-                if (err) {
-                    return log.error(err);
-                }
+        if (result.build.building === true) {
+            if (err) {
+                log.error(err);
+            }
+            return callback();
+        }
+        data.environmentStatus = id;
+        data.previousTransition = result.lastTransition;
 
-                jobModel.findByIdAndUpdate({_id: id}, {lastTransition: saved._id}, function (err, updated) {
-                    if (err) {
-                        return log.error(err);
+        var transition = new Transition(data);
+        transition.save(function (errSave, saved) {
+            if (errSave) {
+                return log.error(errSave);
+            }
+
+            if (result.lastTransition !== undefined && data.locked === false && data.resolved === undefined) {
+                Transition.findById(result.lastTransition, function (prevFind, prevTransition) {
+                    if (prevFind) {
+                        return log.error(prevFind);
                     }
-                    saved.build = updated.build;
-                    saved._id = updated._id;
-                    setState(saved, function (final) {
-                        callback(final);
-                    });
+                    if (prevTransition.previousTransition === undefined) {
+                        setStateAndLastTransition(id, saved._id, saved, callback);
+                    } else {
+                        Transition.findById(prevTransition.previousTransition, function (errFind, foundTransition) {
+                            if (errFind) {
+                                return log.error(errFind);
+                            }
+                            setStateAndLastTransition(id, foundTransition._id, foundTransition, callback);
+                        });
+                    }
                 });
-            });
+            } else {
+                setStateAndLastTransition(id, saved._id, saved, callback);
+            }
 
+        });
+
+    });
+}
+
+function setStateAndLastTransition(id, lastTransitionId, transition, callback) {
+    jobModel.findByIdAndUpdate({_id: id}, {lastTransition: lastTransitionId}, function (errUpdate, updated) {
+        if (errUpdate) {
+            return log.error(errUpdate);
         }
-        else {
-            callback();
-        }
+        transition.build = updated.build;
+        transition._id = updated._id;
+        setState(transition, function (final) {
+            callback(final);
+        });
     });
 }
 
