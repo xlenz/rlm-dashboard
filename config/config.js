@@ -48,7 +48,7 @@ module.exports = function () {
                 name: 'stl-qa-oalmt2',
                 os: 'Server 2008 R2 Enterprise SP1 x64',
                 rlm: {
-                    version: '5.1 GA',
+                    version: '5.2',
                     installType: 'Clean',
                     upgrade: null
                 },
@@ -75,14 +75,9 @@ module.exports = function () {
                 name: 'stl-qa-oalmt3',
                 os: 'Server 2003 R2 Enterprise SP2 x86',
                 rlm: {
-                    version: '5.1 GA',
-                    installType: 'Clean',
-                    upgrade: null
-                    /*
                     version: '5.2',
                     installType: 'Upgrade',
                     upgrade: '5.1.0.680 GA'
-                    */
                 },
                 sbm: {
                     version: '10.1.4.1',
