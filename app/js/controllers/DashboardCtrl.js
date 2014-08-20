@@ -153,6 +153,9 @@
                     }
 
                     cleanupStateFields(env.job);
+                    if ($scope.envs[jobName].builds) {
+                        delete $scope.envs[jobName].builds;
+                    }
 
                     Object.keys(env).forEach(function (key) {
                         $scope.envs[env.job][key] = env[key];
@@ -178,10 +181,7 @@
         function cleanupStateFields(jobName) {
             delete $scope.envs[jobName].resolved;
             delete $scope.envs[jobName].locked;
-            delete $scope.envs[jobName].changedBy;
-            if ($scope.envs[jobName].builds) {
-                delete $scope.envs[jobName].builds;
-            }
+            delete $scope.envs[jobName].changedBy;            
         }
 
         setInterval(envsDetail, 15000);
