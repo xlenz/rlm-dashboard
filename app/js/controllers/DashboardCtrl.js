@@ -179,6 +179,8 @@
             delete $scope.envs[jobName].resolved;
             delete $scope.envs[jobName].locked;
             delete $scope.envs[jobName].changedBy;
+            delete $scope.envs[jobName].env.builds.sbm;
+            delete $scope.envs[jobName].env.builds.rlm;
         }
 
         setInterval(envsDetail, 15000);

@@ -21,13 +21,13 @@ module.exports = function () {
                 name: 'stl-qa-oalmt1',
                 os: 'Server 2003 R2 Enterprise SP2 x86',
                 rlm: {
-                    version: '5.2',
+                    version: '5.1.1',
                     installType: 'Upgrade',
                     upgrade: '5.1.0.680 GA'
                 },
                 sbm: {
-                    version: '10.1.4.1',
-                    upgrade: '10.1.4 GA'
+                    version: '10.1.4.1 GA',
+                    upgrade: null
                 },
                 sra: {
                     server: 'localhost',
@@ -48,7 +48,7 @@ module.exports = function () {
                 name: 'stl-qa-oalmt2',
                 os: 'Server 2008 R2 Enterprise SP1 x64',
                 rlm: {
-                    version: '5.2',
+                    version: '5.1.1',
                     installType: 'Clean',
                     upgrade: null
                 },
@@ -75,13 +75,13 @@ module.exports = function () {
                 name: 'stl-qa-oalmt3',
                 os: 'Server 2003 R2 Enterprise SP2 x86',
                 rlm: {
-                    version: '5.2',
+                    version: '5.1.1',
                     installType: 'Upgrade',
                     upgrade: '5.1.0.680 GA'
                 },
                 sbm: {
-                    version: '10.1.4.1',
-                    upgrade: '10.1.4 GA'
+                    version: '10.1.4.1 GA',
+                    upgrade: null
                 },
                 sra: {
                     server: 'stl-alms-tst5',
@@ -101,7 +101,7 @@ module.exports = function () {
                 name: 'stl-alms-tst4',
                 os: 'Server 2008 R2 Standard SP1 x64',
                 rlm: {
-                    version: '5.2',
+                    version: '5.1.1',
                     installType: 'Clean',
                     upgrade: null
                 },
@@ -127,7 +127,7 @@ module.exports = function () {
                 name: 'stl-alms-tst7',
                 os: 'Server 2012 R2 Standard x64',
                 rlm: {
-                    version: '5.2',
+                    version: '5.1.1',
                     installType: 'Clean',
                     upgrade: null
                 },
@@ -190,7 +190,6 @@ module.exports = function () {
         //users that are allowed to signup
         users: {
             //RLM
-            mroshchupkin: 'Misha Roshchupkin',
             ispitkovskyi: 'Igor Spitkovskyi',
             omykhaliov: 'Oleksiy Mykhaliov',
             vnesterenko: 'Vika Nesterenko',
