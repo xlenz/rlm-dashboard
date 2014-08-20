@@ -89,9 +89,13 @@ function parseRlmBuild(fullDisplayName) {
     var buildName = fullDisplayName.split(' ')[1];
     if (buildName.indexOf(';') !== -1) {
         var builds = buildName.split(';');
+        for (var i = 0; i < builds.length; i++) {
+            var build = builds[i].substr(3);
+            builds[i] = (build === 'Installed') ? null : ('b' + build);
+        }
         return {
-            rlmBuild: 'b' + builds[0].substr(3),
-            sbmBuild: 'b' + builds[1].substr(3)
+            rlmBuild: builds[0],
+            sbmBuild: builds[1]
         };
     } else {
         return null;
