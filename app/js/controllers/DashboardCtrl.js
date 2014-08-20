@@ -153,8 +153,8 @@
                     }
 
                     cleanupStateFields(env.job);
-                    if ($scope.envs[jobName].builds) {
-                        delete $scope.envs[jobName].builds;
+                    if ($scope.envs[env.job].builds) {
+                        delete $scope.envs[env.job].builds;
                     }
 
                     Object.keys(env).forEach(function (key) {
