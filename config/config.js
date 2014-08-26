@@ -115,7 +115,7 @@ module.exports = function () {
                     installedBy: 'SOO installer'
                 },
                 database: {
-                    hostname: 'localhost',
+                    hostname: 'stl-alms-tst4db',
                     type: 'MSSQL 2012 SP1',
                     credentials: [
                         'sa/manager'

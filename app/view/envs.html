@@ -35,16 +35,12 @@
             <div>{{env.database.type}}</div>
             <div ng-repeat="cred in env.database.credentials" class="smaller">{{cred}}</div>
         </td>
-        <td><span class="smaller">6.0</span></td>
+        <td><span class="smaller">{{env.iis}</span></td>
         <td>
-            <div><a ng-href="http://stl-qa-oalmt1/workcenter">SBM</a></div>
-            <div><a ng-href="http://stl-qa-oalmt1:8085/mashupmgr">mashupmgr</a></div>
-            <div><a ng-href="http://stl-qa-oalmt1/serena_ra/">SRA</a></div>
+            <div><a target="_blank" ng-href="http://{{env.name}}/workcenter">SBM</a></div>             
+            <div><a target="_blank" ng-href="http://{{env.name}}:8085/mashupmgr">mashupmgr</a></div>   
+            <div><a target="_blank" ng-href="http://{{env.name}}/serena_ra/">SRA</a></div>
         </td>
-        <!--td>
-            <a ng-href="http://stl-qa-oalmsl:8080/job/QA_RLM_AUTOCONFIG_stl-qa-oalmt1__MAIN">
-                <img src="http://stl-qa-oalmsl/status/QA_RLM_AUTOCONFIG_stl-qa-oalmt1__MAIN"/>
-            </a></td-->
     </tr>
     </tbody>
 </table>
