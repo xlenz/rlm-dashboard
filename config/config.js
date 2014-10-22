@@ -73,11 +73,11 @@ module.exports = function () {
             },
             'QA_RLM_AUTOCONFIG_stl-qa-oalmt3__MAIN': {
                 name: 'stl-qa-oalmt3',
-                os: 'Server 2003 R2 Enterprise SP2 x86',
+                os: 'Server 2012 Standard x64',
                 rlm: {
                     version: '5.1.1',
-                    installType: 'Upgrade',
-                    upgrade: '5.1.0.680 GA'
+                    installType: 'Clean',
+                    upgrade: null
                 },
                 sbm: {
                     version: '10.1.4.1 GA',
@@ -95,7 +95,7 @@ module.exports = function () {
                         'sa/manager'
                     ]
                 },
-                iis: '6.0'
+                iis: '8.0'
             },
             'QA_RLM_AUTOCONFIG_stl-alms-tst4__MAIN': {
                 name: 'stl-alms-tst4',
