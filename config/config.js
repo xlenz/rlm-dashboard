@@ -17,38 +17,11 @@ module.exports = function () {
             pwd: 'password'
         },
         environments: {
-            'QA_RLM_AUTOCONFIG_stl-qa-oalmt1__MAIN': {
+            'QA_SSM_AUTOCONFIG_stl-qa-oalmt1__MAIN': {
                 name: 'stl-qa-oalmt1',
                 os: 'Server 2003 R2 Enterprise SP2 x86',
-                rlm: {
-                    version: '5.1.1',
-                    installType: 'Upgrade',
-                    upgrade: '5.1.0.680 GA'
-                },
-                sbm: {
-                    version: '10.1.4.1 GA',
-                    upgrade: null
-                },
-                sra: {
-                    server: 'localhost',
-                    serverDetails: 'serena_ra/password',
-                    installedBy: 'SOO installer'
-                },
-                database: {
-                    hostname: 'stl-qa-oalmt1db',
-                    type: 'Oracle 11.2.0.1',
-                    credentials: [
-                        'system/manager@oalm',
-                        'sbm2_2/manager@oalm'
-                    ]
-                },
-                iis: '6.0'
-            },
-            'QA_RLM_AUTOCONFIG_stl-qa-oalmt2__MAIN': {
-                name: 'stl-qa-oalmt2',
-                os: 'Server 2008 R2 Enterprise SP1 x64',
-                rlm: {
-                    version: '5.1.1',
+                sol: {
+                    version: null,
                     installType: 'Clean',
                     upgrade: null
                 },
@@ -56,11 +29,38 @@ module.exports = function () {
                     version: '10.1.4.1',
                     upgrade: null
                 },
-                sra: {
-                    server: 'stl-alms-tst6',
-                    serverDetails: 'Tomcat',
-                    installedBy: 'CI of SRA'
+                // sra: {
+                    // server: 'localhost',
+                    // serverDetails: 'serena_ra/password',
+                    // installedBy: 'SOO installer'
+                // },
+                database: {
+                    hostname: 'stl-qa-oalmt1db',
+                    type: 'Oracle 11.2.0.3',
+                    credentials: [
+                        'system/manager@oalm',
+                        'sbm1/manager@oalm'
+                    ]
                 },
+                iis: '6.0'
+            },
+            'QA_SSM_AUTOCONFIG_stl-qa-oalmt2__MAIN': {
+                name: 'stl-qa-oalmt2',
+                os: 'Server 2008 R2 Enterprise SP1 x64',
+                sol: {
+                    version: null,
+                    installType: 'Clean',
+                    upgrade: null
+                },
+                sbm: {
+                    version: '10.1.4.1',
+                    upgrade: null
+                },
+                // sra: {
+                    // server: 'stl-alms-tst6',
+                    // serverDetails: 'Tomcat',
+                    // installedBy: 'CI of SRA'
+                // },
                 database: {
                     hostname: 'stl-qa-oalmtfs',
                     type: 'Oracle 11.2.0.3',
@@ -71,23 +71,23 @@ module.exports = function () {
                 },
                 iis: '7.5'
             },
-            'QA_RLM_AUTOCONFIG_stl-qa-oalmt3__MAIN': {
+            'QA_SSM_AUTOCONFIG_stl-qa-oalmt3__MAIN': {
                 name: 'stl-qa-oalmt3',
                 os: 'Server 2012 Standard x64',
-                rlm: {
-                    version: '5.1.1',
+                sol: {
+                    version: null,
                     installType: 'Clean',
                     upgrade: null
                 },
                 sbm: {
-                    version: '10.1.4.1 GA',
+                    version: '10.1.4.1',
                     upgrade: null
                 },
-                sra: {
-                    server: 'stl-alms-tst5',
-                    serverDetails: 'Tomcat',
-                    installedBy: 'CI of SRA'
-                },
+                // sra: {
+                    // server: 'stl-alms-tst5',
+                    // serverDetails: 'Tomcat',
+                    // installedBy: 'CI of SRA'
+                // },
                 database: {
                     hostname: 'localhost',
                     type: 'MSSQL 2008 R2 SP2',
@@ -97,11 +97,11 @@ module.exports = function () {
                 },
                 iis: '8.0'
             },
-            'QA_RLM_AUTOCONFIG_stl-alms-tst4__MAIN': {
+            'QA_SSM_AUTOCONFIG_stl-alms-tst4__MAIN': {
                 name: 'stl-alms-tst4',
                 os: 'Server 2008 R2 Standard SP1 x64',
-                rlm: {
-                    version: '5.1.1',
+                sol: {
+                    version: null,
                     installType: 'Clean',
                     upgrade: null
                 },
@@ -109,11 +109,11 @@ module.exports = function () {
                     version: '10.1.4.1',
                     upgrade: null
                 },
-                sra: {
-                    server: 'localhost',
-                    serverDetails: 'serena_ra/password',
-                    installedBy: 'SOO installer'
-                },
+                // sra: {
+                    // server: 'localhost',
+                    // serverDetails: 'serena_ra/password',
+                    // installedBy: 'SOO installer'
+                // },
                 database: {
                     hostname: 'stl-alms-tst4db',
                     type: 'MSSQL 2012 SP1',
@@ -123,11 +123,11 @@ module.exports = function () {
                 },
                 iis: '7.5'
             },
-            'QA_RLM_AUTOCONFIG_stl-alms-tst7__MAIN': {
+            'QA_SSM_AUTOCONFIG_stl-alms-tst7__MAIN': {
                 name: 'stl-alms-tst7',
                 os: 'Server 2012 R2 Standard x64',
-                rlm: {
-                    version: '5.1.1',
+                sol: {
+                    version: null,
                     installType: 'Clean',
                     upgrade: null
                 },
@@ -135,11 +135,11 @@ module.exports = function () {
                     version: '10.1.4.1',
                     upgrade: null
                 },
-                sra: {
-                    server: 'localhost',
-                    serverDetails: 'serena_ra/password',
-                    installedBy: 'SOO installer'
-                },
+                // sra: {
+                    // server: 'localhost',
+                    // serverDetails: 'serena_ra/password',
+                    // installedBy: 'SOO installer'
+                // },
                 database: {
                     hostname: 'localhost',
                     type: 'MSSQL 2008 R2 SP2',
