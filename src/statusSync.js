@@ -94,7 +94,7 @@ function parseRlmBuild(fullDisplayName) {
             builds[i] = (build === 'Installed') ? null : ('b' + build);
         }
         return {
-            rlmBuild: builds[0],
+            solBuild: builds[0],
             sbmBuild: builds[1]
         };
     } else {
@@ -103,13 +103,13 @@ function parseRlmBuild(fullDisplayName) {
 }
 
 function saveRlmBuild(id, fullDisplayName) {
-    var rlmSbmBuild = parseRlmBuild(fullDisplayName);
+    var solSbmBuild = parseRlmBuild(fullDisplayName);
 
-    if (rlmSbmBuild !== null) {
+    if (solSbmBuild !== null) {
         jobModel.update({_id: id}, {
             builds: {
-                rlm: rlmSbmBuild.rlmBuild,
-                sbm: rlmSbmBuild.sbmBuild
+                sol: solSbmBuild.solBuild,
+                sbm: solSbmBuild.sbmBuild
             }
         }, function (err) {
             if (err) {
