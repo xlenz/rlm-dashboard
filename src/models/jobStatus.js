@@ -15,7 +15,7 @@ var jobStatusSchema = mongoose.Schema({
     state: String,
     lastTransition: mongoose.Schema.Types.ObjectId,
     builds: {
-        rlm: String,
+        sol: String,
         sbm: String
     }
 });
