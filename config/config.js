@@ -49,8 +49,8 @@ module.exports = function () {
                 os: 'Server 2008 R2 Enterprise SP1 x64',
                 sol: {
                     version: null,
-                    installType: 'Clean',
-                    upgrade: null
+                    installType: 'Upgrade',
+                    upgrade: '5.1.1'
                 },
                 sbm: {
                     version: '10.1.4.1',
@@ -128,12 +128,12 @@ module.exports = function () {
                 os: 'Server 2012 R2 Standard x64',
                 sol: {
                     version: null,
-                    installType: 'Clean',
-                    upgrade: null
+                    installType: 'Upgrade',
+                    upgrade: '4.5'
                 },
                 sbm: {
                     version: '10.1.4.1',
-                    upgrade: null
+                    upgrade: '10.1.2'
                 },
                 // sra: {
                     // server: 'localhost',
