@@ -76,12 +76,12 @@ module.exports = function () {
                 os: 'Server 2012 Standard x64',
                 sol: {
                     version: null,
-                    installType: 'Clean',
-                    upgrade: null
+                    installType: 'Upgrade',
+                    upgrade: '5.0'
                 },
                 sbm: {
                     version: '10.1.4.1',
-                    upgrade: null
+                    upgrade: '10.1.3'
                 },
                 // sra: {
                     // server: 'stl-alms-tst5',
