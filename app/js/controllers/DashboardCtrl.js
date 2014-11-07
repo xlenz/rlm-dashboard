@@ -159,6 +159,9 @@
 
                     Object.keys(env).forEach(function (key) {
                         $scope.envs[env.job][key] = env[key];
+                        var regex = /QA_(.*)_AUTOCONFIG/;
+                        var matches = env.job.match(regex);
+                        $scope.envs[env.job]['solutionType'] = matches[1];
                     });
                 });
 
