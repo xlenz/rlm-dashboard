@@ -38,8 +38,8 @@ module.exports = function () {
                     hostname: 'stl-qa-oalmt1db',
                     type: 'Oracle 11.2.0.3',
                     credentials: [
-                        'system/manager@oalm',
-                        'sbm1/manager@oalm'
+                        'system/manager@oalm:1522',
+                        'sbm1/manager@oalm:1522'
                     ]
                 },
                 iis: '6.0'
@@ -65,8 +65,8 @@ module.exports = function () {
                     hostname: 'stl-qa-oalmtfs',
                     type: 'Oracle 11.2.0.3',
                     credentials: [
-                        'system/manager@oalm',
-                        'sbm2/manager@oalm'
+                        'system/manager@oalm:1522',
+                        'sbm2/manager@oalm:1522'
                     ]
                 },
                 iis: '7.5'
