@@ -36,6 +36,7 @@
         snapRemoteProvider.globalOptions.disable = 'right';
         snapRemoteProvider.globalOptions.touchToDrag = false;
         snapRemoteProvider.globalOptions.maxPosition = 265;
+        snapRemoteProvider.globalOptions.tapToClose = true;
     });
 
     app.controller('MainCtrl', function ($scope, ActiveTab, ApiClient, Auth) {
