@@ -1,39 +1,35 @@
 .env-plate {
+    font-size: 24px;
     display: inline-block;
-    border: 2px solid #ccc;
-    border-radius: 10px;
     vertical-align: top;
-    background-color: #eee;
-    margin: 10px 0 0 10px;
+    background-color: #AAAAAA;
+    margin: 15px 0 0 15px;
     overflow: hidden;
-    transition: background-color 0.5s ease, border-color 0.5s ease;
+    transition: background-color 0.5s ease;
 }
 
 .env-plate:hover {
-    box-shadow: 0 0 10px rgba(81, 203, 238, 1);
+    box-shadow: 5px 5px 10px rgba(81, 203, 238, 1);
 }
 
 .env-plate.Ok {
-    background-color: #90EE90;
-    border-color: limegreen;
+    background-color: #01FF70;
 }
 
 .env-plate.Ok .info div {
-    border-color: limegreen;
+    border-color: #2ECC40;
 }
 
 .env-plate.Locked {
-    background-color: #faf5af;
-    border-color: darkkhaki;
+    background-color: #FFDC00;
 }
 
 .env-plate.Locked .info div {
-    border-color: darkkhaki;
+    border-color: #F0BF00;
 }
 
 .env-plate.Building {
-    background-color: #87cefa;
-    border-color: #1e90ff;
+    background-color: #0074D9;
 }
 
 .env-plate.Building .info div {
@@ -41,22 +37,21 @@
 }
 
 .env-plate.Failed {
-    background-color: indianred;
-    border-color: darkred;
+    background-color: #FF4136;
 }
 
 .env-plate.Failed .info div {
-    border-color: darkred;
+    border-color: #FF1010;
 }
 
 .env-plate > div {
     float: left;
     text-align: center;
-    height: 210px;
+    height: 420px;
 }
 
 .env-plate .info {
-    width: 170px;
+    width: 340px;
     position: relative;
 }
 
@@ -69,13 +64,13 @@
 .env-plate .info .name button {
     background: none;
     border: none;
-    font-size: 25px;
+    font-size: 40px;
     padding: 0;
-    margin-left: -7px;
+    margin-left: -8px;
 }
 
-.env-plate .info .upgrade {
-    border-top: 1px solid #ccc;
+.env-plate .info .installType {
+    border-top: 1px solid #bbb;
     margin: -1px 14px -1px 10px;
     padding-top: 3px;
     transition: border-color 0.5s ease;
@@ -87,8 +82,9 @@
 
 .env-plate .info .details {
     height: 40px;
-    bottom: 0px;
-    border-top: 1px solid #ccc;
+    position: relative;
+    top: 46px;
+    border-top: 1px solid #bbb;
     margin: 0 14px 0 10px;
     padding: 1px 0 0;
     font-weight: bold;
@@ -97,26 +93,25 @@
 
 .env-plate .info div.details div {
     position: relative;
-    top: 50%;
+    top: 100%;
     transform: translateY(-50%);
-    bottom: -20px;
 }
 
 .env-plate img {
-    width: 32px;
-    height: 32px;
+    width: 48px;
+    height: 48px;
 }
 
 .env-plate .controlls .state {
     position: relative;
     right: 10px;
-    top: 3px;
+    top: 4px;
 }
 
 .env-plate .controlls .locked {
     position: relative;
-    bottom: -2px;
-    right: 11px;
+    bottom: -68px;
+    right: 10px;
 }
 
 .env-plate .controlls .locked img {
@@ -132,11 +127,11 @@
 }
 
 .env-plate .controlls {
-    width: 22px;
+    width: 42px;
 }
 
 .env-plate .controlls > div.controll {
-    padding: 13px 9px 13px 0;
+    padding: 50px 9px 0 0;
 }
 
 .env-plate .controlls a {

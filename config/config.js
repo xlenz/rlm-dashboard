@@ -12,142 +12,84 @@ module.exports = function () {
         appHtml: pathToApp + '/app.html',
         pageNotFound: pathToApp + '/404.html',
 
-        rdpCred: {
-            user: 'Administrator',
-            pwd: 'password'
-        },
         environments: {
-            'QA_SSM_AUTOCONFIG_stl-qa-oalmt1__MAIN': {
+            'QA_RLM_AUTOCONFIG_stl-qa-oalmt1__MAIN': {
                 name: 'stl-qa-oalmt1',
-                os: 'Server 2003 R2 Enterprise SP2 x86',
+                sbmType: 'On Premise',
+                os: 'Server 2003 R2 EE SP2 x86',
                 sol: {
-                    version: null,
                     installType: 'Clean',
                     upgrade: null
                 },
-                sbm: {
-                    version: '10.1.4.1',
-                    upgrade: null
-                },
-                // sra: {
-                    // server: 'localhost',
-                    // serverDetails: 'serena_ra/password',
-                    // installedBy: 'SOO installer'
-                // },
                 database: {
                     hostname: 'stl-qa-oalmt1db',
-                    type: 'Oracle 11.2.0.3',
-                    credentials: [
-                        'system/manager@oalm:1522',
-                        'sbm1/manager@oalm:1522'
-                    ]
-                },
-                iis: '6.0'
+                    type: 'Oracle 11.2.0.3'
+                }
             },
-            'QA_SSM_AUTOCONFIG_stl-qa-oalmt2__MAIN': {
+            'QA_RLM_AUTOCONFIG_stl-qa-oalmt2__MAIN': {
                 name: 'stl-qa-oalmt2',
-                os: 'Server 2008 R2 Enterprise SP1 x64',
+                sbmType: 'On Premise',
+                os: 'Server 2008 R2 EE SP1 x64',
                 sol: {
-                    version: null,
                     installType: 'Upgrade',
-                    upgrade: '5.1.1'
+                    upgrade: '5.0.1'
                 },
-                sbm: {
-                    version: '10.1.4.1',
-                    upgrade: null
-                },
-                // sra: {
-                    // server: 'stl-alms-tst6',
-                    // serverDetails: 'Tomcat',
-                    // installedBy: 'CI of SRA'
-                // },
                 database: {
                     hostname: 'stl-qa-oalmtfs',
                     type: 'Oracle 11.2.0.3',
-                    credentials: [
-                        'system/manager@oalm:1522',
-                        'sbm2/manager@oalm:1522'
-                    ]
-                },
-                iis: '7.5'
+                }
             },
-            'QA_SSM_AUTOCONFIG_stl-qa-oalmt3__MAIN': {
+            'QA_RLM_AUTOCONFIG_stl-qa-oalmt3__MAIN': {
                 name: 'stl-qa-oalmt3',
-                os: 'Server 2012 Standard x64',
+                sbmType: 'On Premise',
+                os: 'Server 2012 SE x64',
                 sol: {
-                    version: null,
-                    installType: 'Upgrade',
-                    upgrade: '5.0'
-                },
-                sbm: {
-                    version: '10.1.4.1',
-                    upgrade: '10.1.3'
-                },
-                // sra: {
-                    // server: 'stl-alms-tst5',
-                    // serverDetails: 'Tomcat',
-                    // installedBy: 'CI of SRA'
-                // },
-                database: {
-                    hostname: 'localhost',
-                    type: 'MSSQL 2008 R2 SP2',
-                    credentials: [
-                        'sa/manager'
-                    ]
-                },
-                iis: '8.0'
-            },
-            'QA_SSM_AUTOCONFIG_stl-alms-tst4__MAIN': {
-                name: 'stl-alms-tst4',
-                os: 'Server 2008 R2 Standard SP1 x64',
-                sol: {
-                    version: null,
                     installType: 'Clean',
                     upgrade: null
                 },
-                sbm: {
-                    version: '10.1.4.1',
+                database: {
+                    hostname: 'stl-alms-tst7db',
+                    type: 'MSSQL 2008 SP3'
+                }
+            },
+            'QA_RLM_AUTOCONFIG_stl-alms-tst4__MAIN': {
+                name: 'stl-alms-tst4',
+                sbmType: 'On Demand',
+                os: 'Server 2008 R2 SE SP1 x64',
+                sol: {
+                    installType: 'Clean',
                     upgrade: null
                 },
-                // sra: {
-                    // server: 'localhost',
-                    // serverDetails: 'serena_ra/password',
-                    // installedBy: 'SOO installer'
-                // },
                 database: {
                     hostname: 'stl-alms-tst4db',
-                    type: 'MSSQL 2012 SP1',
-                    credentials: [
-                        'sa/manager'
-                    ]
+                    type: 'MSSQL 2012 SP1'
+                }
+            },
+            'QA_RLM_AUTOCONFIG_stmsqadv-tdb801__MAIN': {
+                name: 'stmsqadv-tdb801',
+                sbmType: 'On Demand',
+                os: 'Server 2008 R2 EE SP1 x64',
+                sol: {
+                    installType: 'Upgrade',
+                    upgrade: '5.1.1'
                 },
-                iis: '7.5'
+                database: {
+                    hostname: 'stmsqadv-tdb802',
+                    type: 'MSSQL 2012 SP1'
+                }
             },
             'QA_SSM_AUTOCONFIG_stl-alms-tst7__MAIN': {
                 name: 'stl-alms-tst7',
-                os: 'Server 2012 R2 Standard x64',
+                sbmType: 'On Premise',
+                os: 'Server 2012 R2 SE x64',
                 sol: {
-                    version: null,
                     installType: 'Upgrade',
                     upgrade: '4.5'
                 },
-                sbm: {
-                    version: '10.1.4.1',
-                    upgrade: '10.1.2'
-                },
-                // sra: {
-                    // server: 'localhost',
-                    // serverDetails: 'serena_ra/password',
-                    // installedBy: 'SOO installer'
-                // },
                 database: {
                     hostname: 'localhost',
-                    type: 'MSSQL 2008 R2 SP2',
-                    credentials: [
-                        'sa/manager'
-                    ]
-                },
-                iis: '8.5'
+                    type: 'MSSQL 2008 R2 SP2'
+                }
             }
         },
 
@@ -155,28 +97,6 @@ module.exports = function () {
             {
                 name: 'Dashboard',
                 href: '#dashboard'
-            },
-            {
-                name: 'Test Environments',
-                href: '#envs'
-            },
-            {
-                name: '3rd Party Integrations',
-                href: '#integrations'
-            },
-            {
-                name: 'Automation',
-                href: '#automation'
-            },
-            {
-                name: 'Dimensions Client',
-                subsection: true,
-                href: '#dmcm'
-            },
-            {
-                name: 'Excel Addin',
-                subsection: true,
-                href: '#exceladdin'
             }
         ],
 
@@ -192,7 +112,6 @@ module.exports = function () {
             //RLM
             ispitkovskyi: 'Igor Spitkovskyi',
             omykhaliov: 'Oleksiy Mykhaliov',
-            vnesterenko: 'Vika Nesterenko',
             mgrybyk: 'Mykola Grybyk',
             nlugova: 'Nata Lugova',
             //SRA

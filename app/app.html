@@ -40,26 +40,17 @@
     <link rel="stylesheet" href="libs/angular-snap/angular-snap.min.css"/>
     <link rel="stylesheet" href="css/snap.css"/>
     <link rel="stylesheet" href="css/dashboard.css"/>
-    <link rel="stylesheet" href="css/dmcm.css"/>
-    <link rel="stylesheet" href="css/env.css"/>
-
+<!--
     <script>
         document.write('<script src="http://' +
                 (location.host || 'localhost').split(':')[0] +
                 ':35729/livereload.js?snipver=1"></' + 'script>')
     </script>
+-->
 </head>
 
 <body class="container">
 
-<div id="outdated">
-    <h6>Your browser is out-of-date!</h6>
-
-    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
-        my browser now </a></p>
-
-    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
-</div>
 <div ng-controller="MainCtrl">
 
     <div id="toolbar">
@@ -91,8 +82,6 @@
 
 </div>
 <script src="libs/jquery/dist/jquery.min.js"></script>
-<script src="libs/outdated-browser/outdatedbrowser/outdatedBrowser.min.js"></script>
-<script src="js/outdated-browser.js"></script>
 <script src="custom-libs/bootstrap/js/bootstrap.min.js"></script>
 <script src="libs/snapjs/snap.min.js"></script>
 <script src="libs/angular/angular.min.js"></script>
@@ -105,11 +94,6 @@
 <script src="js/factories/Auth.js"></script>
 <script src="js/controllers/TabCtrl.js"></script>
 <script src="js/controllers/DashboardCtrl.js"></script>
-<script src="js/controllers/IntegrationCtrl.js"></script>
-<script src="js/controllers/EnvCtrl.js"></script>
-<script src="js/controllers/AutomationCtrl.js"></script>
-<script src="js/controllers/ExceladdinCtrl.js"></script>
-<script src="js/controllers/DmCmCtrl.js"></script>
 <script src="js/directives.js"></script>
 <script src="js/tricks.js"></script>
 

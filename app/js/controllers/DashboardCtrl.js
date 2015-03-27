@@ -139,8 +139,8 @@
             });
 
             $q.all(arr).then(function (data) {
-                console.log(data);
                 angular.forEach(data, function (env) {
+                    if (!env) return;
                     //Notification
                     if ($scope.envs[env.job].build !== undefined) {
                         var result = env.build.result ? env.build.result : 'Building';

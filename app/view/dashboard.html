@@ -10,11 +10,12 @@
             <span custom-popover popover-placement="bottom" popover-label="{{env.name}}" class="custom-popover"></span>
 
         </div>
-        <div class="upgrade">{{env.sol.installType}}</div>
-        <div class="solBuild">{{env.solutionType}} {{env.sol.version}} {{env.builds.sol}}</div>
+        <div class="installType">{{env.sol.installType}} {{env.sol.upgrade}}</div>
         <div class="sbm">SBM {{env.builds.sbm}}</div>
+        <div class="sbmType">{{env.sbmType}}</div>
+        <div class="solBuild">{{env.solutionType}} {{env.builds.sol}}</div>
+        <div class="os">{{env.os}}</div>
         <div class="db">{{env.database.type}}</div>
-        <div class="sra" style="visibility: hidden;">SRA on <!--{{env.sra.server}}--></div>
         <div class="details">
             <div>{{details(env)}}</div>
         </div>

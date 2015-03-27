@@ -30,7 +30,7 @@
                 this.envDetail = function (job) {
                     var httpParams = {
                         method: 'GET',
-                        url: '/env/' + job
+                        url: '/env/' + job + '?' + new Date().getTime()
                     };
 
                     return qHttp(httpParams);

@@ -11,6 +11,8 @@ var cfg;
 module.exports = function (app, _cfg, routes) {
     cfg = _cfg;
     var userSession = {
+        resave: true,
+        saveUninitialized: true,
         secret: 'rlm dashboard made by mgrybyk 120958012958',
         cookie: {
             maxAge: 30000000000 // one hour is 3600000
