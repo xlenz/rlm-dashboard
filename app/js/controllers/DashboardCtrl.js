@@ -72,7 +72,7 @@
             $scope.authType = type;
         };
 
-        $scope.submit = function (authType) {
+        $scope.fSubmit = function (authType) {
             if (!$scope.authForm.$valid) {
                 return;
             }

@@ -86,11 +86,11 @@
                     <div class="error" ng-show="authFailed">
                         <span>{{authFailed || 'Unknown error occured!'}}</span>
                     </div>
-                    <button type="submit" class="btn btn-primary" ng-show="authType === 'login'" ng-click="submit('login')">
+                    <button type="submit" class="btn btn-primary" ng-show="authType === 'login'" ng-click="fSubmit('login')">
                         Login
                     </button>
                     <button type="submit" class="btn btn-primary" ng-show="authType === 'signup'"
-                            ng-click="submit('signup')">Signup
+                            ng-click="fSubmit('signup')">Signup
                     </button>
                 </form>
             </div>
