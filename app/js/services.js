@@ -4,87 +4,84 @@
     var app = angular.module('ciDashboard');
 
     app.service('ApiClient', function ($http, $q) {
+        var qHttp = function (httpParams) {
+            var deferred = $q.defer();
 
-                var qHttp = function (httpParams) {
-                    var deferred = $q.defer();
+            $http(httpParams).success(function (data) {
+                deferred.resolve(data);
+            }).error(function (data) {
+                console.error(data);
+                deferred.reject(data);
+            });
 
-                    $http(httpParams).success(function (data) {
-                        deferred.resolve(data);
-                    }).error(function (data) {
-                        console.error(data);
-                        deferred.reject(data);
-                    });
+            return deferred.promise;
+        };
 
-                    return deferred.promise;
-                };
+        this.environments = function () {
+            var httpParams = {
+                method: 'GET',
+                url: '/environments'
+            };
 
-                this.environments = function () {
-                    var httpParams = {
-                        method: 'GET',
-                        url: '/environments'
-                    };
+            return qHttp(httpParams);
+        };
 
-                    return qHttp(httpParams);
-                };
+        this.envDetail = function (job) {
+            var httpParams = {
+                method: 'GET',
+                url: '/env/' + job + '?' + new Date().getTime()
+            };
 
-                this.envDetail = function (job) {
-                    var httpParams = {
-                        method: 'GET',
-                        url: '/env/' + job + '?' + new Date().getTime()
-                    };
+            return qHttp(httpParams);
+        };
 
-                    return qHttp(httpParams);
-                };
+        this.envStateSet = function (id, data) {
+            var httpParams = {
+                method: 'POST',
+                data: data,
+                url: '/state/' + id
+            };
 
-                this.envStateSet = function (id, data) {
-                    var httpParams = {
-                        method: 'POST',
-                        data: data,
-                        url: '/state/' + id
-                    };
+            return qHttp(httpParams);
+        };
 
-                    return qHttp(httpParams);
-                };
+        this.login = function (data) {
+            var httpParams = {
+                method: 'POST',
+                data: data,
+                url: '/login'
+            };
 
-                this.login = function (data) {
-                    var httpParams = {
-                        method: 'POST',
-                        data: data,
-                        url: '/login'
-                    };
+            return qHttp(httpParams);
+        };
 
-                    return qHttp(httpParams);
-                };
+        this.signup = function (data) {
+            var httpParams = {
+                method: 'POST',
+                data: data,
+                url: '/signup'
+            };
 
-                this.signup = function (data) {
-                    var httpParams = {
-                        method: 'POST',
-                        data: data,
-                        url: '/signup'
-                    };
+            return qHttp(httpParams);
+        };
 
-                    return qHttp(httpParams);
-                };
+        this.logout = function (data) {
+            var httpParams = {
+                method: 'POST',
+                url: '/logout'
+            };
 
-                this.logout = function (data) {
-                    var httpParams = {
-                        method: 'POST',
-                        url: '/logout'
-                    };
+            return qHttp(httpParams);
+        };
 
-                    return qHttp(httpParams);
-                };
+        this.me = function () {
+            var httpParams = {
+                method: 'GET',
+                url: '/me'
+            };
 
-                this.me = function () {
-                    var httpParams = {
-                        method: 'GET',
-                        url: '/me'
-                    };
+            return qHttp(httpParams);
+        };
 
-                    return qHttp(httpParams);
-                };
-
-            }
-    );
-
+    });
 })();

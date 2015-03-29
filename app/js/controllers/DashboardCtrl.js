@@ -3,7 +3,7 @@
 (function () {
     var app = angular.module('ciDashboard');
 
-    app.controller('DashboardCtrl', function ($scope, $http, $q, ApiClient, ActiveTab, Auth) {
+    app.controller('DashboardCtrl', function ($scope, $q, ApiClient, ActiveTab, Auth) {
         ActiveTab.set(0);
 
         $scope.envs = {};
@@ -105,20 +105,17 @@
         };
 
         $scope.signup = function () {
-            ApiClient.signup($scope.user).then(
-                    function (data) {
-                        console.log(data);
-                        if (data.success === false) {
-                            return $scope.authFailed = data.message;
-                        }
-                        Auth.setUser(data.user);
-                        $scope.authFailed = null;
-                        $('#authModal').modal('hide');
-                    },
-                    function (error) {
-                        $scope.authFailed = error.message || error;
-                    }
-            );
+            ApiClient.signup($scope.user).then(function (data) {
+                console.log(data);
+                if (data.success === false) {
+                    return $scope.authFailed = data.message;
+                }
+                Auth.setUser(data.user);
+                $scope.authFailed = null;
+                $('#authModal').modal('hide');
+            }, function (error) {
+                $scope.authFailed = error.message || error;
+            });
         };
 
         function getEnvs() {
@@ -184,11 +181,10 @@
         function cleanupStateFields(jobName) {
             delete $scope.envs[jobName].resolved;
             delete $scope.envs[jobName].locked;
-            delete $scope.envs[jobName].changedBy;            
+            delete $scope.envs[jobName].changedBy;
         }
 
         setInterval(envsDetail, 15000);
 
     });
-})
-();
+})();
