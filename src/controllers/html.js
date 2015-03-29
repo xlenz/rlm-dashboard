@@ -9,5 +9,5 @@ module.exports = function (_cfg) {
 };
 
 exports.appHtml = function (req, res, next) {
-    return res.sendfile(cfg.appHtml);
+    return res.sendFile(cfg.rootDir + cfg.appHtml);
 };

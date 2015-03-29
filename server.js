@@ -5,6 +5,7 @@ global.log = require('./config/modules/winston');
 
 //reading config file
 var cfg = require('./config/config')();
+cfg.rootDir = __dirname + '/';
 
 //mongo
 require('./config/modules/mongoose');

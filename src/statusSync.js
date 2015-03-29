@@ -10,6 +10,9 @@ var cfg;
 module.exports = function (_cfg) {
     cfg = _cfg;
 
+    jobModel.cleanUp();
+    Transition.cleanUp();
+
     Object.keys(cfg.environments).forEach(function (key) {
         jobStatus(key);
     });

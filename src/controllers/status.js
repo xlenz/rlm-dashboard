@@ -27,7 +27,7 @@ exports.status = function (req, res, next) {
         }
         var img = cfg.statusError;
         if (err || result === null) {
-            return res.sendfile(img);
+            return res.sendfile(cfg.rootDir + img);
         }
 
         if (result === null) {
@@ -42,7 +42,7 @@ exports.status = function (req, res, next) {
             img = cfg.statusRed;
         }
 
-        res.sendfile(img);
+        res.sendFile(cfg.rootDir + img);
     });
 
 };

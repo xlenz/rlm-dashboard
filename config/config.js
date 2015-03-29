@@ -1,6 +1,6 @@
 'use strict';
 
-var pathToImages = './img';
+var pathToImages = 'img';
 var pathToApp = 'app';
 
 module.exports = function () {

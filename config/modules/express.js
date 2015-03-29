@@ -40,7 +40,7 @@ module.exports = function (app, _cfg, routes) {
 
 function logWho(req, res, next) {
     var who = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-    log.info(who + ' requests: ' + req.headers.host + req.url);
+    log.debug(who + ' requests: ' + req.headers.host + req.url);
     next();
 }
 
