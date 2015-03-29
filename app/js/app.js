@@ -1,7 +1,7 @@
 'use strict';
 
 (function () {
-    var app = angular.module('rlmDashboard', ['snap', 'ngRoute']);
+    var app = angular.module('ciDashboard', ['snap', 'ngRoute']);
 
     app.config(function ($routeProvider, snapRemoteProvider) {
         $routeProvider

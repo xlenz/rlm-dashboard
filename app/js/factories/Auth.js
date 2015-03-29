@@ -1,7 +1,7 @@
 'use strict';
 
 (function () {
-    var app = angular.module('rlmDashboard');
+    var app = angular.module('ciDashboard');
 
     app.factory('Auth', function (ApiClient) {
         var user = null;

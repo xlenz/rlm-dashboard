@@ -1,7 +1,7 @@
 'use strict';
 
 (function () {
-    var app = angular.module('rlmDashboard');
+    var app = angular.module('ciDashboard');
 
     app.controller('DashboardCtrl', function ($scope, $http, $q, ApiClient, ActiveTab, Auth) {
         ActiveTab.set(0);

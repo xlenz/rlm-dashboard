@@ -1,7 +1,7 @@
 'use strict';
 
 (function () {
-    var app = angular.module('rlmDashboard');
+    var app = angular.module('ciDashboard');
 
     app.service('ApiClient', function ($http, $q) {
 

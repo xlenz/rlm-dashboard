@@ -1,7 +1,7 @@
 'use strict';
 
 (function () {
-    var app = angular.module('rlmDashboard');
+    var app = angular.module('ciDashboard');
 
     app.controller('TabCtrl', function ($scope, $http, ActiveTab) {
         $scope.tabs = [];

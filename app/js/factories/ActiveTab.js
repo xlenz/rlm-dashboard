@@ -1,7 +1,7 @@
 'use strict';
 
 (function () {
-    var app = angular.module('rlmDashboard');
+    var app = angular.module('ciDashboard');
 
     app.factory('ActiveTab', function () {
         var tabs = [];
@@ -18,7 +18,7 @@
                     return tabs[activeTab].name;
                 }
                 else {
-                    return 'RLM Dashboard';
+                    return 'CI Dashboard';
                 }
             },
             set: function (id) {
