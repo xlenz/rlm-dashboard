@@ -49,7 +49,7 @@ function pageNotFound(req, res, next) {
     log.warn('Not found URL: ' + req.url);
     var page404 = cfg.pageNotFound;
     if (req.method === 'GET') {
-        return res.sendfile(page404);
+        return res.sendFile(cfg.rootDir + page404);
     }
     return res.send({
         error: 'Resource not found',
