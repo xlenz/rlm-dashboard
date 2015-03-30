@@ -144,7 +144,6 @@ function setState(data, callback) {
             return log.error(err);
         }
         if (callback) {
-            console.log(data.changedBy);
             User.findById(data.changedBy, function (errUser, user) {
                 updated.changedBy = user.displayName || user.username;
                 updated.locked = data.locked;
