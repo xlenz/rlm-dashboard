@@ -59,7 +59,7 @@ function jobStatus(jobName) {
                     jobModel.findByIdAndUpdate({_id: result._id}, {
                         'build.building': data.building,
                         'build.result': data.result
-                    }, function (err, updated) {
+                    }, {'new': true}, function (err, updated) {
                         if (err) {
                             return log.error(err);
                         }
@@ -139,7 +139,7 @@ function setState(data, callback) {
 
     jobModel.findByIdAndUpdate({_id: data._id}, {
         state: state
-    }, function (err, updated) {
+    }, {'new': true}, function (err, updated) {
         if (err) {
             return log.error(err);
         }
@@ -197,7 +197,7 @@ function envStateSet(id, data, callback) {
 }
 
 function setStateAndLastTransition(id, lastTransitionId, transition, callback) {
-    jobModel.findByIdAndUpdate({_id: id}, {lastTransition: lastTransitionId}, function (errUpdate, updated) {
+    jobModel.findByIdAndUpdate({_id: id}, {lastTransition: lastTransitionId}, {'new': true}, function (errUpdate, updated) {
         if (errUpdate) {
             return log.error(errUpdate);
         }
