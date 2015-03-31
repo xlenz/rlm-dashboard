@@ -9,39 +9,39 @@
 }
 
 .env-plate:hover {
-    box-shadow: 5px 5px 10px rgba(81, 203, 238, 1);
+    box-shadow: 2px 2px 6px rgba(77, 112, 123, 1);
 }
 
 .env-plate.Ok {
-    background-color: #01FF70;
+    background-color: #aaff77;
 }
 
 .env-plate.Ok .info div {
-    border-color: #2ECC40;
+    border-color: #99e56b;
 }
 
 .env-plate.Locked {
-    background-color: #FFDC00;
+    background-color: #f4ea8d;
 }
 
 .env-plate.Locked .info div {
-    border-color: #F0BF00;
+    border-color: #dbd27e;
 }
 
 .env-plate.Building {
-    background-color: #0074D9;
+    background-color: #aaff77;
 }
 
 .env-plate.Building .info div {
-    border-color: #1e90ff;
+    border-color: #6b99e5;
 }
 
 .env-plate.Failed {
-    background-color: #FF4136;
+    background-color: #d08181;
 }
 
 .env-plate.Failed .info div {
-    border-color: #FF1010;
+    border-color: #c96e6e;
 }
 
 .env-plate > div {
