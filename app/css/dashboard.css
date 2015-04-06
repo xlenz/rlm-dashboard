@@ -13,27 +13,27 @@
 }
 
 .env-plate.Ok {
-    background-color: #aaff77;
+    background-color: #c3ff9f;
 }
 
 .env-plate.Ok .info div {
-    border-color: #99e56b;
+    border-color: #afe58f;
 }
 
 .env-plate.Locked {
-    background-color: #f4ea8d;
+    background-color: #f6eda2;
 }
 
 .env-plate.Locked .info div {
-    border-color: #dbd27e;
+    border-color: #E2DA9A;
 }
 
 .env-plate.Building {
-    background-color: #77aaff;
+    background-color: #9fc3ff;
 }
 
 .env-plate.Building .info div {
-    border-color: #6b99e5;
+    border-color: #8fafe5;
 }
 
 .env-plate.Failed {
