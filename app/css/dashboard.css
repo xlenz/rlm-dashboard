@@ -2,7 +2,7 @@
     font-size: 24px;
     display: inline-block;
     vertical-align: top;
-    background-color: #AAAAAA;
+    background-color: #dddddd;
     margin: 15px 0 0 15px;
     overflow: hidden;
     transition: background-color 0.5s ease;
@@ -70,7 +70,7 @@
 }
 
 .env-plate .info .installType {
-    border-top: 1px solid #bbb;
+    border-top: 1px solid #cccccc;
     margin: -1px 14px -1px 10px;
     padding-top: 3px;
     transition: border-color 0.5s ease;
@@ -84,7 +84,7 @@
     height: 40px;
     position: relative;
     top: 46px;
-    border-top: 1px solid #bbb;
+    border-top: 1px solid #cccccc;
     margin: 0 14px 0 10px;
     padding: 1px 0 0;
     font-weight: bold;
