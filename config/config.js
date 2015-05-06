@@ -109,11 +109,13 @@ module.exports = function () {
 
         //users that are allowed to signup
         users: {
-            //RLM
+            //SOL
             ispitkovskyi: 'Igor Spitkovskyi',
             omykhaliov: 'Oleksiy Mykhaliov',
             mgrybyk: 'Mykola Grybyk',
             nlugova: 'Nata Lugova',
+            vmedvedev: 'Vadym Medvedev',
+            ydmytriev: 'Yuri Dmytriev',
             //SRA
             kabbyasov: 'Kostya Abbyasov',
             drozenberg: 'Dimka Rozenberg',
