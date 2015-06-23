@@ -32,7 +32,7 @@ module.exports = function () {
                 os: 'Server 2008 R2 EE SP1 x64',
                 sol: {
                     installType: 'Upgrade',
-                    upgrade: '5.0.1-&gt;5.1.1'
+                    upgrade: '5.0.1->5.1.1'
                 },
                 database: {
                     hostname: 'stl-qa-oalmtfs',
