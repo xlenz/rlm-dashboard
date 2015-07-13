@@ -54,6 +54,19 @@ module.exports = function () {
             },
             'QA_RLM_AUTOCONFIG_stl-alms-tst4__MAIN': {
                 name: 'stl-alms-tst4',
+                sbmType: 'On Premise',
+                os: 'Server 2008 R2 SE SP1 x64',
+                sol: {
+                    installType: 'Clean',
+                    upgrade: null
+                },
+                database: {
+                    hostname: 'stl-alms-tst4db',
+                    type: 'MSSQL 2012 SP1'
+                }
+            },
+            'QA_RLM_AUTOCONFIG_stl-alms-tst4-OnDemand__MAIN': {
+                name: 'stl-alms-tst4',
                 sbmType: 'On Demand',
                 os: 'Server 2008 R2 SE SP1 x64',
                 sol: {
