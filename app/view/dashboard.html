@@ -3,8 +3,10 @@
         <div class="name" title="Click to view links">
 
             <div class="content" style="display: none">
-                <div><a target="_blank" ng-href="http://{{env.name}}/workcenter">SBM</a></div>
-                <div><a target="_blank" ng-href="http://{{env.name}}:8085/mashupmgr">mashupmgr</a></div>
+                <div><a target="_blank" ng-href="http://{{env.name}}/workcenter">SBM Workcenter</a></div>
+                <div><a target="_blank" ng-href="http://{{env.name}}:8085/mashupmgr">SBM mashupmgr</a></div>
+                <div><a target="_blank" ng-href="http://{{env.name}}/tmtrack/tmtrack.dll?StdPage&Template=newwebadmin/index.html">SBM Admin</a></div>
+                <div ng-show="env.solutionType === 'RLM'"><a target="_blank" ng-href="http://{{env.name}}/tmtrack/tmtrack.dll?StdPage&template=rlm/provideradmin">Provider Admin</a></div>
                 <!--div><a target="_blank" ng-href="http://{{env.name}}/serena_ra/">SRA</a></div-->
             </div>
             <span custom-popover popover-placement="bottom" popover-label="{{env.name}}" class="custom-popover"></span>
@@ -51,6 +53,15 @@
 <div class="linkToWiki">
     <a target="_blank" href="http://sbmwiki/Scrum_Teams/DVM/QA/Releases/RC_5.2/RC_5.2_Test_Environments">See more
         details on Wiki</a>
+</div>
+<div class="linkToWiki">
+    <a target="_blank" href="http://stl-alms-tst5:8080/serena_ra">SDA 5.1.6 on stl-alms-tst5w</a>
+</div>
+<div class="linkToWiki">
+    <a target="_blank" href="http://stl-alms-tst6:8080/serena_ra">SDA 6.0 on stl-alms-tst6</a>
+</div>
+<div class="linkToWiki">
+    <a target="_blank" href="http://stl-alms-int2:8080/dimensions">CM 14.1 on stl-alms-int2</a>
 </div>
 
 <div class="modal fade" id="authModal" role="dialog">
