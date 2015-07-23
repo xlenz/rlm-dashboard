@@ -128,6 +128,7 @@ module.exports = function () {
             mgrybyk: 'Mykola Grybyk',
             nlugova: 'Nata Lugova',
             smuzychenko: 'Serhiy Muzychenko',
+            ytymchenko: 'Yulia Tymchenko',
             vmedvedev: 'Vadym Medvedev',
             ydmytriev: 'Yuri Dmytriev',
             //SRA
