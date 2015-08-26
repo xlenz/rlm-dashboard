@@ -1,6 +1,6 @@
-<div class="dropdown" style="position: absolute; right: 10px; top: 1px;">
-  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-    Current View: {{currentView}}
+<div class="dropdown" style="position: absolute; right: 10px; top: 0;">
+  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding: 0 5px;">
+    Current View: <b>{{currentView}}</b>
     <span class="caret"></span>
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -8,6 +8,7 @@
     <li><a href="" ng-click="currentView = 'RLM'">RLM</a></li>
   </ul>
 </div>
+<div class="margin-after-view-dropdown" style="margin-top: 7px;"></div>
 
 <div ng-repeat="(jobName, env) in envs | objectByKeyValFilter:'solutionType':currentView" class="env-plate {{env.state}}">
     <div class="info">
