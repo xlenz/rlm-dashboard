@@ -1,4 +1,15 @@
-<div ng-repeat="(jobName, env) in envs" class="env-plate {{env.state}}">
+<div class="dropdown" style="position: absolute; right: 10px; top: 1px;">
+  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Current View: {{currentView}}
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <li><a href="" ng-click="currentView = 'SSM'">SSM</a></li>
+    <li><a href="" ng-click="currentView = 'RLM'">RLM</a></li>
+  </ul>
+</div>
+
+<div ng-repeat="(jobName, env) in envs | objectByKeyValFilter:'solutionType':currentView" class="env-plate {{env.state}}">
     <div class="info">
         <div class="name" title="Click to view links">
 
@@ -17,7 +28,8 @@
         <div class="sbmType">{{env.sbmType}}</div>
         <div class="solBuild">{{env.solutionType}} {{env.builds.sol}}</div>
         <div class="os">{{env.os}}</div>
-        <div class="db">{{env.database.type}}</div>
+        <div class="db">db: {{env.database.type}}</div>
+        <div class="db">on {{env.database.hostname}}</div>
         <div class="details">
             <div>{{details(env)}}</div>
         </div>

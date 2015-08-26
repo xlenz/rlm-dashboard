@@ -83,7 +83,7 @@
 .env-plate .info .details {
     height: 40px;
     position: relative;
-    top: 46px;
+    /*top: 46px;*/
     border-top: 1px solid #cccccc;
     margin: 0 14px 0 10px;
     padding: 1px 0 0;
