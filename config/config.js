@@ -51,7 +51,7 @@ module.exports = function () {
                     upgrade: null
                 },
                 database: {
-                    hostname: 'stl-alms-tst7db',
+                    hostname: 'STMSQADV-T3DB01',
                     type: 'MSSQL 2008 SP3'
                 }
             },
@@ -111,7 +111,7 @@ module.exports = function () {
                 },
                 database: {
                     hostname: 'stl-alms-tst7db',
-                    type: 'Oracle 12'
+                    type: 'Oracle 12.1.0.1.0'
                 }
             },
             'QA_SSM_AUTOCONFIG_stl-qa-oalmt2__MAIN': {
@@ -136,7 +136,7 @@ module.exports = function () {
                     upgrade: null
                 },
                 database: {
-                    hostname: 't3db',
+                    hostname: 'STMSQADV-T3DB01',
                     type: 'MSSQL 2014 SP1'
                 }
             },
