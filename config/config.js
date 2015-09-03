@@ -44,7 +44,7 @@ module.exports = function () {
             },
             'QA_RLM_AUTOCONFIG_stl-qa-oalmt3__MAIN': {
                 name: 'stl-qa-oalmt3',
-                sbmType: 'On Premise',
+                sbmType: 'On Premise, SSO off',
                 os: 'Server 2012 SE x64',
                 sol: {
                     installType: 'Clean',
@@ -101,19 +101,6 @@ module.exports = function () {
 
 // === SSM ===
 
-            'QA_SSM_AUTOCONFIG_stl-alms-tst7__MAIN': {
-                name: 'stl-alms-tst7',
-                sbmType: 'On Premise',
-                os: 'Server 2012 R2 SE x64',
-                sol: {
-                    installType: 'Clean',
-                    upgrade: null
-                },
-                database: {
-                    hostname: 'stl-alms-tst7db',
-                    type: 'Oracle 12.1.0.1.0'
-                }
-            },
             'QA_SSM_AUTOCONFIG_stl-qa-oalmt2__MAIN': {
                 name: 'stl-qa-oalmt2',
                 sbmType: 'On Premise',
@@ -129,11 +116,11 @@ module.exports = function () {
             },
             'QA_SSM_AUTOCONFIG_stl-qa-oalmt3__MAIN': {
                 name: 'stl-qa-oalmt3',
-                sbmType: 'On Premise',
+                sbmType: 'On Premise, SSO off',
                 os: 'Server 2012 SE x64',
                 sol: {
-                    installType: 'Clean',
-                    upgrade: null
+                    installType: 'Upgrade',
+                    upgrade: '4.5'
                 },
                 database: {
                     hostname: 'STMSQADV-T3DB01',
@@ -151,6 +138,19 @@ module.exports = function () {
                 database: {
                     hostname: 'stl-alms-tst4db',
                     type: 'MSSQL 2012 SP1'
+                }
+            },
+            'QA_SSM_AUTOCONFIG_stl-alms-tst7__MAIN': {
+                name: 'stl-alms-tst7',
+                sbmType: 'On Premise, SSL',
+                os: 'Server 2012 R2 SE x64',
+                sol: {
+                    installType: 'Clean',
+                    upgrade: null
+                },
+                database: {
+                    hostname: 'stl-alms-tst7db',
+                    type: 'Oracle 12.1.0.1.0'
                 }
             },
             'QA_SSM_AUTOCONFIG_stmsqadv-tdb801__MAIN': {
