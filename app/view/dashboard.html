@@ -18,7 +18,8 @@
                 <div><a target="_blank" ng-href="http://{{env.name}}/workcenter">SBM Workcenter</a></div>
                 <div><a target="_blank" ng-href="http://{{env.name}}:8085/mashupmgr">SBM mashupmgr</a></div>
                 <div><a target="_blank" ng-href="http://{{env.name}}/tmtrack/tmtrack.dll?StdPage&Template=newwebadmin/index.html">SBM Admin</a></div>
-                <div ng-show="env.solutionType === 'RLM'"><a target="_blank" ng-href="http://{{env.name}}/tmtrack/tmtrack.dll?StdPage&template=rlm/provideradmin">Provider Admin</a></div>
+                <div ng-show="env.solutionType === 'RLM'"><a target="_blank" ng-href="http://{{env.name}}/workcenter/tmtrack.dll?StdPage&template=rlm/provideradmin">Provider Admin</a></div>
+                <div ng-show="env.solutionType === 'SSM'"><a target="_blank" ng-href="http://{{env.name}}/workcenter/tmtrack.dll?shell=srp">SRP Catalog</a></div>
                 <!--div><a target="_blank" ng-href="http://{{env.name}}/serena_ra/">SRA</a></div-->
             </div>
             <span custom-popover popover-placement="bottom" popover-label="{{env.name}}" class="custom-popover"></span>
@@ -67,17 +68,19 @@
     <a target="_blank" href="http://sbmwiki/Scrum_Teams/DVM/QA/Releases/RC_5.2/RC_5.2_Test_Environments">See more
         details on Wiki</a>
 </div>
-<div class="linkToWiki">
-    <a target="_blank" href="http://stl-alms-tst5:8080/serena_ra">SDA 5.1.6 on stl-alms-tst5 (SSO on stl-qa-oalmt1)</a>
-</div>
-<div class="linkToWiki">
-    <a target="_blank" href="http://stl-alms-tst6:8080/serena_ra">SDA 6.0 on stl-alms-tst6 (SSO off)</a>
-</div>
-<div class="linkToWiki">
-    <a target="_blank" href="http://stl-alms-int2:8080/dimensions">CM 14.1.0.4 on stl-alms-int2 (SSO on stl-qa-oalmt2)</a>
-</div>
-<div class="linkToWiki">
-    <a target="_blank" href="http://orl-rlm-cmq3:8080/dimensions">CM 12.2.2.6 on orl-rlm-cmq3 (SSO on stl-alms-tst4)</a>
+<div ng-show="currentView === 'RLM'">
+    <div class="linkToWiki">
+        <a target="_blank" href="http://stl-alms-tst5:8080/serena_ra">SDA 5.1.6 on stl-alms-tst5 (SSO on stl-qa-oalmt1)</a>
+    </div>
+    <div class="linkToWiki">
+        <a target="_blank" href="http://stl-alms-tst6:8080/serena_ra">SDA 6.0 on stl-alms-tst6 (SSO off)</a>
+    </div>
+    <div class="linkToWiki">
+        <a target="_blank" href="http://stl-alms-int2:8080/dimensions">CM 14.1.0.4 on stl-alms-int2 (SSO on stl-qa-oalmt2)</a>
+    </div>
+    <div class="linkToWiki">
+        <a target="_blank" href="http://orl-rlm-cmq3:8080/dimensions">CM 12.2.2.6 on orl-rlm-cmq3 (SSO on stl-alms-tst4)</a>
+    </div>
 </div>
 
 <div class="modal fade" id="authModal" role="dialog">
