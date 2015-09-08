@@ -188,7 +188,7 @@ module.exports = function () {
             ispitkovskyi: 'Igor Spitkovskyi',
             omykhaliov: 'Oleksiy Mykhaliov',
             mgrybyk: 'Mykola Grybyk',
-            //newcomer1: 'newcomer1',
+            akolomakin: 'Andrii Kolomakin',
             //newcomer2: 'newcomer2',
             ytymchenko: 'Yulia Tymchenko',
             vmedvedev: 'Vadym Medvedev',
