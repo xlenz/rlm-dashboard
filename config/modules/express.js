@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
 var passport = require('passport');
-var MongoStore = require('connect-mongo')(session);
+var RedisStore = require('connect-redis')(session);
 var cfg;
 
 module.exports = function (app, _cfg, routes) {
@@ -13,14 +13,11 @@ module.exports = function (app, _cfg, routes) {
     var userSession = {
         resave: true,
         saveUninitialized: true,
-        secret: 'rlm dashboard made by mgrybyk 120958012958',
+        secret: 'rlm dashboard made by mgrybyk 120958012967',
         cookie: {
-            maxAge: 30000000000 // one hour is 3600000
+            maxAge: 60480000000 // one hour is 3600000
         },
-        store: new MongoStore({
-            host: 'localhost',
-            db: 'rlmDashboard'
-        })
+        store: new RedisStore()
     };
     var pathToPublic = cfg.pathToApp;
     app.use(logWho);
