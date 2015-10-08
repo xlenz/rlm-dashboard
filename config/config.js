@@ -129,7 +129,7 @@ module.exports = function () {
             },
             'QA_SSM_AUTOCONFIG_stl-alms-tst4__MAIN': {
                 name: 'stl-alms-tst4',
-                sbmType: 'On Demand',
+                sbmType: 'On Demand, SSL',
                 os: 'Server 2008 R2 SE SP1 x64',
                 sol: {
                     installType: 'Clean',
