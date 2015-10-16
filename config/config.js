@@ -188,9 +188,9 @@ module.exports = function () {
             ispitkovskyi: 'Igor Spitkovskyi',
             omykhaliov: 'Oleksiy Mykhaliov',
             mgrybyk: 'Mykola Grybyk',
-            akolomakin: 'Andrii Kolomakin',
-            //newcomer2: 'newcomer2',
-            ytymchenko: 'Yulia Tymchenko',
+            akolomakin: 'Andriyko Kolomakin',
+            olazarenko@serena.com: 'Olka Lazarenko',
+            ytymchenko: 'Yulka Tymchenko',
             vmedvedev: 'Vadym Medvedev',
             ydmytriev: 'Yuri Dmytriev',
             //SRA
