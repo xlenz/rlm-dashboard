@@ -189,7 +189,7 @@ module.exports = function () {
             omykhaliov: 'Oleksiy Mykhaliov',
             mgrybyk: 'Mykola Grybyk',
             akolomakin: 'Andriyko Kolomakin',
-            olazarenko@serena.com: 'Olka Lazarenko',
+            olazarenko: 'Olka Lazarenko',
             ytymchenko: 'Yulka Tymchenko',
             vmedvedev: 'Vadym Medvedev',
             ydmytriev: 'Yuri Dmytriev',
