@@ -47,8 +47,8 @@ module.exports = function () {
                 sbmType: 'On Premise, SSO off',
                 os: 'Server 2012 SE x64',
                 sol: {
-                    installType: 'Clean',
-                    upgrade: null
+                    installType: 'Upgrade',
+                    upgrade: '6.0'
                 },
                 database: {
                     hostname: 'STMSQADV-T3DB01',
