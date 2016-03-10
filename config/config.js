@@ -18,20 +18,20 @@ module.exports = function () {
 
             'QA_RLM_AUTOCONFIG_stl-qa-oalmt1__MAIN': {
                 name: 'stl-qa-oalmt1',
-                sbmType: 'On Premise',
-                os: 'Server 2003 R2 EE SP2 x86',
+                sbmType: 'SSL',
+                os: 'Server 2012 R2 SE x64',
                 sol: {
-                    installType: 'Clean',
-                    upgrade: null
+                    installType: 'Upgrade',
+                    upgrade: 'or Clean'
                 },
                 database: {
                     hostname: 'stl-qa-oalmt1db',
-                    type: 'Oracle 11.2.0.3'
+                    type: 'Oracle xxx'
                 }
             },
             'QA_RLM_AUTOCONFIG_stl-qa-oalmt2__MAIN': {
                 name: 'stl-qa-oalmt2',
-                sbmType: 'On Premise',
+                sbmType: 'SSL',
                 os: 'Server 2008 R2 EE SP1 x64',
                 sol: {
                     installType: 'Upgrade',
@@ -44,54 +44,50 @@ module.exports = function () {
             },
             'QA_RLM_AUTOCONFIG_stl-qa-oalmt3__MAIN': {
                 name: 'stl-qa-oalmt3',
-                sbmType: 'On Premise, SSO off',
+                sbmType: 'SSO off',
                 os: 'Server 2012 SE x64',
                 sol: {
-                    installType: 'Upgrade',
-                    upgrade: '6.0'
+                    installType: 'Clean',
+                    upgrade: null
                 },
                 database: {
                     hostname: 'STMSQADV-T3DB01',
-                    type: 'MSSQL 2008 SP3'
+                    type: 'MSSQL 2014 SP1'
                 }
             },
             'QA_RLM_AUTOCONFIG_stl-alms-tst4__MAIN': {
                 name: 'stl-alms-tst4',
-                sbmType: 'On Premise',
+                sbmType: 'SSL',
                 os: 'Server 2008 R2 SE SP1 x64',
                 sol: {
-                    installType: 'Clean',
-                    upgrade: null
+                    installType: 'Upgrade',
+                    upgrade: '6.0'
                 },
                 database: {
                     hostname: 'stl-alms-tst4db',
                     type: 'MSSQL 2012 SP1'
                 }
             },
-
-            // commented this one to avoid confusions...
-
-            // 'QA_RLM_AUTOCONFIG_stl-alms-tst4-OnDemand__MAIN': {
-            //     name: 'stl-alms-tst4',
-            //     sbmType: 'On Demand',
-            //     os: 'Server 2008 R2 SE SP1 x64',
-            //     sol: {
-            //         installType: 'Clean',
-            //         upgrade: null
-            //     },
-            //     database: {
-            //         hostname: 'stl-alms-tst4db',
-            //         type: 'MSSQL 2012 SP1'
-            //     }
-            // },
-
+            'QA_RLM_AUTOCONFIG_stl-alms-tst7__MAIN': {
+                name: 'stl-alms-tst7',
+                sbmType: 'no SSL',
+                os: 'Server 2012 R2 SE x64',
+                sol: {
+                    installType: 'Clean',
+                    upgrade: null
+                },
+                database: {
+                    hostname: 'stl-alms-tst7db',
+                    type: 'Oracle 12.1.0.1.0'
+                }
+            },
             'QA_RLM_AUTOCONFIG_stmsqadv-tdb801__MAIN': {
                 name: 'stmsqadv-tdb801',
-                sbmType: 'On Demand',
+                sbmType: 'SSL',
                 os: 'Server 2008 R2 EE SP1 x64',
                 sol: {
                     installType: 'Upgrade',
-                    upgrade: '5.1.1'
+                    upgrade: '6.0.1'
                 },
                 database: {
                     hostname: 'stmsqadv-tdb802',
