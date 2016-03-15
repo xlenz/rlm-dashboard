@@ -20,19 +20,25 @@ module.exports = function () {
                 name: 'stl-qa-oalmt1',
                 sbmType: 'SSL',
                 os: 'Server 2012 R2 SE x64',
+                protocol: 'https',
+                arPort: '8443',
+                aePort: '443',
                 sol: {
                     installType: 'Upgrade',
-                    upgrade: 'or Clean'
+                    upgrade: '6.0.1'
                 },
                 database: {
                     hostname: 'stl-qa-oalmt1db',
-                    type: 'Oracle xxx'
+                    type: 'Oracle 12.1.0.1.0'
                 }
             },
             'QA_RLM_AUTOCONFIG_stl-qa-oalmt2__MAIN': {
                 name: 'stl-qa-oalmt2',
                 sbmType: 'SSL',
                 os: 'Server 2008 R2 EE SP1 x64',
+                protocol: 'https',
+                arPort: '8443',
+                aePort: '443',
                 sol: {
                     installType: 'Upgrade',
                     upgrade: '5.0.1->5.1.1'
@@ -59,6 +65,9 @@ module.exports = function () {
                 name: 'stl-alms-tst4',
                 sbmType: 'SSL',
                 os: 'Server 2008 R2 SE SP1 x64',
+                protocol: 'https',
+                arPort: '8443',
+                aePort: '443',
                 sol: {
                     installType: 'Upgrade',
                     upgrade: '6.0'
@@ -85,6 +94,9 @@ module.exports = function () {
                 name: 'stmsqadv-tdb801',
                 sbmType: 'SSL',
                 os: 'Server 2008 R2 EE SP1 x64',
+                protocol: 'https',
+                arPort: '8443',
+                aePort: '443',
                 sol: {
                     installType: 'Upgrade',
                     upgrade: '6.0.1'
