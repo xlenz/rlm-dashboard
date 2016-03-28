@@ -21,7 +21,7 @@ module.exports = function () {
                 sbmType: 'SSL',
                 os: 'Server 2012 R2 SE x64',
                 protocol: 'https',
-                arPort: '8443',
+                arPort: '8243',
                 aePort: '443',
                 sol: {
                     installType: 'Upgrade',
@@ -29,7 +29,7 @@ module.exports = function () {
                 },
                 database: {
                     hostname: 'stl-qa-oalmt1db',
-                    type: 'Oracle 12.1.0.1.0'
+                    type: 'Oracle 11.2.0.3'
                 }
             },
             'QA_RLM_AUTOCONFIG_stl-qa-oalmt2__MAIN': {
@@ -37,11 +37,11 @@ module.exports = function () {
                 sbmType: 'SSL',
                 os: 'Server 2008 R2 EE SP1 x64',
                 protocol: 'https',
-                arPort: '8443',
+                arPort: '8243',
                 aePort: '443',
                 sol: {
                     installType: 'Upgrade',
-                    upgrade: '5.0.1->5.1.1'
+                    upgrade: '6.0'
                 },
                 database: {
                     hostname: 'stl-qa-oalmtfs',
