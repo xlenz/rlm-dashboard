@@ -66,7 +66,7 @@ module.exports = function () {
                 sbmType: 'SSL',
                 os: 'Server 2008 R2 SE SP1 x64',
                 protocol: 'https',
-                arPort: '8443',
+                arPort: '8243',
                 aePort: '443',
                 sol: {
                     installType: 'Upgrade',
@@ -136,6 +136,10 @@ module.exports = function () {
                 }
             },
             'QA_SSM_AUTOCONFIG_stl-alms-tst4__MAIN': {
+                sbmType: 'SSL',
+                protocol: 'https',
+                arPort: '8243',
+                aePort: '443',
                 name: 'stl-alms-tst4',
                 sbmType: 'On Demand, SSL',
                 os: 'Server 2008 R2 SE SP1 x64',
