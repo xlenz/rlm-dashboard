@@ -128,7 +128,7 @@ module.exports = function () {
                 os: 'Server 2012 SE x64',
                 sol: {
                     installType: 'Upgrade',
-                    upgrade: '4.5'
+                    upgrade: '5.2'
                 },
                 database: {
                     hostname: 'STMSQADV-T3DB01',
