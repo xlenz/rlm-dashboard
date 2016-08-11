@@ -119,7 +119,7 @@ module.exports = function () {
                 },
                 database: {
                     hostname: 'stl-qa-oalmt1db',
-                    type: 'Oracle 12.2.0.1'
+                    type: 'Oracle 12.1.0.2'
                 }
             },	
             'QA_SSM_AUTOCONFIG_stl-qa-oalmt2__MAIN': {
