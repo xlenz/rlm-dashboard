@@ -109,6 +109,19 @@ module.exports = function () {
 
 // === SSM ===
 
+            'QA_SSM_AUTOCONFIG_stl-qa-oalmt1__MAIN': {
+                name: 'stl-qa-oalmt1',
+                sbmType: 'On Premise',
+                os: 'Server 2012 R2 SE x64',              
+                sol: {
+                    installType: 'Upgrade',
+                    upgrade: '5.2.1'
+                },
+                database: {
+                    hostname: 'stl-qa-oalmt1db',
+                    type: 'Oracle 12.2.0.1'
+                }
+            },	
             'QA_SSM_AUTOCONFIG_stl-qa-oalmt2__MAIN': {
                 name: 'stl-qa-oalmt2',
                 sbmType: 'On Premise',
