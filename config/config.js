@@ -184,7 +184,7 @@ module.exports = function () {
                 os: 'Server 2008 R2 EE SP1 x64',
                 sol: {
                     installType: 'Upgrade',
-                    upgrade: '5.1.1'
+                    upgrade: '5.2.1'
                 },
                 database: {
                     hostname: 'stmsqadv-tdb802',
