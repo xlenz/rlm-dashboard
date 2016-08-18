@@ -111,7 +111,7 @@ module.exports = function () {
 
             'QA_SSM_AUTOCONFIG_stl-qa-oalmt1__MAIN': {
                 name: 'stl-qa-oalmt1',
-                sbmType: 'On Demand',
+                sbmType: 'On Premise',
                 os: 'Server 2012 R2 SE x64',              
                 sol: {
                     installType: 'Upgrade',
