@@ -124,8 +124,11 @@ module.exports = function () {
             },	
             'QA_SSM_AUTOCONFIG_stl-qa-oalmt2__MAIN': {
                 name: 'stl-qa-oalmt2',
-                sbmType: 'On Premise',
+                sbmType: 'On Premise, SSL',
                 os: 'Server 2008 R2 EE SP1 x64',
+                protocol: 'https',
+                arPort: '8243',
+                aePort: '443',
                 sol: {
                     installType: 'Upgrade',
                     upgrade: '5.0.1->5.1.1->5.2'
