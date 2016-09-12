@@ -183,7 +183,11 @@ module.exports = function () {
             },
             'QA_SSM_AUTOCONFIG_stmsqadv-tdb801__MAIN': {
                 name: 'stmsqadv-tdb801',
-                sbmType: 'On Demand',
+                sbmType: 'SSL',
+                protocol: 'https',
+                arPort: '8243',
+                aePort: '443',
+                sbmType: 'On Demand, SSL',
                 os: 'Server 2008 R2 EE SP1 x64',
                 sol: {
                     installType: 'Upgrade',
