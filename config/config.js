@@ -171,6 +171,9 @@ module.exports = function () {
             'QA_SSM_AUTOCONFIG_stl-alms-tst7__MAIN': {
                 name: 'stl-alms-tst7',
                 sbmType: 'On Premise, SSL',
+                protocol: 'https',
+                arPort: '8243',
+                aePort: '443',
                 os: 'Server 2012 R2 SE x64',
                 sol: {
                     installType: 'Clean',
