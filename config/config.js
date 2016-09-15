@@ -14,7 +14,7 @@ module.exports = function () {
 
         environments: {
 
-// === RLM ===
+// === RLM =====
 
             'QA_RLM_AUTOCONFIG_stl-qa-oalmt1__MAIN': {
                 name: 'stl-qa-oalmt1',
