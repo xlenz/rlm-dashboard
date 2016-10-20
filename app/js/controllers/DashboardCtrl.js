@@ -9,7 +9,7 @@
         $scope.envs = {};
         $scope.envsDetails = {};
         $scope.timestamp = new Date().getTime();
-        $scope.currentView = 'SSM';
+        $scope.currentView = 'RLM';
 
         $scope.resolve = function (env, state) {
             if (!Auth.isAuth()) {
