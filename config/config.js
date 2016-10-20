@@ -41,7 +41,7 @@ module.exports = function () {
                 aePort: '443',
                 sol: {
                     installType: 'Upgrade',
-                    upgrade: '6.0'
+                    upgrade: '6.1'
                 },
                 database: {
                     hostname: 'stl-qa-oalmtfs',
@@ -70,7 +70,7 @@ module.exports = function () {
                 aePort: '443',
                 sol: {
                     installType: 'Upgrade',
-                    upgrade: '6.0'
+                    upgrade: '6.1'
                 },
                 database: {
                     hostname: 'stl-alms-tst4db',
