@@ -95,7 +95,7 @@ module.exports = function () {
                 sbmType: 'SSL',
                 os: 'Server 2008 R2 EE SP1 x64',
                 protocol: 'https',
-                arPort: '8443',
+                arPort: '8243',
                 aePort: '443',
                 sol: {
                     installType: 'Upgrade',
