@@ -18,7 +18,7 @@
                 <div><a target="_blank" ng-href="{{env.protocol || 'http'}}://{{env.name}}:{{env.aePort || '80'}}/workcenter">SBM Workcenter</a></div>
                 <div><a target="_blank" ng-href="{{env.protocol || 'http'}}://{{env.name}}:{{env.arPort || '8085'}}/mashupmgr">SBM mashupmgr</a></div>
                 <div><a target="_blank" ng-href="{{env.protocol || 'http'}}://{{env.name}}:{{env.aePort || '80'}}/tmtrack/tmtrack.dll?StdPage&Template=newwebadmin/index.html">SBM Admin</a></div>
-                <div ng-show="env.solutionType === 'RLM'"><a target="_blank" ng-href="{{env.protocol || 'http'}}://{{env.name}}:{{env.aePort || '80'}}/workcenter/tmtrack.dll?StdPage&template=rlm/provideradmin">Provider Admin</a></div>
+                <div ng-show="env.solutionType === 'RLM'"><a target="_blank" ng-href="{{env.protocol || 'http'}}://{{env.name}}:{{env.aePort || '80'}}/workcenter/tmtrack.dll?StdPage&template=rlc/admin">Provider Admin</a></div>
                 <div ng-show="env.solutionType === 'SSM'"><a target="_blank" ng-href="{{env.protocol || 'http'}}://{{env.name}}:{{env.aePort || '80'}}/workcenter/tmtrack.dll?shell=srp">SRP Catalog</a></div>
                 <!--div><a target="_blank" ng-href="http://{{env.name}}/serena_ra/">SRA</a></div-->
             </div>
